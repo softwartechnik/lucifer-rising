@@ -5,5 +5,12 @@ os: linux
 dist: trusty
 jdk: oraclejdk11
 
+addons:
+  sonarcloud:
+    organization: "softwartechnik"
+    token:
+      secure: dOiyk/feW8492Ouq2xB0y1mwwG+mcbW9/sKXo5UgsGifJtSFlF4mOY9srLT92jdvxDleWsXTs2hkBrDyLtrShgRnaAwQkOwpygYnegDsDW4g7pTFgltc4Un2TObPQXf1mdo7ffaZN1H0gY1YoRRw8Kz60dgINVEOi0HxEpoqM3q5Mm+MKz4tATxJPe+aOsYRVWbePpUHmSS93w/EqKQePdY8evnthIDIcnQ5IqU4NMhiL3nZDfPpeFu3dBT01M2LLdZatiWeOqUIFATWoYBXYNdHVaocA0pP4Tm2oJtC/TtXgrP2Kw5V/EBp1/VveDZaSVrb0b7p0LrQYgtNV8J9E1wg9RPT/6v0LtMeydg8gaiWT6lR5Yd7dYCTtkvSHfnkyRC2vplZuW59kNqvpc2y1TByTaYVcMG7eh37cx0N/Cdk5cjx1BuugKnbA5B5F86sW442H0haLjZQAmFqPlWZcqsppz8P8p9eoSF0P1fYIHm4ioWsG89FBE1PSiFK7w2UwluTcCkIBsgY3noBlxfs5vEhLErIu12gcaKn8ESnVh7JU/MvQiBAe/Je094PRSmavhaj8szw6+8FPlnp64syYZiclyXyDAEvZJdyOQCnk7MtfMlETc7BreRcNi9dRnaqUdrgCHklzVQNPET5mHWbb0bW3+nOS09UBlIQMTI3X0c=
+
 script:
   - ./gradlew build --scan -s
+  - ./gradlew sonarqube
