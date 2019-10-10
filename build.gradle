@@ -1,6 +1,7 @@
 plugins {
   id 'com.gradle.build-scan' version '2.1'
   id 'java'
+  id 'org.sonarqube' version "2.7.1"
 }
 
 buildScan {
@@ -10,3 +11,9 @@ buildScan {
 
 group 'de.softwartechnik.lucifer'
 version '0.1.0-SNAPSHOT'
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "softwartechnik_lucifer-rising"
+  }
+}
