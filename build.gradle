@@ -12,6 +12,14 @@ buildScan {
 group 'de.softwartechnik.lucifer'
 version '0.1.0-SNAPSHOT'
 
+allprojects {
+  repositories {
+    google()
+    mavenCentral()
+    mavenLocal()
+  }
+}
+
 sonarqube {
   properties {
     property "sonar.projectKey", "softwartechnik_lucifer-rising"

@@ -1,0 +1,27 @@
+plugins {
+    id 'ear'
+}
+
+group 'de.softwartechnik.lucifer'
+version '0.1.0-SNAPSHOT'
+
+dependencies {
+  deploy project(':lucifer-rising-user')
+}
+
+ear {
+    appDirName 'src/main/app'
+    libDirName 'APP-INF/lib'
+
+    deploymentDescriptor {  // custom entries for application.xml:
+       fileName = "application.xml"  // same as the default value
+        version = "8"  // same as the default value
+        initializeInOrder = true
+        // defaults to project.description if not set
+//      description = "My customized EAR for the Gradle documentation"
+        module("lucifer-rising-user.jar", "ejb")  // won't deploy as my.jar isn't deploy dependency
+//      webModule("my.war", "/")  // won't deploy as my.war isn't deploy dependency
+        securityRole "admin"
+        securityRole "superadmin"
+    }
+}

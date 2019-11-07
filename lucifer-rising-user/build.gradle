@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+
+group 'de.softwartechnik.lucifer'
+version '0.1.0-SNAPSHOT'
+
+dependencies {
+  implementation 'javax:javaee-api:8.0.1'
+  implementation 'javax.enterprise:cdi-api:1.2'
+}
