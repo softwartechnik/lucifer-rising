@@ -1,5 +1,6 @@
 rootProject.name = 'lucifer-rising-parent'
 
+include 'lucifer-rising-chat'
 include 'lucifer-rising-ear'
 include 'lucifer-rising-user'
 
