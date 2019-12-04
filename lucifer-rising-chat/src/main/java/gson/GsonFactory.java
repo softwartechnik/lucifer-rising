@@ -12,16 +12,15 @@ import java.util.List;
 public class GsonFactory {
 
   public List<MyNode> getNodesFromFile(String myFilePath) throws FileNotFoundException {
-    Reader reader = null;
+    FileReader reader = null;
     try {
-      reader = new FileReader(myFilePath);
+      reader = new FileReader(System.getProperty("user.dir")+ myFilePath);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
 
     Type listOfMyClassObject = new TypeToken<ArrayList<MyNode>>() {}.getType();
     Gson gson = new Gson();
-    List<MyNode> outputList = gson.fromJson(reader, listOfMyClassObject);
-    return outputList;
+    return gson.fromJson(reader, listOfMyClassObject);
   }
 }
