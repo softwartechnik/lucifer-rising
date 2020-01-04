@@ -12,12 +12,37 @@ class User {
   private int gamesPlayed;
   private int gamesWon;
 
-  User(int id, String name, int gamesPlayed, int gamesWon) {
-    this.id = id;
+  User(String name) {
     this.name = name;
-    this.gamesPlayed = gamesPlayed;
-    this.gamesWon = gamesWon;
   }
 
   public User() { }
+
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getGamesPlayed() {
+    return gamesPlayed;
+  }
+
+  public void setGamesPlayed(int gamesPlayed) {
+    this.gamesPlayed = gamesPlayed;
+  }
+
+  public int getGamesWon() {
+    return gamesWon;
+  }
+
+  public void setGamesWon(int gamesWon) {
+    this.gamesWon = gamesWon;
+  }
 }

@@ -6,7 +6,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
-//TODO: Unittests
 class UserDao {
 
   @PersistenceContext (unitName = "UserPersistenceUnit")
