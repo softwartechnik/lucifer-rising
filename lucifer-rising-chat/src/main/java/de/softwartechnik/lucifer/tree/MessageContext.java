@@ -1,5 +1,7 @@
 package de.softwartechnik.lucifer.tree;
 
+import de.softwartechnik.lucifer.tree.ChatSession.Status;
+
 public final class MessageContext {
   private final ChatSession chatSession;
   private final String message;
@@ -23,6 +25,10 @@ public final class MessageContext {
   }
 
   public void killSession() {
-    System.out.println("KILLED!");
+    chatSession.updateStatus(Status.KILLED);
+  }
+
+  public void winGame() {
+    chatSession.updateStatus(Status.END);
   }
 }

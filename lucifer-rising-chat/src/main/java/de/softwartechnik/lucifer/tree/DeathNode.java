@@ -1,7 +1,5 @@
 package de.softwartechnik.lucifer.tree;
 
-import java.util.List;
-
 public final class DeathNode extends Node {
   private DeathNode() {
   }

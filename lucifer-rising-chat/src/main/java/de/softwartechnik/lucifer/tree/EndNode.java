@@ -7,6 +7,7 @@ public final class EndNode extends Node {
   @Override
   public void accept(MessageContext messageContext) {
     messageContext.respond("Du hast gewonnen!");
+    messageContext.winGame();
   }
 
   public static Node create() {

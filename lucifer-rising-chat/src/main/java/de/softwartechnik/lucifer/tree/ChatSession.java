@@ -1,35 +1,38 @@
 package de.softwartechnik.lucifer.tree;
 
-import de.softwartechnik.lucifer.tree.QuestionNode.Choice;
+import java.util.concurrent.atomic.AtomicReference;
 
 public final class ChatSession {
   private Node currentNode;
+  private final AtomicReference<Status> status = new AtomicReference<>(Status.LATENT);
 
-  public static void main(String[] args) {
-    new ChatSession().begin();
+  public void begin(Node node, String message) {
+    currentNode = node;
+    status.compareAndSet(Status.LATENT, Status.RUNNING);
+    onMessage(message);
   }
 
-  private void begin() {
-    var goodNode = MessageNode.of("Schön!", EndNode.create());
-    var badNode = DeathNode.create();
-    currentNode = QuestionNode.newBuilder()
-      .withQuestion("Wie geht es dir?")
-      .addChoice(Choice.of(answer -> answer.equals("gut"), goodNode))
-      .addChoice(Choice.of(answer -> answer.equals("schlecht"), badNode))
-      .create();
-
-    var messageContext = new MessageContext(this, "Hey!");
+  public void onMessage(String message) {
+    var messageContext = new MessageContext(this, message);
     currentNode.accept(messageContext);
-
-    System.out.println(currentNode);
-
-    messageContext = new MessageContext(this, "schlecht");
-    currentNode.accept(messageContext);
-
-    System.out.println(currentNode);
   }
 
   public void setCurrentNode(Node currentNode) {
     this.currentNode = currentNode;
+  }
+
+  public Status status() {
+    return status.get();
+  }
+
+  void updateStatus(Status status) {
+    this.status.set(status);
+  }
+
+  public enum  Status {
+    LATENT,
+    RUNNING,
+    KILLED,
+    END
   }
 }

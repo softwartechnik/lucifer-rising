@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
 
@@ -88,12 +87,6 @@ public final class QuestionNode extends Node {
     public Builder addChoice(Choice choice) {
       Objects.requireNonNull(choice);
       choices.add(choice);
-      return this;
-    }
-
-    public Builder setChoices(Collection<Choice> choices) {
-      Objects.requireNonNull(choices);
-      this.choices = new HashSet<>(choices);
       return this;
     }
 

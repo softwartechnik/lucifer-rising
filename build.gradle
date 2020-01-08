@@ -13,6 +13,16 @@ allprojects {
     mavenCentral()
     mavenLocal()
   }
+
+  dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.2.4'
+  }
+
+  test {
+    useJUnitPlatform()
+  }
 }
 
 sonarqube {
