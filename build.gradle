@@ -36,7 +36,6 @@ allprojects {
 sonarqube {
   properties {
     property "sonar.projectKey", "softwartechnik_lucifer-rising"
-    property "sonar."
   }
 }
 
