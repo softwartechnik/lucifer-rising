@@ -17,8 +17,12 @@ allprojects {
   version '1.0.0-SNAPSHOT'
 
   repositories {
+    jcenter()
     google()
     mavenLocal()
+    maven {
+      url "https://repository.klauke-enterprises.com/repository/maven-central/"
+    }
     mavenCentral()
   }
 
