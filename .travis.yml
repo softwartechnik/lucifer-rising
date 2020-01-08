@@ -1,8 +1,4 @@
 language: java
-install: true
-
-os: linux
-dist: trusty
 jdk: oraclejdk11
 
 addons:
@@ -13,4 +9,4 @@ addons:
 
 script:
   - ./gradlew build
-  - ./gradlew test sonarqube
+  - ./gradlew test jacocoTestReport sonarqube

@@ -37,11 +37,10 @@ allprojects {
 sonarqube {
   properties {
     property "sonar.projectKey", "softwartechnik_lucifer-rising"
-    property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/build/reports/jacoco/codeCoverageReport/codeCoverageReport.xml"
   }
 }
 
-task codeCoverageReport(type: JacocoReport) {
+jacocoTestReport {
   reports {
     xml.enabled = true
     html.enabled = true
