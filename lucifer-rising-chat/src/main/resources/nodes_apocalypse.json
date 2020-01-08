@@ -1,45 +1,26 @@
 [
   {
     "id": "1",
-    "description": "introduction",
-    "type": "storyNode",
-    "nextNodeIDs": [
-      "2"
-    ],
-    "metaData": {
-      "text": "put all text here"
-    }
+    "type": "message",
+    "nextNode": "2"
   },
   {
     "id": "2",
-    "description": "help",
-    "type": "decisionNode",
-    "nextNodeIDs": [
-      "3",
-      "death"
-    ],
-    "metaData": {
-      "text" : "Bla Bla",
-      "question": "Willst du mir helfen?",
-      "positive": "3",
-      "negative": "death"
-    }
+    "type": "question",
+    "question" : "How much is the fish?",
+    "choices": [
+      {
+        "nextNode" : "3",
+        "pattern" : "RegEx"
+      },
+      {
+        "nextNode" : "4",
+        "pattern" : "RegEx"
+      }
+    ]
   },
   {
     "id": "3",
-    "description": "decisionNode",
-    "type": "storyNode",
-    "nextNodeIDs": [
-      "4",
-      "5",
-      "6"
-    ],
-    "metaData": {
-      "text": "put all text here",
-      "question" : "Was denkst du?",
-      "positive": "4",
-      "negative": "5",
-      "undefined" : "6"
-    }
+    "type": "death"
   }
 ]

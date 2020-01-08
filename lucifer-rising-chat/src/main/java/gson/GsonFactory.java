@@ -3,7 +3,6 @@ package gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.MyNode;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -12,6 +11,8 @@ import java.util.List;
 
 public class GsonFactory {
 
+  // TODO: Take this as example, adapt for new models in Lucifer Tree
+  /**
   public List<MyNode> getNodesFromFile(String myFilePath) {
     FileReader reader = null;
     try {
@@ -31,5 +32,6 @@ public class GsonFactory {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
+
+  }  **/
 }
