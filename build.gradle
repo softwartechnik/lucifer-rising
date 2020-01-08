@@ -49,7 +49,5 @@ task codeCoverageReport(type: JacocoReport) {
   reports {
     xml.enabled = true
     html.enabled = true
-    xml.destination = new File("${buildDir}/reports/jacoco/report.xml")
-    html.destination = new File("${buildDir}/reports/jacoco/report.html")
   }
 }
