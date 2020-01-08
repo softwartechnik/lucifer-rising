@@ -17,12 +17,9 @@ public final class MessageContext {
     System.out.println(message);
   }
 
-  public void follow(Node node) {
-    node.accept(this);
-  }
-
   public void resume(Node node) {
     chatSession.setCurrentNode(node);
+    node.accept(this);
   }
 
   public void killSession() {

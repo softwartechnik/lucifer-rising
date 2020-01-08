@@ -1,18 +1,12 @@
 package de.softwartechnik.lucifer.tree;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.Objects;
 
 public final class MessageNode extends Node {
   private final String message;
   private final Node nextNode;
 
-  public MessageNode(
-    String id,
-    String message,
-    Node nextNode
-  ) {
-    super(id, List.of(nextNode));
+  private MessageNode(String message, Node nextNode) {
     this.message = message;
     this.nextNode = nextNode;
   }
@@ -20,6 +14,12 @@ public final class MessageNode extends Node {
   @Override
   public void accept(MessageContext messageContext) {
     messageContext.respond(message);
-    messageContext.follow(nextNode);
+    messageContext.resume(nextNode);
+  }
+
+  public static MessageNode of(String message, Node nextNode) {
+    Objects.requireNonNull(message);
+    Objects.requireNonNull(nextNode);
+    return new MessageNode(message, nextNode);
   }
 }

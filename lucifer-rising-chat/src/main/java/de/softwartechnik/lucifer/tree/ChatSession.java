@@ -1,10 +1,8 @@
 package de.softwartechnik.lucifer.tree;
 
-import java.util.List;
-import java.util.regex.Pattern;
+import de.softwartechnik.lucifer.tree.QuestionNode.Choice;
 
-public class ChatSession {
-
+public final class ChatSession {
   private Node currentNode;
 
   public static void main(String[] args) {
@@ -12,21 +10,23 @@ public class ChatSession {
   }
 
   private void begin() {
-    DeathNode deathNode = new DeathNode("death", List.of());
-    DecisionNode decisionNode = new DecisionNode("decision", deathNode, Pattern.compile("(s|season)"));
-    AnswerNode answerNode = new AnswerNode("answer", List.of(decisionNode));
-    QuestionNode questionNode = new QuestionNode("question", "Bist du dumm?", answerNode);
-    MessageNode rootNode = new MessageNode("rootNode", "Wie läufts?", questionNode);
+    var goodNode = MessageNode.of("Schön!", EndNode.create());
+    var badNode = DeathNode.create();
+    currentNode = QuestionNode.newBuilder()
+      .withQuestion("Wie geht es dir?")
+      .addChoice(Choice.of(answer -> answer.equals("gut"), goodNode))
+      .addChoice(Choice.of(answer -> answer.equals("schlecht"), badNode))
+      .create();
 
-    currentNode = rootNode;
-
-    MessageContext messageContext = new MessageContext(this, "s");
-
+    var messageContext = new MessageContext(this, "Hey!");
     currentNode.accept(messageContext);
 
-    MessageContext answer = new MessageContext(this, "s");
+    System.out.println(currentNode);
 
-    currentNode.accept(answer);
+    messageContext = new MessageContext(this, "schlecht");
+    currentNode.accept(messageContext);
+
+    System.out.println(currentNode);
   }
 
   public void setCurrentNode(Node currentNode) {
