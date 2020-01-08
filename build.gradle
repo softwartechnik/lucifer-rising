@@ -7,6 +7,7 @@ version '0.1.0-SNAPSHOT'
 
 allprojects {
   apply plugin: 'java'
+  apply plugin: 'java-library'
   apply plugin: 'jacoco'
 
   repositories {
@@ -36,17 +37,10 @@ allprojects {
 sonarqube {
   properties {
     property "sonar.projectKey", "softwartechnik_lucifer-rising"
-    property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/build/reports/jacoco/codeCoverageReport/codeCoverageReport.xml"
   }
 }
 
 task codeCoverageReport(type: JacocoReport) {
-  executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/test.exec")
-
-  subprojects.each {
-    sourceSets it.sourceSets.main
-  }
-
   reports {
     xml.enabled = true
     html.enabled = true
