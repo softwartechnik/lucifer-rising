@@ -10,9 +10,13 @@ allprojects {
   apply plugin: 'jacoco'
 
   repositories {
+    jcenter()
     google()
-    mavenCentral()
     mavenLocal()
+    maven {
+      url "https://repository.klauke-enterprises.com/repository/maven-central/"
+    }
+    mavenCentral()
   }
 
   dependencies {
