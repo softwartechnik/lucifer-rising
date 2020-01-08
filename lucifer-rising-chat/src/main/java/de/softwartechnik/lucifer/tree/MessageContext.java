@@ -1,6 +1,7 @@
 package de.softwartechnik.lucifer.tree;
 
 import de.softwartechnik.lucifer.tree.ChatSession.Status;
+import java.util.Objects;
 
 public final class MessageContext {
   private final ChatSession chatSession;
@@ -16,7 +17,7 @@ public final class MessageContext {
   }
 
   public void respond(String message) {
-    System.out.println(message);
+    Objects.requireNonNull(message);
   }
 
   public void resume(Node node) {
