@@ -32,6 +32,13 @@ allprojects {
   test {
     useJUnitPlatform()
   }
+
+  sourceCompatibility = '11'
+
+  java {
+    withSourcesJar()
+    withJavadocJar()
+  }
 }
 
 task codeCoverageReport(type: JacocoReport) {
