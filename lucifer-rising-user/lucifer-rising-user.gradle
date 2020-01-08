@@ -5,8 +5,8 @@ plugins {
 group 'de.softwartechnik.lucifer'
 
 dependencies {
-  implementation 'javax:javaee-api:8.0.1'
-  implementation 'javax.enterprise:cdi-api:1.2'
+  // implementation 'javax:javaee-api:8.0.1'
+  // implementation 'javax.enterprise:cdi-api:2.0'
 }
 
 jar {
