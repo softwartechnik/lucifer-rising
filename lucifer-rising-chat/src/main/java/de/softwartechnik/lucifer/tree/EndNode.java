@@ -1,6 +1,6 @@
 package de.softwartechnik.lucifer.tree;
 
-public final class EndNode extends Node {
+public final class EndNode implements Node {
   private EndNode() {
   }
 

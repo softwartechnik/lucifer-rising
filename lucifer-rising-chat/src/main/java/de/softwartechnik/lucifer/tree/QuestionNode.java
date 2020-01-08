@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
 
-public final class QuestionNode extends Node {
+public final class QuestionNode implements Node {
   private final String question;
   private final AtomicReference<Status> status;
   private final Set<Choice> choices;

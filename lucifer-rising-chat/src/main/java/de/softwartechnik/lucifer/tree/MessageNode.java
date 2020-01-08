@@ -2,7 +2,7 @@ package de.softwartechnik.lucifer.tree;
 
 import java.util.Objects;
 
-public final class MessageNode extends Node {
+public final class MessageNode implements Node {
   private final String message;
   private final Node nextNode;
 

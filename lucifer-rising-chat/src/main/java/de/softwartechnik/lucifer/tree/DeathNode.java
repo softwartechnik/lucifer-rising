@@ -1,6 +1,6 @@
 package de.softwartechnik.lucifer.tree;
 
-public final class DeathNode extends Node {
+public final class DeathNode implements Node {
   private DeathNode() {
   }
 
