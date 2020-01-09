@@ -1,5 +1,8 @@
 package de.softwartechnik.lucifer.tree;
 
+import de.softwartechnik.lucifer.tree.ChatSession.Status;
+import java.util.Objects;
+
 public final class MessageContext {
   private final ChatSession chatSession;
   private final String message;
@@ -14,18 +17,19 @@ public final class MessageContext {
   }
 
   public void respond(String message) {
-    System.out.println(message);
-  }
-
-  public void follow(Node node) {
-    node.accept(this);
+    Objects.requireNonNull(message);
   }
 
   public void resume(Node node) {
     chatSession.setCurrentNode(node);
+    node.accept(this);
   }
 
   public void killSession() {
-    System.out.println("KILLED!");
+    chatSession.updateStatus(Status.KILLED);
+  }
+
+  public void winGame() {
+    chatSession.updateStatus(Status.END);
   }
 }

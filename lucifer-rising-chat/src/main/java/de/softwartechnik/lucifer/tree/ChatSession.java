@@ -1,35 +1,40 @@
 package de.softwartechnik.lucifer.tree;
 
-import java.util.List;
-import java.util.regex.Pattern;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class ChatSession {
-
+public final class ChatSession {
   private Node currentNode;
+  private final AtomicReference<Status> status = new AtomicReference<>(
+    Status.LATENT
+  );
 
-  public static void main(String[] args) {
-    new ChatSession().begin();
+  public void begin(Node node, String message) {
+    currentNode = node;
+    status.compareAndSet(Status.LATENT, Status.RUNNING);
+    onMessage(message);
   }
 
-  private void begin() {
-    DeathNode deathNode = new DeathNode("death", List.of());
-    DecisionNode decisionNode = new DecisionNode("decision", deathNode, Pattern.compile("(s|season)"));
-    AnswerNode answerNode = new AnswerNode("answer", List.of(decisionNode));
-    QuestionNode questionNode = new QuestionNode("question", "Bist du dumm?", answerNode);
-    MessageNode rootNode = new MessageNode("rootNode", "Wie läufts?", questionNode);
-
-    currentNode = rootNode;
-
-    MessageContext messageContext = new MessageContext(this, "s");
-
+  public void onMessage(String message) {
+    var messageContext = new MessageContext(this, message);
     currentNode.accept(messageContext);
-
-    MessageContext answer = new MessageContext(this, "s");
-
-    currentNode.accept(answer);
   }
 
   public void setCurrentNode(Node currentNode) {
     this.currentNode = currentNode;
+  }
+
+  public Status status() {
+    return status.get();
+  }
+
+  void updateStatus(Status status) {
+    this.status.set(status);
+  }
+
+  public enum  Status {
+    LATENT,
+    RUNNING,
+    KILLED,
+    END
   }
 }
