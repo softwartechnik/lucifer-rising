@@ -1,19 +1,17 @@
 package gson;
 
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import de.softwartechnik.lucifer.tree.*;
-
-import java.io.*;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class GsonFactory {
 
-  public List<Node> getNodesFromFile(String myFilePath) {
+  public List<NodeModel> getNodesFromFile(String myFilePath) {
 
     FileReader reader = null;
     try {
@@ -22,14 +20,12 @@ public class GsonFactory {
       e.printStackTrace();
     }
 
-    RuntimeTypeAdapterFactory<Node> adapter = RuntimeTypeAdapterFactory.of(Node.class, "type")
-      .registerSubtype(MessageNode.class, "message")
-      .registerSubtype(QuestionNode.class, "question")
-      .registerSubtype(DeathNode.class, "death");
+    RuntimeTypeAdapterFactory<NodeModel> adapter = RuntimeTypeAdapterFactory.of(NodeModel.class, "type")
+      .registerSubtype(MessageNodeModel.class, "message")
+      .registerSubtype(QuestionNodeModel.class, "question")
+      .registerSubtype(DeathNodeModel.class, "death");
 
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(adapter).create();
-    Node[] nodes = gson.fromJson(reader, Node[].class);
-
-    return Arrays.asList(nodes);
+    return Arrays.asList(gson.fromJson(reader, NodeModel[].class));
   }
 }

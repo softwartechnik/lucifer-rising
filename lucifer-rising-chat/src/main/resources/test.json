@@ -1,6 +1,6 @@
 [
   {
-    "type": "QuestionNode",
+    "type": "question",
     "id": "2",
     "question": "How much is the fish?",
     "choices": [
