@@ -8,10 +8,12 @@ public interface NodeModel {
 
 final class MessageNodeModel implements NodeModel {
   String id;
+  String message;
   String nextNode;
 
-  public MessageNodeModel(String id, String nextNode) {
+  public MessageNodeModel(String id, String message, String nextNode) {
     this.id = id;
+    this.message = message;
     this.nextNode = nextNode;
   }
 }
