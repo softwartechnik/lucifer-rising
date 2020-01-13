@@ -2,7 +2,7 @@
   {
     "id": "1",
     "type": "message",
-    "message" : "Hallo, ich bin der Engel Gabriel! Die Welt ist dem Untergang geweiht, wenn wir nicht eingreifen!",
+    "message" : "Hallo, ich bin der Engel Gabriel! Die Welt ist dem Untergang geweiht, wenn wir nicht eingreifen! Das erste Siegel ist bereits gebrochen.",
     "nextNode": "2"
   },
   {
@@ -12,7 +12,7 @@
     "choices": [
       {
         "nextNode" : "3",
-        "pattern" : "((?i)ja|ok|klar|jo)+.*"
+        "pattern" : "((?i)ja|ok|klar|jo|natürlich)+.*"
       },
       {
         "nextNode" : "4",
@@ -27,26 +27,26 @@
   {
     "id": "3",
     "type": "question",
-    "question" : "Bla bla Einfühung in das zweite Siegel. Frage?",
+    "question" : "Oh nein, es ist schon so weit, das zweite Siegel ist gebrochen! Krieg wird über die Welt hereinbrechen.",
     "choices": [
       {
         "nextNode" : "5",
-        "pattern" : "*verhindern*"
+        "pattern" : ".*(?i)verhindern|los|schnell|beeil|bitte|nein|tu+.*"
       },
       {
         "nextNode" : "6",
-        "pattern" : "*unmöglich*"
+        "pattern" : ".*(?i)egal|ahnung|krieg|tot|tod+.*"
       },
       {
         "nextNode" : "7",
-        "pattern" : "*wie*"
+        "pattern" : ".*(?i)wie|warum|ja|ok+.*"
       }
     ]
   },
   {
     "id": "5",
     "type": "message",
-    "message" : "[...]Story Einführung drittes Siegel",
+    "message" : "Die Hungersnot als Strafe für die Menschheit ist so gut wie besiegelt...es wird immer knapper, ich habe noch nicht genug ausrichten können",
     "nextNode": "8"
   },
   {
@@ -56,11 +56,11 @@
     "choices": [
       {
         "nextNode" : "5",
-        "pattern" : "Ja|*natürlich*"
+        "pattern" : "((?i)ja|ok|klar|jo|natürlich)+.*"
       },
       {
         "nextNode" : "9",
-        "pattern" : "*unmöglich*"
+        "pattern" : "((?i)nein|ne|nope)+.*"
       }
     ]
   },
@@ -77,11 +77,11 @@
     "choices": [
       {
         "nextNode" : "5",
-        "pattern" : "Ja|*natürlich*"
+        "pattern" : "((?i)ja|ok|klar|jo|natürlich)+.*"
       },
       {
         "nextNode" : "10",
-        "pattern" : "*unmöglich*"
+        "pattern" : "((?i)nein|ne|nope)+.*"
       }
     ]
   },
@@ -92,34 +92,39 @@
     "choices": [
       {
         "nextNode" : "9",
-        "pattern" : "Entschuldigung|sorry|*leid*"
+        "pattern" : "((?i)sorry|leid|entschuldig|ja|jo)+.*"
       },
       {
         "nextNode" : "5",
-        "pattern" : "*wie*"
+        "pattern" : "((?i)nein|ne|nope)+.*"
       }
     ]
   },
   {
     "id": "8",
     "type": "question",
-    "question" : "Welche Seuchen?",
+    "question" : "Als nächstes stehen die Seuchen auf dem Plan, was wird es wohl sein, Pest, Pocken, Cholera?",
     "choices": [
       {
         "nextNode" : "11",
-        "pattern" : "*keine*"
+        "pattern" : "((?i)keine|nein|dumm|nee)+.*"
       },
       {
         "nextNode" : "12",
-        "pattern" : "*warum*|*besorgt*"
+        "pattern" :  "((?i)warum|sorg|bitte|hä)+.*"
       }
     ]
   },
   {
     "id": "11",
-    "type": "message",
-    "message" : "Töten für die Rettung der Menschheit?",
-    "nextNode": "13"
+    "type": "question",
+    "question" : "Nun, du willst die Menschheit wohl wirklich bewahren...würdest du denn selbst dafür töten, um jemand anderen davor zu bewahren?",
+    "choices": [
+      {
+        "nextNode" : "13",
+        "pattern" : "^.+$"
+      }
+    ]
   },
   {
     "id": "13",
@@ -128,22 +133,22 @@
     "choices": [
       {
         "nextNode" : "14",
-        "pattern" : "*"
+        "pattern" : "^.+$"
       }
     ]
   },
   {
     "id": "14",
     "type": "question",
-    "question" : "Das Ende rückt näher",
+    "question" : "Das Ende rückt immer näher...",
     "choices": [
       {
         "nextNode" : "16",
-        "pattern" : "*Lucifer*"
+        "pattern" : "((?i)lucifer|teufel|böse)+.*"
       },
       {
         "nextNode" : "9",
-        "pattern" : "*glaub*|*schaffen*"
+        "pattern" : "^.+$"
       }
     ]
   },
@@ -154,18 +159,18 @@
     "choices": [
       {
         "nextNode" : "14",
-        "pattern" : "*leben*|*doch*"
+        "pattern" : "((?i)doch|nein)+.*"
       },
  {
         "nextNode" : "16",
-        "pattern" : "*"
+        "pattern" : "((?i)ja|ok|klar|jo|natürlich)+.*"
       }
     ]
   },
  {
     "id": "16",
     "type": "message",
-    "message" : "Die Welt wird untergehen, aber wir waren sowieso zu gut",
+    "message" : "Die Welt wird untergehen, aber wir waren sowieso zu gut.",
     "nextNode": "17"
   },
 {
