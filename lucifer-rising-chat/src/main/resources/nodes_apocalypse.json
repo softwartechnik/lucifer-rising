@@ -2,25 +2,174 @@
   {
     "id": "1",
     "type": "message",
+    "message" : "Hallo, ich bin der Engel Gabriel! Die Welt ist dem Untergang geweiht, wenn wir nicht eingreifen!",
     "nextNode": "2"
   },
   {
     "id": "2",
     "type": "question",
-    "question" : "How much is the fish?",
+    "question" : "Willst du mir helfen?",
     "choices": [
       {
         "nextNode" : "3",
-        "pattern" : "RegEx"
+        "pattern" : "((?i)ja|ok|klar|jo)+.*"
       },
       {
         "nextNode" : "4",
-        "pattern" : "RegEx"
+        "pattern" : "((?i)nein|ne|nope)+.*"
       }
     ]
   },
   {
-    "id": "3",
+    "id": "4",
     "type": "death"
+  },
+  {
+    "id": "3",
+    "type": "question",
+    "question" : "Bla bla Einfühung in das zweite Siegel. Frage?",
+    "choices": [
+      {
+        "nextNode" : "5",
+        "pattern" : "*verhindern*"
+      },
+      {
+        "nextNode" : "6",
+        "pattern" : "*unmöglich*"
+      },
+      {
+        "nextNode" : "7",
+        "pattern" : "*wie*"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "type": "message",
+    "message" : "[...]Story Einführung drittes Siegel",
+    "nextNode": "8"
+  },
+  {
+    "id": "6",
+    "type": "question",
+    "question" : "Ist es der Mensch wert gerettet zu werden?",
+    "choices": [
+      {
+        "nextNode" : "5",
+        "pattern" : "Ja|*natürlich*"
+      },
+      {
+        "nextNode" : "9",
+        "pattern" : "*unmöglich*"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "type": "message",
+    "message" : "Es hat keinen Sinn mehr, spar dir deine Mühen.",
+    "nextNode": "4"
+  },
+  {
+    "id": "7",
+    "type": "question",
+    "question" : "Soll ich den Herrn ablenken?",
+    "choices": [
+      {
+        "nextNode" : "5",
+        "pattern" : "Ja|*natürlich*"
+      },
+      {
+        "nextNode" : "10",
+        "pattern" : "*unmöglich*"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "type": "question",
+    "question" : "So denkst du also?",
+    "choices": [
+      {
+        "nextNode" : "9",
+        "pattern" : "Entschuldigung|sorry|*leid*"
+      },
+      {
+        "nextNode" : "5",
+        "pattern" : "*wie*"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "type": "question",
+    "question" : "Welche Seuchen?",
+    "choices": [
+      {
+        "nextNode" : "11",
+        "pattern" : "*keine*"
+      },
+      {
+        "nextNode" : "12",
+        "pattern" : "*warum*|*besorgt*"
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "type": "message",
+    "message" : "Töten für die Rettung der Menschheit?",
+    "nextNode": "13"
+  },
+  {
+    "id": "13",
+    "type": "question",
+    "question" : "Was ist die schlimmste Todsünde?",
+    "choices": [
+      {
+        "nextNode" : "14",
+        "pattern" : "*"
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "type": "question",
+    "question" : "Das Ende rückt näher",
+    "choices": [
+      {
+        "nextNode" : "16",
+        "pattern" : "*Lucifer*"
+      },
+      {
+        "nextNode" : "9",
+        "pattern" : "*glaub*|*schaffen*"
+      }
+    ]
+  },
+{
+    "id": "12",
+    "type": "question",
+    "question" : "Der Tod ist gar nicht so schlimm...",
+    "choices": [
+      {
+        "nextNode" : "14",
+        "pattern" : "*leben*|*doch*"
+      },
+ {
+        "nextNode" : "16",
+        "pattern" : "*"
+      }
+    ]
+  },
+ {
+    "id": "16",
+    "type": "message",
+    "message" : "Die Welt wird untergehen, aber wir waren sowieso zu gut",
+    "nextNode": "17"
+  },
+{
+    "id": "17",
+    "type": "end"
   }
 ]

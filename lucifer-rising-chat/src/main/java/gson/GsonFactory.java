@@ -23,7 +23,8 @@ public class GsonFactory {
     RuntimeTypeAdapterFactory<NodeModel> adapter = RuntimeTypeAdapterFactory.of(NodeModel.class, "type")
       .registerSubtype(MessageNodeModel.class, "message")
       .registerSubtype(QuestionNodeModel.class, "question")
-      .registerSubtype(DeathNodeModel.class, "death");
+      .registerSubtype(DeathNodeModel.class, "death")
+      .registerSubtype(EndNodeModel.class, "end");
 
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(adapter).create();
     return Arrays.asList(gson.fromJson(reader, NodeModel[].class));
