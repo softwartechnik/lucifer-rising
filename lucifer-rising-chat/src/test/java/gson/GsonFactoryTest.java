@@ -26,6 +26,6 @@ public class GsonFactoryTest {
       "How much is the fish?", Set.of(new Choice("RegEx", "3"), new Choice("OtherRegEx", "4")));
     List<NodeModel> result = gsonFactory.getNodesFromFile(filepathNodeDir + file);
 
-    assertEquals(expectedNode.getClass(), result.get(0));
+    assertEquals(expectedNode.getClass(), result.get(0).getClass());
   }
 }
