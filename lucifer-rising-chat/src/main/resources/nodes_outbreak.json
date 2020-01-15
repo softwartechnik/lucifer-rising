@@ -1,0 +1,519 @@
+[
+    {
+        "id": "0",
+        "type": "question",
+        "question": "Hey, ich kenne dich nicht, aber deine Nummer stand auf dem Klo. Kannst du mir helfen???",
+        "choices": [
+            {
+                "nextNode": "3",
+                "pattern" : "((?i)ja|ok|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "1",
+                "pattern" : "((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "1",
+        "type": "question",
+        "question": "Bitte! Die Lage ist wirklich ernst! Kannst du nicht ein kleine wenig Zeit für mich entbehren?",
+        "choices": [
+            {
+                "nextNode": "3",
+                "pattern" : "((?i)ja|ok|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "1",
+                "pattern" : "((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "type": "question",
+        "question": "Oh vielen dank! Befindest du dich gerade am Campus??",
+        "choices": [
+            {
+                "nextNode": "5",
+                "pattern" : "((?i)ja|ok|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode" : "4",
+                "pattern": "((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "type": "message",
+        "message":"Du Glückspilz. Dann bleib am besten da wo du bist.",
+        "nextNode": "7"
+    },
+    {
+        "id": "5",
+        "type": "question",
+        "message": "Oh Nein! Ist dir auch das komische Verhalten bei einigen Leuten aufgefallen?",
+        "choices": [
+            {
+                "nextNode": "6",
+                "pattern": "((?i)ja|ok|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "7",
+                "pattern": "((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "type": "message",
+        "message": "Hm ja... ich sollte wohl etwas spezifischer sein...",
+        "nextNode": "7"
+    },
+    {
+        "id": "7",
+        "type": "message",
+        "message": "Ich weiss nicht wie ich es sagen soll..."
+    },
+    {
+        "id": "8",
+        "type": "question",
+        "question": "Also entweder ist Kannibalismus in Mode geraten oder die Welt geht gerade vor die Hunde",
+        "choices": [
+            {
+                "nextNode": "9",
+                "pattern": ".*((?i)warum|wieso|weshalb|wie|was|zombies|untote)+.*"
+            },
+            {
+                "nextNode": "64",
+                "pattern": ".*((?i)kp|ka|egal|interessiert mich nicht|nichts neues|trump)+.*"
+            }
+        ]
+    },
+    {
+        "id": "9",
+        "type": "message",
+        "message": "Es ist hier wirklich die Hölle los! Die Leute fressen sich gegenseitig auf :(",
+        "nextNode": "10"
+    },
+    {
+        "id": "10",
+        "type": "question",
+        "question": "Kennst du walking dead",
+        "choices": [
+            {
+                "nextNode": "11",
+                "pattern":"((?i)ja|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "12",
+                "pattern": "((?i)nein|ne|nope|kp|ka)+.*"
+            }
+        ]
+    },
+    {
+        "id": "11",
+        "type": "message",
+        "message": "Gut, denn das ist es was hier gerade abgeht",
+        "nextNode": "14"
+    },
+    {
+        "id": "12",
+        "type": "question",
+        "question": "Aber was Zombies sind weisst du oder?",
+        "choices": [
+            {
+                "nextNode": "13",
+                "pattern": "((?i)ja|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "63",
+                "pattern":"((?i)nein|ne|nope|kp|ka)+.*"
+            }
+        ]
+    },
+    {
+        "id": "13",
+        "type": "message",
+        "message": "Gut. Es scheinen die von der langsamen Art zu sein.",
+        "nextNode": "14"
+    },
+    {
+        "id": "14",
+        "type": "message",
+        "message": "Ich befinde mich gerade im Raum der Componentware Veranstaltung",
+        "nextNode": "15"
+    },
+    {
+        "id": "15",
+        "type": "message",
+        "message": "Etwas fürchterliches muss hier geschehen sein.",
+        "nextNode": "16"
+    },
+    {
+        "id": "16",
+        "type": "message",
+        "message": "Ich erspar dir besser die Einzelheiten",
+        "nextNode": "22"
+    },
+    {
+        "id": "22",
+        "type": "message",
+        "message": "Jedenfallse bin ich ratlos was ich tun soll",
+        "nextNode": "23"
+    },
+    {
+        "id": "23",
+        "type": "question",
+        "question": "Draußen scheint es still zu sein. Oder wäre es vielleicht doch besser hier auf Hilfe zu warten?",
+        "choices": [
+            {
+                "nextNode": "30",
+                "pattern": ".*((?i)hinaus|raus|draussen|draußen|nicht drinne|nicht drinnen)+.*"
+            },
+            {
+                "nextNode": "24",
+                "pattern":".*((?i)drinne|drinnen|im raum|warte|warten|bleib|bleiben|hilfe)+.*"
+            }
+        ]
+    },
+    {
+        "id": "24",
+        "type": "message",
+        "message": "Ok... ich richte mich hier drinnen ein",
+        "nextNode": "25"
+    },
+    {
+        "id": "25",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "26"
+    },
+    {
+        "id": "26",
+        "type": "question",
+        "question": "Oh nein, da ist jemand an der Tür. Soll ich sie öffnen?",
+        "choices": [
+            {
+                "nextNode": "64",
+                "pattern":"((?i)ja|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "27",
+                "pattern": "((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "27",
+        "type": "message",
+        "message": "Ok, ich verhalte mich ruhig",
+        "nextNode": "28"
+    },
+    {
+        "id": "28",
+        "type": "message",
+        "message":"TODO: wait for x seconds",
+        "nextNode": "29"
+    },
+    {
+        "id": "29",
+        "question": "Bisher hat sich nichts getan. Soll ich weiter warten",
+        "choices": [
+            {
+                "nextNode": "60",
+                "pattern": "((?i)ja|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "30",
+                "pattern": "((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "30",
+        "type": "message",
+        "message": "Alles klar, ich geh raus",
+        "nextNode": "31"
+    },
+    {
+        "id": "31",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "32"
+    },
+    {
+        "id": "32",
+        "type": "message",
+        "message": "Die Luft scheint rein zu sein",
+        "nextNode": "33"
+    },
+    {
+        "id": "33",
+        "type": "message",
+        "message": "Ich glaube ich habe gerade Geräusche von unten gehört.",
+        "nextNode": "34"
+    },
+    {
+        "id": "34",
+        "type": "question",
+        "question": "Oben ist es still. Soll ich hinauf gehen? Oder doch lieber runter?",
+        "choices": [
+            {
+                "nextNode": "35",
+                "pattern": ".*((?i)hoch|hinauf|rauf|nach oben)+.*"
+            },
+            {
+                "nextNode": "36",
+                "pattern": ".*((?i)runter|hinunter|nach unten)+.*"
+            }
+        ]
+    },
+    {
+        "id": "35",
+        "type": "question",
+        "question": "So ich bin jetzt nach oben auf das Dach gegangen. Es ist beunruhigend still hier. Soll ich hier etwas warten oder wieder runter?",
+        "choices": [
+            {
+                "nextNode": "47",
+                "pattern": ".*((?i)oben|dach|warte|warten|bleib|bleiben|hilfe)+.*"
+            },
+            {
+                "nextNode": "39",
+                "pattern": ".*((?i)runter|zurück|weg|geh|gehen|verschwinde|verschwinden|hau ab)+.*"
+            }
+        ]
+    },
+    {
+        "id": "36",
+        "type": "question",
+        "question": "Bist du dir ganz sicher? Ich habe kein gutes Gefühl bei der Sache...",
+        "choices": [
+            {
+                "nextNode": "37",
+                "pattern":"((?i)ja|klar|jo|yo|natürlich|auf jeden fall)+.*"
+            },
+            {
+                "nextNode": "35",
+                "pattern":"((?i)nein|ne|nope|auf keinen fall)+.*"
+            }
+        ]
+    },
+    {
+        "id": "37",
+        "type": "message",
+        "message": "Wenn du es sagst...",
+        "nextNode": "38"
+    },
+    {
+        "id": "38",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "39"
+    },
+    {
+        "id": "39",
+        "type": "message",
+        "message": "Ich befinde mich gerade im Treppenhaus im Erdgeschoss",
+        "nextNode": "40"
+    },
+    {
+        "id": "40",
+        "type": "message",
+        "message": "Vor dem Vorderausgang tummeln sich eine Menge dieser Viecher",
+        "nextNode": "41"
+    },
+    {
+        "id": "41",
+        "type": "question",
+        "question": "Der Hinterausgang ist frei aber der Hof ist eine einzige Todeszone. Irgendwelche Vorschläge?",
+        "choices": [
+            {
+                "nextNode": "42",
+                "pattern": ".*((?i)renn|rennen|lauf|laufen).*((?i)vorne|vordereingang)+.*"
+            },
+            {
+                "nextNode": "52",
+                "pattern": ".*((?i)vorne|vordereingang)+.*"
+            },
+            {
+                "nextNode": "53",
+                "pattern": ".*((?i)hinten|hintereingang)+.*"
+            }
+        ]
+    },
+    {
+        "id": "42",
+        "type": "message",
+        "message": "Dann mal los",
+        "nextNode": "43"
+    },
+    {
+        "id": "43",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "44"
+    },
+    {
+        "id": "44",
+        "type": "message",
+        "message": "Ich fass es nicht ich bin tatsächlich da durch gekommen",
+        "nextNode": "45"
+    },
+    {
+        "id": "45",
+        "type": "message",
+        "message": "Echt nicht gerade die fixesten aber trozdem würd ich das ungern wiederholen",
+        "nextNode": "46"
+    },
+    {
+        "id": "46",
+        "type": "message",
+        "message": "Jedenfalls, vielen Dank! Ich verdanke dir mein Leben! Sollten wir uns mal treffen geb ich dir einen aus.",
+        "nextNode": "100"
+    },
+    {
+        "id": "47",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "48"
+    },
+    {
+        "id": "48",
+        "type": "message",
+        "message": "OMG ein Helikopter!",
+        "nextNode": "49"
+    },
+    {
+        "id": "49",
+        "type": "message",
+        "message": "Sie haben mich bemerkt! Ich bin gerettet!",
+        "nextNode": "50"
+    },
+    {
+        "id": "50",
+        "type": "message",
+        "message": "Das habe ich nur dir zu verdanken. Vielen Dank!",
+        "nextNode": "100"
+    },
+    {
+        "id": "52",
+        "type": "message",
+        "message": "Ok ich kämpf mich vorne durch! Drück mir dir Daumen",
+        "nextNode": "64"
+    },
+    {
+        "id": "53",
+        "type": "message",
+        "message": "Ok ich geh nach hinten auf den Hof",
+        "nextNode": "54"
+    },
+    {
+        "id": "54",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "55"
+    },
+    {
+        "id": "55",
+        "type": "question",
+        "question": "OMG es sind so viele! Sie haben mich bemerkt und kommen auf mich zu!",
+        "choices": [
+            {
+                "nextNode": "56",
+                "pattern": ".*((?i)rein|zurück|hintereingang)+.*"
+            },
+            {
+                "nextNode": "42",
+                "pattern": ".*((?i)renn|rennen|lauf|laufen)+.*"
+            }
+        ]
+    },
+    {
+        "id": "56",
+        "type": "message",
+        "message": "Ja, gute Idee",
+        "nextNode": "57"
+    },
+    {
+        "id": "57",
+        "type": "message",
+        "message": "Oh nein die Zombies drinne hben mich jetzt auch bemerkt",
+        "nextNode": "58"
+    },
+    {
+        "id": "58",
+        "type": "question",
+        "question": "Ahh ich bin eingekesselt! Hilf mir! Was soll ich tun?!",
+        "choices": [
+            {
+                "nextNode": "100",
+                "pattern": "((?i)become a super saiyan)"
+            },
+            {
+                "nextNode": "64",
+                "pattern": ".*"
+            }
+        ]
+    },
+    {
+        "id": "60",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "61"
+    },
+    {
+        "id": "61",
+        "type": "message",
+        "message": "Oh nein, ich kann ganz viele vor der Tür hören",
+        "nextNode": "62"
+    },
+    {
+        "id": "62",
+        "type": "question",
+        "question": "Sie kommen rein! Ich glaub die Fenster lassen sich öffnen. Soll ich springen oder doch lieber um mein Leben kämpfen?",
+        "choices": [
+            {
+                "nextNode": "64",
+                "pattern": ".*((?i)kämpf/kämpfe/kämpfen).*"
+            },
+            {
+                "nextNode": "99",
+                "pattern": ".*((?i)spring|springen).*"
+            }
+        ]
+    },
+    {
+        "id": "63",
+        "type": "message",
+        "message": "... das wars dann wohl... für uns beide",
+        "nextNode": "64"
+    },
+    {
+        "id": "64",
+        "type": "message",
+        "message": "TODO: wait for x seconds",
+        "nextNode": "65"
+    },
+    {
+        "id": "65",
+        "type": "message",
+        "message": "hilfffg ew wpüfw bhuei wi we weoi",
+        "nextNode": "66"
+    },
+    {
+        "id": "66",
+        "type": "message",
+        "message": "fje wf woijf wpjp",
+        "nextNode": "99"
+    },
+    {
+        "id": "99",
+        "type": "death"
+    },
+    {
+        "id": "100",
+        "type": "end"
+    }
+]
