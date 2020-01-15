@@ -16,14 +16,6 @@ jdk:
 notifications:
   email: false
 
-###############
-### Caching ###
-###############
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-
 addons:
   sonarcloud:
     organization: "softwartechnik"
@@ -34,7 +26,7 @@ addons:
 ### Actual Build Script ###
 ###########################
 script:
-  - ./gradlew build
+  - ./gradlew clean build
   - ./gradlew --scan -s
   - ./gradlew check codeCoverageReport
   - ./gradlew sonarqube
