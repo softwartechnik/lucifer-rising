@@ -1,0 +1,8 @@
+[
+  {
+    "type": "question",
+    "id": "2",
+    "message": "This much is the fish",
+    "nextNode" : "3"
+  }
+]

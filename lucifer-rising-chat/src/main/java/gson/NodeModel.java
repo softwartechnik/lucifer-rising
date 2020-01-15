@@ -1,5 +1,7 @@
 package gson;
 
+import de.softwartechnik.lucifer.tree.QuestionNode;
+
 import java.util.Set;
 import java.util.function.Predicate;
 

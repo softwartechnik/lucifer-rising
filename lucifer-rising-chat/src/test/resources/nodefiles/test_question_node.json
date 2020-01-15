@@ -10,7 +10,7 @@
       },
       {
         "nextNode": "4",
-        "pattern": "RegEx"
+        "pattern": "OtherRegEx"
       }
     ]
   }
