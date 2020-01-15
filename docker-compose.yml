@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  db:
+  lucifer-rising-database:
     image: mariadb
     restart: always
     environment:
@@ -9,14 +9,23 @@ services:
       MYSQL_DATABASE: lucifer_rising_database
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+    networks:
+      - lucifer-rising
+
+  lucifer-rising-app:
+    build:
+      context: .
+    image: softwartechnik/lucifer-rising
+    ports:
+      - 8080:8080
+    networks:
+      - lucifer-rising
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 9050:8080
 
-  web:
-    build: .
-    ports:
-    - "8080:8080"
+networks:
+  lucifer-rising: {}
