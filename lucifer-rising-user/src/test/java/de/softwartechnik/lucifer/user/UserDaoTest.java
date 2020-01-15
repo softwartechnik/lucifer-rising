@@ -1,3 +1,5 @@
+package de.softwartechnik.lucifer.user;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,7 @@ import javax.persistence.EntityManager;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class UserDaoTest {
+final class UserDaoTest {
 
   @Mock
   private EntityManager entityManager;
@@ -54,9 +56,5 @@ class UserDaoTest {
     when(entityManager.find(User.class, user.getId())).thenReturn(user);
     userDao.delete(user.getId());
     Mockito.verify(entityManager).remove(user);
-  }
-
-  @Test
-  void readByNameTest() {
   }
 }
