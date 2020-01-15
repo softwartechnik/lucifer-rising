@@ -1,8 +1,10 @@
+plugins {
+  id "com.gradle.enterprise" version "3.1"
+}
+
 rootProject.name = 'lucifer-rising-parent'
 
-include 'lucifer-rising-chat'
-include 'lucifer-rising-ear'
-include 'lucifer-rising-user'
+include(':lucifer-rising-chat')
 
 rootProject.children.each { project ->
   project.buildFileName = "${project.name}.gradle"

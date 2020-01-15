@@ -4,7 +4,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class ChatSession {
   private Node currentNode;
-  private final AtomicReference<Status> status = new AtomicReference<>(Status.LATENT);
+  private final AtomicReference<Status> status = new AtomicReference<>(
+    Status.LATENT
+  );
 
   public void begin(Node node, String message) {
     currentNode = node;
