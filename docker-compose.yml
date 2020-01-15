@@ -1,6 +1,21 @@
 version: '3.7'
 
 services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lucifer_rising_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
   web:
     build: .
     ports:
