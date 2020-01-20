@@ -1,7 +1,7 @@
 package de.softwartechnik.lucifer.user;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,10 +20,10 @@ final class UserDaoTest {
   private EntityManager entityManager;
 
   @InjectMocks
-  private static UserDao userDao;
+  private UserDao userDao;
 
-  @BeforeAll
-  static void setUp() {
+  @BeforeEach
+  void setUp() {
     userDao = new UserDao();
   }
 
@@ -37,6 +37,7 @@ final class UserDaoTest {
   @Test
   void readTest() {
     User user = new User();
+    user.setName("name");
     when(entityManager.find(User.class, user.getId())).thenReturn(user);
     final User result = userDao.read(user.getId());
     Assertions.assertEquals(user, result);
