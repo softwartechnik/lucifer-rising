@@ -1,7 +1,9 @@
+package de.softwartechnik.lucifer.user;
+
 import javax.ejb.Stateless;
 
 @Stateless
-public class UserService {
+public final class UserService {
 
   private UserDao userDao = new UserDao();
 
@@ -23,5 +25,9 @@ public class UserService {
 
   public User readByName(String name) {
     return userDao.readByName(name);
+  }
+
+  public void setUserDao(UserDao userDao) {
+    this.userDao = userDao;
   }
 }
