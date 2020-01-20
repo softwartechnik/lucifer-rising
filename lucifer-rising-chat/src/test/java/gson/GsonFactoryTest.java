@@ -1,14 +1,12 @@
 package gson;
 
-import de.softwartechnik.lucifer.tree.QuestionNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.crypto.spec.ChaCha20ParameterSpec;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class GsonFactoryTest {
@@ -56,5 +54,15 @@ public class GsonFactoryTest {
     List<NodeModel> result = gsonFactory.getNodesFromFile(filepathNodeDir + file);
 
     assertEquals(expectedNode, result.get(0));
+  }
+
+  @Test
+  void testWithNonExistingFile() {
+    String file = "xxxx.json";
+    Throwable exception = assertThrows(NullPointerException.class,
+      () -> {
+        gsonFactory.getNodesFromFile(filepathNodeDir + file);
+        ;
+      });
   }
 }
