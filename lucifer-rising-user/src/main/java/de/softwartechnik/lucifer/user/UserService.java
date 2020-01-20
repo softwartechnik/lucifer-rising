@@ -3,7 +3,7 @@ package de.softwartechnik.lucifer.user;
 import javax.ejb.Stateless;
 
 @Stateless
-final class UserService {
+public final class UserService {
 
   private UserDao userDao = new UserDao();
 
