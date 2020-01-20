@@ -35,7 +35,7 @@ final class UserDao {
     var parameterExpression = criteriaBuilder.parameter(String.class);
     criteriaQuery.select(root)
       .where(criteriaBuilder.equal(root.get("user"), parameterExpression));
-    return entityManager.createQuery(criteriaQuery).setParameter(parameterExpression, name)
-      .getSingleResult();
+    return entityManager.createQuery(criteriaQuery)
+      .setParameter(parameterExpression, name).getSingleResult();
   }
 }

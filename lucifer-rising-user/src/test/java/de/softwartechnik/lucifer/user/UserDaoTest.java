@@ -22,11 +22,6 @@ final class UserDaoTest {
   @InjectMocks
   private UserDao userDao;
 
-  @BeforeEach
-  void setUp() {
-    userDao = new UserDao();
-  }
-
   @Test
   void createTest() {
     User user = new User();
