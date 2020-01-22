@@ -9,11 +9,13 @@ final class MessageNodeModel implements NodeModel {
   public String id;
   public String message;
   public String nextNode;
+  public int delay;
 
-  public MessageNodeModel(String id, String message, String nextNode) {
+  public MessageNodeModel(String id, String message, String nextNode, int delay) {
     this.id = id;
     this.message = message;
     this.nextNode = nextNode;
+    this.delay = delay;
   }
 
   @Override
@@ -30,11 +32,13 @@ final class QuestionNodeModel implements NodeModel {
   public String id;
   public String question;
   public Choice[] choices;
+  public int delay;
 
-  public QuestionNodeModel(String id, String question, Choice[] choices) {
+  public QuestionNodeModel(String id, String question, Choice[] choices, int delay) {
     this.id = id;
     this.question = question;
     this.choices = choices;
+    this.delay = delay;
   }
 
   @Override
@@ -49,9 +53,11 @@ final class QuestionNodeModel implements NodeModel {
 
 final class DeathNodeModel implements NodeModel {
   public String id;
+  public int delay;
 
-  public DeathNodeModel(String id) {
+  public DeathNodeModel(String id, int delay) {
     this.id = id;
+    this.delay = delay;
   }
   @Override
   public boolean equals(Object o) {
@@ -65,9 +71,11 @@ final class DeathNodeModel implements NodeModel {
 
 final class EndNodeModel implements NodeModel {
   public String id;
+  public int delay;
 
-  public EndNodeModel(String id) {
+  public EndNodeModel(String id, int delay) {
     this.id = id;
+    this.delay = delay;
   }
   @Override
   public boolean equals(Object o) {
@@ -82,6 +90,7 @@ final class EndNodeModel implements NodeModel {
 final class Choice {
   public final String pattern;
   public final String nextNode;
+  public int delay;
 
   public Choice(String matcher, String nextNode) {
     this.pattern = matcher;
