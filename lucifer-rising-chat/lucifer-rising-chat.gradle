@@ -1,3 +1,6 @@
 dependencies {
   implementation 'com.google.code.gson:gson:2.8.6'
+  testImplementation 'javax:javaee-api:8.0.1'
+  implementation 'javax:javaee-api:8.0.1'
+  implementation 'javax.enterprise:cdi-api:1.2'
 }
