@@ -182,17 +182,12 @@
         "id": "24",
         "type": "message",
         "message": "Ok... ich richte mich hier drinnen ein",
-        "nextNode": "25"
-    },
-    {
-        "id": "25",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
         "nextNode": "26"
     },
     {
         "id": "26",
         "type": "question",
+        "delay": 10000,
         "question": "Oh nein, da ist jemand an der Tür. Soll ich sie öffnen?",
         "choices": [
             {
@@ -209,20 +204,15 @@
         "id": "27",
         "type": "message",
         "message": "Ok, ich verhalte mich ruhig",
-        "nextNode": "28"
-    },
-    {
-        "id": "28",
-        "type": "message",
-        "message":"TODO: wait for x seconds",
         "nextNode": "29"
     },
     {
         "id": "29",
+        "delay": 10000,
         "question": "Bisher hat sich nichts getan. Soll ich weiter warten",
         "choices": [
             {
-                "nextNode": "60",
+                "nextNode": "61",
                 "pattern": "((?i)ja|klar|jo|yo|natürlich|auf jeden fall)+.*"
             },
             {
@@ -235,17 +225,12 @@
         "id": "30",
         "type": "message",
         "message": "Alles klar, ich geh raus",
-        "nextNode": "31"
-    },
-    {
-        "id": "31",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
         "nextNode": "32"
     },
     {
         "id": "32",
         "type": "message",
+        "delay": 5000,
         "message": "Die Luft scheint rein zu sein",
         "nextNode": "33"
     },
@@ -276,7 +261,7 @@
         "question": "So ich bin jetzt nach oben auf das Dach gegangen. Es ist beunruhigend still hier. Soll ich hier etwas warten oder wieder runter?",
         "choices": [
             {
-                "nextNode": "47",
+                "nextNode": "48",
                 "pattern": ".*((?i)oben|dach|warte|warten|bleib|bleiben|hilfe)+.*"
             },
             {
@@ -304,17 +289,12 @@
         "id": "37",
         "type": "message",
         "message": "Wenn du es sagst...",
-        "nextNode": "38"
-    },
-    {
-        "id": "38",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
         "nextNode": "39"
     },
     {
         "id": "39",
         "type": "message",
+        "delay": 5000,
         "message": "Ich befinde mich gerade im Treppenhaus im Erdgeschoss",
         "nextNode": "40"
     },
@@ -347,17 +327,12 @@
         "id": "42",
         "type": "message",
         "message": "Dann mal los",
-        "nextNode": "43"
-    },
-    {
-        "id": "43",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
         "nextNode": "44"
     },
     {
         "id": "44",
         "type": "message",
+        "delay": 10000,
         "message": "Ich fass es nicht ich bin tatsächlich da durch gekommen",
         "nextNode": "45"
     },
@@ -374,14 +349,9 @@
         "nextNode": "100"
     },
     {
-        "id": "47",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
-        "nextNode": "48"
-    },
-    {
         "id": "48",
         "type": "message",
+        "delay": 10000,
         "message": "OMG ein Helikopter!",
         "nextNode": "49"
     },
@@ -407,12 +377,6 @@
         "id": "53",
         "type": "message",
         "message": "Ok ich geh nach hinten auf den Hof",
-        "nextNode": "54"
-    },
-    {
-        "id": "54",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
         "nextNode": "55"
     },
     {
@@ -458,14 +422,9 @@
         ]
     },
     {
-        "id": "60",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
-        "nextNode": "61"
-    },
-    {
         "id": "61",
         "type": "message",
+        "delay": 10000,
         "message": "Oh nein, ich kann ganz viele vor der Tür hören",
         "nextNode": "62"
     },
@@ -475,7 +434,7 @@
         "question": "Sie kommen rein! Ich glaub die Fenster lassen sich öffnen. Soll ich springen oder doch lieber um mein Leben kämpfen?",
         "choices": [
             {
-                "nextNode": "64",
+                "nextNode": "65",
                 "pattern": ".*((?i)kämpf/kämpfe/kämpfen).*"
             },
             {
@@ -488,23 +447,19 @@
         "id": "63",
         "type": "message",
         "message": "... das wars dann wohl... für uns beide",
-        "nextNode": "64"
-    },
-    {
-        "id": "64",
-        "type": "message",
-        "message": "TODO: wait for x seconds",
         "nextNode": "65"
     },
     {
         "id": "65",
         "type": "message",
+        "delay": 5000,
         "message": "hilfffg ew wpüfw bhuei wi we weoi",
         "nextNode": "66"
     },
     {
         "id": "66",
         "type": "message",
+        "delay": 1000,
         "message": "fje wf woijf wpjp",
         "nextNode": "99"
     },
