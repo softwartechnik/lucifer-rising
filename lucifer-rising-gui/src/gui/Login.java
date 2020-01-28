@@ -2,10 +2,7 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class Login {
 
@@ -15,12 +12,13 @@ public class Login {
     private JLabel username;
     private JLabel password;
     private JButton loginbutton;
+    private JLabel registerlabel;
     private JLabel loginfailed;
     private JFrame frame = new JFrame();
 
     void guiLogin() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500,500);
+        frame.setSize(600,500);
 
         frame.setContentPane(loginpanel);
 
@@ -52,6 +50,23 @@ public class Login {
             }
         });
 
+        registerlabel.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseEntered(MouseEvent e) {
+            registerlabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+          }
+        });
+
+        registerlabel.addMouseListener(new MouseAdapter() {
+          @Override
+          public void mouseClicked(MouseEvent e) {
+            Signup s = new Signup();
+
+            s.guiSignup(frame);
+            frame.setVisible(false);
+          }
+        });
+
         frame.setVisible(true);
     }
 
@@ -60,13 +75,13 @@ public class Login {
         String passwort = String.valueOf(passwordtextfield.getPassword());
         String username = usernametextfield.getText();
         if(username.equals("test") && passwort.equals("test")) {
-            Scenario s = new Scenario();
+            Scenarioselection s = new Scenarioselection();
 
-            s.showscenario(username);
+            s.guiScenarioselection();
             frame.setVisible(false);
         }
         else{
-            loginfailed.setVisible(true);
+          JOptionPane.showMessageDialog(frame, "Benutzername oder Passwort ist flasch.");
         }
     }
 }

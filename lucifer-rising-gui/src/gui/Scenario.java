@@ -9,20 +9,18 @@ import java.awt.event.KeyEvent;
 
 public class Scenario {
     private JTextField textField;
-    private JLabel usernamelabel;
-    private JButton sendbutton;
+  private JButton sendbutton;
     private JTextArea receiveTextArea;
     private JTextArea sendTextArea;
     private JPanel scenariopanel;
 
-    void showscenario (String username) {
+    //scenarioseleted 1 Zombie Outbreak      2 Apokalypse
+    void guiscenario (int scenarioseleted) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500,500);
 
         frame.setContentPane(scenariopanel);
-
-        usernamelabel.setText(username);
 
         sendTextArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         receiveTextArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
