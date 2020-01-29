@@ -5,6 +5,7 @@ import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.TextMessage;
 import javax.jms.Topic;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -28,6 +29,8 @@ public final class SponsorTopicRegistrator implements MessageListener {
   public void onMessage(Message message) {
     try {
       if (message.getJMSDestination().equals(sponsorTopic)) {
+        var textMessage = (TextMessage) message;
+        textMessage.getText();
         // TODO: Add message to client UI
       }
     } catch (JMSException e) {
