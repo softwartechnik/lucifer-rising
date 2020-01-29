@@ -1,5 +1,6 @@
 package de.softwartechnik.lucifer.user;
 
+import java.util.List;
 import javax.ejb.Stateless;
 
 @Stateless
@@ -29,5 +30,9 @@ public final class UserService {
 
   public void setUserDao(UserDao userDao) {
     this.userDao = userDao;
+  }
+
+  public List<User> readAll() {
+    return userDao.readAll();
   }
 }

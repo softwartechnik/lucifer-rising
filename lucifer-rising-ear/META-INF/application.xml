@@ -16,4 +16,10 @@
     <interface-name>javax.jms.Topic</interface-name>
     <destination-name>SponsorTopic</destination-name>
   </jms-destination>
+
+  <jms-destination>
+    <name>java:global/jms/StatisticsQueue</name>
+    <interface-name>javax.jms.Queue</interface-name>
+    <destination-name>StatisticsQueue</destination-name>
+  </jms-destination>
 </application>
