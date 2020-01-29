@@ -38,15 +38,16 @@ public class GameStatisticsBean implements MessageListener {
     }
   }
 
-  private Message buildMessage() {
-    var message = jmsContext.createMessage();
+  private Message buildMessage() throws JMSException {
+    var message = jmsContext.createMapMessage();
     int sumGamesPlayed = 0;
     int sumGamesWon = 0;
     for (User user : userService.readAll()) {
       sumGamesPlayed += user.getGamesPlayed();
       sumGamesWon += user.getGamesWon();
     }
-    //TODO: build message
+    message.setInt("gamesPlayed", sumGamesPlayed);
+    message.setInt("gamesWon", sumGamesWon);
     return message;
   }
 

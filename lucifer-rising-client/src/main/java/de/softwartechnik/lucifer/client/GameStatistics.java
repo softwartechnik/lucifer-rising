@@ -3,6 +3,7 @@ package de.softwartechnik.lucifer.client;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
+import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.Topic;
@@ -28,6 +29,9 @@ public final class GameStatistics implements MessageListener {
   public void onMessage(Message message) {
     try {
       if (message.getJMSDestination().equals(sponsorTopic)) {
+        var mapMessage = (MapMessage) message;
+        int gamesPlayed = mapMessage.getInt("gamesPlayed");
+        int gamesWon = mapMessage.getInt("gamesWon");
         // TODO: Add message to client UI
       }
     } catch (JMSException e) {
