@@ -23,14 +23,14 @@ public final class Messaging implements MessageListener {
     }
   }
 
+  // TODO: client needs to know his userId and sessionId
   @Override
   public void onMessage(Message message) {
     try {
-      if(message.getJMSDestination().equals(messageQueue)) {
+      if (message.getJMSDestination().equals(messageQueue)) {
         var textMessage = (TextMessage) message;
         String userId = textMessage.getStringProperty("userId");
         String sessionId = textMessage.getStringProperty("sessionId");
-        // TODO: client needs to know his userId and sessionId
         if (userId.equals("") && sessionId.equals("")) {
           String messageText = textMessage.getStringProperty("messageText");
           // TODO: Add message to client UI

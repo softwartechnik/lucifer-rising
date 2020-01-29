@@ -42,7 +42,8 @@ public class MessageBean implements MessageListener {
     }
   }
 
-  private void sendMessage(String userId, String sessionId, String messageText) {
+  private void sendMessage(String userId, String sessionId,
+                           String messageText) {
     try {
       Message message = jmsContext.createTextMessage();
       message.setStringProperty("userId", userId);
