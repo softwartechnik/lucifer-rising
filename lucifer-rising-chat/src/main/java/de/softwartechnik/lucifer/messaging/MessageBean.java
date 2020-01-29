@@ -33,7 +33,7 @@ public class MessageBean implements MessageListener {
       var textMessage = (TextMessage) message;
       String userId = textMessage.getStringProperty("userId");
       String sessionId = textMessage.getStringProperty("sessionId");
-      String messageText = textMessage.getStringProperty("messageText");
+      String messageText = textMessage.getText();
       //TODO: process received message to get answer
       String messageTextToSend = "TODO";
       sendMessage(userId, sessionId, messageTextToSend);
@@ -45,10 +45,9 @@ public class MessageBean implements MessageListener {
   private void sendMessage(String userId, String sessionId,
                            String messageText) {
     try {
-      Message message = jmsContext.createTextMessage();
+      Message message = jmsContext.createTextMessage(messageText);
       message.setStringProperty("userId", userId);
       message.setStringProperty("sessionId", sessionId);
-      message.setStringProperty("messageText", messageText);
       jmsContext.createProducer().send(messageQueue, message);
     } catch (JMSException e) {
       e.printStackTrace();
