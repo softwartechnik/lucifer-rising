@@ -8,51 +8,89 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Scenario {
-    private JTextField textField;
+  private JPanel scenariopanel;
   private JButton sendbutton;
-    private JTextArea receiveTextArea;
-    private JTextArea sendTextArea;
-    private JPanel scenariopanel;
+  private JTextField textField;
+  private JTextArea sendTextArea;
+  private JTextArea receiveTextArea;
+  private JPanel chatpanel;
+  private JLabel scenarioname;
+  JFrame frame = new JFrame();
 
-    //scenarioseleted 1 Zombie Outbreak      2 Apokalypse
-    void guiscenario (int scenarioseleted) {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500,500);
+  void guiscenario (int scenarioseleted) {
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(700,700);
 
-        frame.setContentPane(scenariopanel);
+    frame.setContentPane(scenariopanel);
 
-        sendTextArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        receiveTextArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+    sendTextArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+    receiveTextArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
-        textField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER)
-                {
-                    sendText();
-                }
-            }
-        });
-
-        sendbutton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                sendText();
-            }
-        });
-
-        frame.setVisible(true);
+    if(scenarioseleted == 1) {
+      scenarioname.setText("Zombie Outbreak");
+      scenarioname.setFont(new Font("OCR A Extended", Font.PLAIN, 24));
+    }
+    else if(scenarioseleted == 2) {
+      scenarioname.setText("Apokalypse");
+      scenarioname.setFont(new Font("Eras Light ITC", Font.PLAIN, 24));
     }
 
-    void sendText() {
-        sendTextArea.append(textField.getText() + "\n");
-        receiveTextArea.append("\n");
-        textField.setText("");
-    }
+    textField.addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+          textToServer();
+        }
+      }
+    });
 
-    public void receiveText(String text) {
-        receiveTextArea.append(text + "\n");
-        sendTextArea.append("\n");
+    sendbutton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        textToServer();
+      }
+    });
+
+    frame.setVisible(true);
+  }
+
+  void textToServer() {
+    sendTextArea.append(textField.getText() + "\n");
+    receiveTextArea.append("\n");
+    textField.setText("");
+  }
+
+  public void textToClient(String text) {
+    receiveTextArea.append(text + "\n");
+    sendTextArea.append("\n");
+
+    //Bedingung beim Gewinnen
+    if(true) {
+      Object[] options = {"Scenario auswahl", "Schließen"};
+      int selected = JOptionPane.showOptionDialog(frame, "Sie haben gewonnen Herzlichen Glückwunsche.", "Wählen Sie", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[1]);
+      if(selected == 0) {
+        Scenarioselection s = new Scenarioselection();
+        s.guiScenarioselection();
+        frame.setVisible(false);
+      }
+      else if(selected == 1) {
+        System.exit(0);
+      }
+
     }
+    //Bedingung beim Verlieren
+    else if(false) {
+      Object[] options = {"Scenario auswahl", "Schließen"};
+      int selected = JOptionPane.showOptionDialog(frame, "Sie haben Verloren", "Wählen Sie", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[1]);
+      if(selected == 0) {
+        Scenarioselection s = new Scenarioselection();
+        s.guiScenarioselection();
+        frame.setVisible(false);
+      }
+      else if(selected == 1) {
+        System.exit(0);
+      }
+    }
+  }
 }

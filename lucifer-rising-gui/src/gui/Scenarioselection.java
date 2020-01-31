@@ -61,7 +61,7 @@ public class Scenarioselection {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         Scenario s = new Scenario();
-        s.guiscenario(2);
+        s.guiscenario(1);
         frame.setVisible(false);
       }
     });
@@ -70,7 +70,7 @@ public class Scenarioselection {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         Scenario s = new Scenario();
-        s.guiscenario(1);
+        s.guiscenario(2);
         frame.setVisible(false);
       }
     });
