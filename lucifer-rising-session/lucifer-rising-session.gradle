@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+group 'de.softwartechnik.lucifer'
+
+dependencies {
+  implementation 'javax:javaee-api:8.0.1'
+}
+
+jar {
+  baseName = 'lucifer-rising-session'
+}
