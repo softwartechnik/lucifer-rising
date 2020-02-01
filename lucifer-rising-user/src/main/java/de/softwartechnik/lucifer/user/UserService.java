@@ -1,7 +1,7 @@
 package de.softwartechnik.lucifer.user;
 
-import javax.ejb.Stateless;
 import java.security.InvalidParameterException;
+import javax.ejb.Stateless;
 
 @Stateless
 public final class UserService {
