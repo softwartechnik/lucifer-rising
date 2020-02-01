@@ -1,8 +1,13 @@
-package gui;
+package de.softwartechnik.lucifer.gui;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class Signup {
   private JPanel signuppanel;
@@ -25,7 +30,9 @@ public class Signup {
 
     signupbutton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent actionEvent) { signup(); }
+      public void actionPerformed(ActionEvent actionEvent) {
+        signup();
+      }
     });
 
     cancelbutton.addActionListener(new ActionListener() {
@@ -47,11 +54,11 @@ public class Signup {
     String passwort1 = String.valueOf(passwordField1.getPassword());
     String passwort2 = String.valueOf(passwordField2.getPassword());
 
-    if(firstname.equals("") || secondname.equals("") || username.equals("") || email.equals("") || passwort1.equals("") || passwort2.equals("")) {
+    if (firstname.equals("") || secondname.equals("") || username.equals("") || email.equals("")
+      || passwort1.equals("") || passwort2.equals("")) {
       JOptionPane.showMessageDialog(frame, "Bitte füllen Sie alle Felder aus.");
-    }
-    else {
-      if(passwort1.equals(passwort2)) {
+    } else {
+      if (passwort1.equals(passwort2)) {
         //Send data to Database
         System.out.println("firstname: " + firstname);
         System.out.println("secondname: " + secondname);
@@ -59,8 +66,7 @@ public class Signup {
         System.out.println("email: " + email);
         System.out.println("passwort1: " + passwort1);
         System.out.println("passwort2: " + passwort2);
-      }
-      else {
+      } else {
         JOptionPane.showMessageDialog(frame, "Die Passwörter stimmen nicht überein.");
       }
     }
