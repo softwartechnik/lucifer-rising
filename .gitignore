@@ -5,3 +5,11 @@
 # Gradle
 build
 .gradle
+
+# VSCode
+.classpath
+.settings
+.project
+.vscode
+bin
+out
