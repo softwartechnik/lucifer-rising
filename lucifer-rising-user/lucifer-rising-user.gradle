@@ -1,14 +1,6 @@
-plugins {
-    id 'java'
-}
-
-group 'de.softwartechnik.lucifer'
-
 dependencies {
+  testImplementation 'javax:javaee-api:8.0.1'
   implementation 'javax:javaee-api:8.0.1'
   implementation 'javax.enterprise:cdi-api:1.2'
-}
-
-jar {
-  baseName = 'lucifer-rising-user'
+  compile 'org.mariadb.jdbc:mariadb-java-client:2.5.2'
 }
