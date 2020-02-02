@@ -29,7 +29,6 @@ public class TreeRepositoryTest {
         new ChoiceModel("OtherRegEx", "4", 0)
       }, 1000);
     var nodes = treeRepository.readFromFile(path);
-
     assertEquals(expectedNode, nodes.get(0));
   }
 

@@ -3,15 +3,6 @@ package de.softwartechnik.lucifer.tree.io;
 import java.util.Arrays;
 import java.util.Objects;
 
-<<<<<<< HEAD
-final class QuestionNodeModel implements NodeModel {
-  public String id;
-  public String question;
-  public Choice[] choices;
-  public int delay;
-
-  public QuestionNodeModel(String id, String question, Choice[] choices, int delay) {
-=======
 public final class QuestionNodeModel implements NodeModel {
   private String id;
   private String question;
@@ -19,15 +10,12 @@ public final class QuestionNodeModel implements NodeModel {
   private int delay;
 
   public QuestionNodeModel(String id, String question, ChoiceModel[] choices, int delay) {
->>>>>>> 3ccd37f... Fix deployment
     this.id = id;
     this.question = question;
-    this.choices = choices;
+    this.choiceModels = choiceModels;
     this.delay = delay;
   }
-
-<<<<<<< HEAD
-=======
+  
   public String question() {
     return question;
   }
@@ -41,7 +29,6 @@ public final class QuestionNodeModel implements NodeModel {
     return id;
   }
 
->>>>>>> 3ccd37f... Fix deployment
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -50,10 +37,6 @@ public final class QuestionNodeModel implements NodeModel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-<<<<<<< HEAD
-    QuestionNodeModel q = (QuestionNodeModel) o;
-    return q.id.equals(id) && q.question.equals(question) && Arrays.equals(q.choices, choices);
-=======
     QuestionNodeModel that = (QuestionNodeModel) o;
     return delay == that.delay &&
       Objects.equals(id, that.id) &&
@@ -77,6 +60,5 @@ public final class QuestionNodeModel implements NodeModel {
     sb.append(", delay=").append(delay);
     sb.append('}');
     return sb.toString();
->>>>>>> 3ccd37f... Fix deployment
   }
 }

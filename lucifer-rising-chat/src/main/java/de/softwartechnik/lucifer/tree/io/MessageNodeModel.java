@@ -1,16 +1,29 @@
 package de.softwartechnik.lucifer.tree.io;
 
-final class MessageNodeModel implements NodeModel {
-  public String id;
-  public String message;
-  public String nextNode;
-  public int delay;
+public final class MessageNodeModel implements NodeModel {
+  private String id;
+  private String message;
+  private String nextNode;
+  private int delay;
 
   public MessageNodeModel(String id, String message, String nextNode, int delay) {
     this.id = id;
     this.message = message;
     this.nextNode = nextNode;
     this.delay = delay;
+  }
+
+  public String message() {
+    return message;
+  }
+
+  public String nextNode() {
+    return nextNode;
+  }
+
+  @Override
+  public String id() {
+    return id;
   }
 
   @Override

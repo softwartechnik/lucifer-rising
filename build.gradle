@@ -20,15 +20,10 @@ allprojects {
     jcenter()
     google()
     mavenLocal()
-    maven {
-      url "https://repository.klauke-enterprises.com/repository/maven-central/"
-    }
     mavenCentral()
   }
 
   checkstyle {
-    maxWarnings = 0
-    ignoreFailures = false
     toolVersion '8.27'
     checkstyleTest.enabled = false
   }
