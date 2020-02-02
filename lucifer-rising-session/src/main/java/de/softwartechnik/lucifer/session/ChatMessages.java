@@ -16,7 +16,7 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "destinationType",
       propertyValue = "javax.jms.Queue")
   })
-public class MessageBean implements MessageListener {
+public class ChatMessages implements MessageListener {
 
   @Inject
   private JMSContext jmsContext;
@@ -24,7 +24,7 @@ public class MessageBean implements MessageListener {
   @Resource(lookup = "java:global/jms/MessageQueue")
   private Queue messageQueue;
 
-  public MessageBean() {
+  public ChatMessages() {
   }
 
   @Override
