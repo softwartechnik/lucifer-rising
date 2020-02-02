@@ -1,15 +1,16 @@
 package de.softwartechnik.lucifer.session.game;
 
 import de.softwartechnik.lucifer.session.SessionRegistry;
-import de.softwartechnik.lucifer.session.message.ChatMessages;
 import de.softwartechnik.lucifer.tree.ChatSession;
 import de.softwartechnik.lucifer.tree.io.TreeRepository;
 import de.softwartechnik.lucifer.tree.node.Tree;
 import java.net.URI;
 import java.util.Optional;
 import java.util.UUID;
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
+import javax.jms.Queue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -21,8 +22,8 @@ import javax.ws.rs.core.Response.Status;
 public class Games {
   @Inject
   private SessionRegistry sessionRegistry;
-  @Inject
-  private ChatMessages chatMessages;
+  @Resource(lookup = "java:global/jms/ChatMessageQueue")
+  private Queue messageQueue;
   @Inject
   private JMSContext jmsContext;
 
@@ -48,7 +49,7 @@ public class Games {
     if (tree.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }
-    ChatSession chatSession = new Game(UUID.randomUUID().toString(), chatMessages);
+    ChatSession chatSession = new Game(UUID.randomUUID().toString(), messageQueue, jmsContext);
     sessionRegistry.addSession(chatSession);
     return Response.created(URI.create("/game/" + chatSession.id())).build();
   }

@@ -1,23 +1,35 @@
 package de.softwartechnik.lucifer.session.game;
 
-import de.softwartechnik.lucifer.session.message.ChatMessages;
 import de.softwartechnik.lucifer.tree.ChatSession;
 import de.softwartechnik.lucifer.tree.MessageContext;
 import de.softwartechnik.lucifer.tree.node.Node;
+import javax.jms.JMSContext;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Queue;
 
 public class Game implements ChatSession {
   private final String id;
-  private final ChatMessages chatMessages;
+  private final Queue chatMessages;
+  private final JMSContext jmsContext;
   private Node currentNode;
 
-  public Game(String id, ChatMessages chatMessages) {
+  public Game(String id, Queue chatMessages, JMSContext jmsContext) {
     this.id = id;
     this.chatMessages = chatMessages;
+    this.jmsContext = jmsContext;
   }
 
   @Override
   public void sendMessage(String message) {
-    chatMessages.sendMessage("", id, message);
+    try {
+      Message jmsMessage = jmsContext.createTextMessage(message);
+      jmsMessage.setStringProperty("userId", "userId");
+      jmsMessage.setStringProperty("sessionId", id);
+      jmsContext.createProducer().send(chatMessages, message);
+    } catch (JMSException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
