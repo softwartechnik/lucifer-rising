@@ -31,18 +31,13 @@ final class UserServiceTest {
   }
 
   @Test
-  void createTest() {
-    userService.create("name");
-    Mockito.verify(entityManager).persist(Mockito.any());
-  }
-
-  @Test
   void readTest() {
     int id = 42;
     String name = "name";
+    String password = "password";
     int gamesPlayed = 42;
     int gamesWon = 10;
-    User user = new User(name);
+    User user = new User(name, password);
     user.setId(id);
     user.setGamesPlayed(gamesPlayed);
     user.setGamesWon(10);
@@ -50,6 +45,7 @@ final class UserServiceTest {
     User result = userService.read(id);
     Assertions.assertEquals(id, result.getId());
     Assertions.assertEquals(name, result.getName());
+    Assertions.assertEquals(password, result.getPassword());
     Assertions.assertEquals(gamesPlayed, result.getGamesPlayed());
     Assertions.assertEquals(gamesWon, result.getGamesWon());
   }
