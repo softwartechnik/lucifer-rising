@@ -6,6 +6,8 @@ group 'de.softwartechnik.lucifer'
 
 dependencies {
   implementation 'javax:javaee-api:8.0.1'
+  implementation project(":lucifer-rising-chat")
+  implementation project(":lucifer-rising-user")
 }
 
 jar {

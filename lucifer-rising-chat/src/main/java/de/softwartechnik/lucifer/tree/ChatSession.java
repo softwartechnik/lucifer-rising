@@ -31,6 +31,9 @@ public final class ChatSession {
     this.status.set(status);
   }
 
+  public void sendMessage(String message) {
+  }
+
   public enum  Status {
     LATENT,
     RUNNING,

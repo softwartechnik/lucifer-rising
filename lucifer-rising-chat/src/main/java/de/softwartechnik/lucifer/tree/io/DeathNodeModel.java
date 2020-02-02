@@ -1,12 +1,17 @@
 package de.softwartechnik.lucifer.tree.io;
 
-final class DeathNodeModel implements NodeModel {
-  public String id;
-  public int delay;
+public final class DeathNodeModel implements NodeModel {
+  private String id;
+  private int delay;
 
   public DeathNodeModel(String id, int delay) {
     this.id = id;
     this.delay = delay;
+  }
+
+  @Override
+  public String id() {
+    return id;
   }
 
   @Override

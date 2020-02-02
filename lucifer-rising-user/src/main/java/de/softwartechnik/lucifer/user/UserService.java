@@ -4,7 +4,7 @@ import java.security.InvalidParameterException;
 import javax.ejb.Stateless;
 
 @Stateless
-public final class UserService {
+public class UserService {
 
   private UserDao userDao = new UserDao();
 
