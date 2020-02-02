@@ -12,6 +12,11 @@
   </module>
 
   <jms-destination>
+    <name>java:global/jms/MessageQueue</name>
+    <interface-name>javax.jms.Queue</interface-name>
+    <destination-name>MessageQueue</destination-name>
+   </jms-destination>
+  <jms-destination>
     <name>java:global/jms/SponsorTopic</name>
     <interface-name>javax.jms.Topic</interface-name>
     <destination-name>SponsorTopic</destination-name>
