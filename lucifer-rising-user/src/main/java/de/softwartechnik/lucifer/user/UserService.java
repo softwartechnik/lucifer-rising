@@ -1,10 +1,11 @@
 package de.softwartechnik.lucifer.user;
 
-import java.util.List;
 import java.security.InvalidParameterException;
+import java.util.List;
+import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 
-@Stateless
+@Singleton
 public class UserService {
 
   private UserDao userDao = new UserDao();

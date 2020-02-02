@@ -1,15 +1,12 @@
-plugins {
-    id 'java'
-}
-
-group 'de.softwartechnik.lucifer'
-
 dependencies {
   implementation 'javax:javaee-api:8.0.1'
-  implementation project(":lucifer-rising-chat")
+  api project(":lucifer-rising-chat")
   implementation project(":lucifer-rising-user")
 }
 
 jar {
   baseName = 'lucifer-rising-session'
+  from {
+    configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
 }

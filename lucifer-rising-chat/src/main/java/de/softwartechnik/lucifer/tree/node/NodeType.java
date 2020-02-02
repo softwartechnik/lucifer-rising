@@ -1,6 +1,6 @@
-package de.softwartechnik.lucifer.tree;
+package de.softwartechnik.lucifer.tree.node;
 
-import de.softwartechnik.lucifer.tree.QuestionNode.Choice;
+import de.softwartechnik.lucifer.tree.node.QuestionNode.Choice;
 import de.softwartechnik.lucifer.tree.io.ChoiceModel;
 import de.softwartechnik.lucifer.tree.io.DeathNodeModel;
 import de.softwartechnik.lucifer.tree.io.EndNodeModel;

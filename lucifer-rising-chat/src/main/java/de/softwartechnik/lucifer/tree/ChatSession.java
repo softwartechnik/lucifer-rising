@@ -1,43 +1,17 @@
 package de.softwartechnik.lucifer.tree;
 
-import java.util.concurrent.atomic.AtomicReference;
+import de.softwartechnik.lucifer.tree.node.Node;
 
-public final class ChatSession {
-  private Node currentNode;
-  private final AtomicReference<Status> status = new AtomicReference<>(
-    Status.LATENT
-  );
+public interface ChatSession {
+  void sendMessage(String message);
 
-  public void begin(Node node, String message) {
-    currentNode = node;
-    status.compareAndSet(Status.LATENT, Status.RUNNING);
-    onMessage(message);
-  }
+  void setCurrentNode(Node node);
 
-  public void onMessage(String message) {
-    var messageContext = new MessageContext(this, message);
-    currentNode.accept(messageContext);
-  }
+  void end();
 
-  public void setCurrentNode(Node currentNode) {
-    this.currentNode = currentNode;
-  }
+  void kill();
 
-  public Status status() {
-    return status.get();
-  }
+  void onMessage(String messageText);
 
-  void updateStatus(Status status) {
-    this.status.set(status);
-  }
-
-  public void sendMessage(String message) {
-  }
-
-  public enum  Status {
-    LATENT,
-    RUNNING,
-    KILLED,
-    END
-  }
+  String id();
 }
