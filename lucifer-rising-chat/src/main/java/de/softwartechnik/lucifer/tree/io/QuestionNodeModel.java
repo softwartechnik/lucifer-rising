@@ -12,10 +12,10 @@ public final class QuestionNodeModel implements NodeModel {
   public QuestionNodeModel(String id, String question, ChoiceModel[] choices, int delay) {
     this.id = id;
     this.question = question;
-    this.choiceModels = choiceModels;
+    this.choices = choices;
     this.delay = delay;
   }
-  
+
   public String question() {
     return question;
   }
