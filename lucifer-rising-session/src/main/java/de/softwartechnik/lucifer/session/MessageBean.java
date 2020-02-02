@@ -1,4 +1,4 @@
-package de.softwartechnik.lucifer.messaging;
+package de.softwartechnik.lucifer.session;
 
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
