@@ -2,17 +2,30 @@ package de.softwartechnik.lucifer.tree.io;
 
 import java.util.Arrays;
 
-final class QuestionNodeModel implements NodeModel {
-  public String id;
-  public String question;
-  public Choice[] choices;
-  public int delay;
+public final class QuestionNodeModel implements NodeModel {
+  private String id;
+  private String question;
+  private ChoiceModel[] choiceModels;
+  private int delay;
 
-  public QuestionNodeModel(String id, String question, Choice[] choices, int delay) {
+  public QuestionNodeModel(String id, String question, ChoiceModel[] choiceModels, int delay) {
     this.id = id;
     this.question = question;
-    this.choices = choices;
+    this.choiceModels = choiceModels;
     this.delay = delay;
+  }
+
+  public String question() {
+    return question;
+  }
+
+  public ChoiceModel[] choices() {
+    return choiceModels;
+  }
+
+  @Override
+  public String id() {
+    return id;
   }
 
   @Override
@@ -21,6 +34,7 @@ final class QuestionNodeModel implements NodeModel {
       return false;
     }
     QuestionNodeModel q = (QuestionNodeModel) o;
-    return q.id.equals(id) && q.question.equals(question) && Arrays.equals(q.choices, choices);
+    return q.id.equals(id) && q.question.equals(question) && Arrays.equals(q.choiceModels,
+      choiceModels);
   }
 }
