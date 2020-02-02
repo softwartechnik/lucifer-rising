@@ -9,12 +9,18 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.Message;
 import javax.jms.Topic;
 
+@JMSDestinationDefinition(
+  name = "java:global/jms/ObserverTopic",
+  interfaceName = "javax.jms.Topic",
+  destinationName = "ObserverTopic"
+)
 @Singleton
 @Startup
-public final class SponsorTimer {
+public class SponsorTimer {
   private static final int INITIAL_DURATION_MILLISECONDS = 30 * 1000;
   private static final int INTERVAL_DURATION_MILLISECONDS = 30 * 1000;
   private static final String TIMER_INFO = "Sponsor us on GitHub!";
@@ -22,7 +28,7 @@ public final class SponsorTimer {
   @Inject
   private JMSContext jmsContext;
 
-  @Resource(lookup = "java:global/jms/OberverTopic")
+  @Resource(lookup = "java:global/jms/ObserverTopic")
   private Topic sponsorTopic;
 
   @Resource

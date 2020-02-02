@@ -1,8 +1,8 @@
-package de.softwartechnik.lucifer.tree;
+package de.softwartechnik.lucifer.tree.node;
 
+import de.softwartechnik.lucifer.tree.MessageContext;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -22,6 +22,10 @@ public final class QuestionNode implements Node {
     this.question = question;
     this.status = new AtomicReference<>(status);
     this.choices = choices;
+  }
+
+  public static Builder newBuilder() {
+    return new Builder(new HashSet<>());
   }
 
   @Override
@@ -65,10 +69,6 @@ public final class QuestionNode implements Node {
   private enum Status {
     QUESTION,
     ANSWER;
-  }
-
-  public static Builder newBuilder() {
-    return new Builder(new HashSet<>());
   }
 
   public static final class Builder {

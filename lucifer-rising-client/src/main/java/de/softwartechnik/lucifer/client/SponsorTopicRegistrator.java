@@ -51,7 +51,7 @@ public final class SponsorTopicRegistrator implements MessageListener {
   }
 
   public SponsorTopicRegistrator
-    createSponsorTopicRegistratorWithJmsConnections() {
+  createSponsorTopicRegistratorWithJmsConnections() {
     var sponsorTopicRegistrator = new SponsorTopicRegistrator();
     sponsorTopicRegistrator.initializeJmsConnections();
     return sponsorTopicRegistrator;
