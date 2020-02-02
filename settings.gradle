@@ -2,12 +2,14 @@ plugins {
   id "com.gradle.enterprise" version "3.1"
 }
 
-rootProject.name = 'lucifer-rising-parent'
+rootProject.name = 'lucifer-rising'
 
-include(':lucifer-rising-chat')
-include(':lucifer-rising-ear')
-include(':lucifer-rising-user')
-include (':lucifer-rising-client')
+include 'lucifer-rising-chat'
+include 'lucifer-rising-ear'
+include 'lucifer-rising-user'
+include 'lucifer-rising-gui'
+include 'lucifer-rising-session'
+include 'lucifer-rising-client'
 
 rootProject.children.each { project ->
   project.buildFileName = "${project.name}.gradle"

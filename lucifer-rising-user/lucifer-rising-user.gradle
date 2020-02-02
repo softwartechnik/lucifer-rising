@@ -4,3 +4,7 @@ dependencies {
   implementation 'javax.enterprise:cdi-api:1.2'
   compile 'org.mariadb.jdbc:mariadb-java-client:2.5.2'
 }
+
+jar {
+  baseName = 'lucifer-rising-user'
+}

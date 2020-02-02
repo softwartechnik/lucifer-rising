@@ -9,7 +9,7 @@ import javax.persistence.criteria.Root;
 
 final class UserDao {
 
-  @PersistenceContext (unitName = "UserPersistenceUnit")
+  @PersistenceContext(unitName = "UserPersistenceUnit")
   private EntityManager entityManager;
 
   void create(User user) {

@@ -11,11 +11,13 @@ public final class User {
   @GeneratedValue
   private int id;
   private String name;
+  private String password;
   private int gamesPlayed;
   private int gamesWon;
 
-  User(String name) {
+  User(String name, String password) {
     this.name = name;
+    this.password = password;
   }
 
   public User() {
@@ -35,6 +37,10 @@ public final class User {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getPassword() {
+    return password;
   }
 
   public int getGamesPlayed() {
