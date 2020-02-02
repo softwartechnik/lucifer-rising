@@ -62,7 +62,7 @@ public class ChatMessages implements MessageListener {
     chatSession.onMessage(messageText);
   }
 
-  private void sendMessage(
+  public void sendMessage(
     String userId,
     String sessionId,
     String messageText
@@ -75,5 +75,9 @@ public class ChatMessages implements MessageListener {
     } catch (JMSException e) {
       e.printStackTrace();
     }
+  }
+
+  public Queue queue() {
+    return messageQueue;
   }
 }

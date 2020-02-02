@@ -1,6 +1,5 @@
 package de.softwartechnik.lucifer.tree;
 
-import de.softwartechnik.lucifer.tree.ChatSession.Status;
 import de.softwartechnik.lucifer.tree.node.Node;
 
 public final class MessageContext {
@@ -26,10 +25,10 @@ public final class MessageContext {
   }
 
   public void killSession() {
-    chatSession.updateStatus(Status.KILLED);
+    chatSession.kill();
   }
 
   public void winGame() {
-    chatSession.updateStatus(Status.END);
+    chatSession.end();
   }
 }
