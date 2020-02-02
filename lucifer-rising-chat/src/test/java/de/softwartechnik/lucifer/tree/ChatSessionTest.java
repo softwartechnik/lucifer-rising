@@ -18,7 +18,7 @@ final class ChatSessionTest {
 
   @BeforeEach
   void setUp() {
-    chatSession = new ChatSession(queue, jmsContext, UUID.randomUUID().toString());
+    chatSession = new ChatSession(UUID.randomUUID().toString());
   }
 
   @Test

@@ -72,7 +72,6 @@ public class ChatMessages implements MessageListener {
       message.setStringProperty("userId", userId);
       message.setStringProperty("sessionId", sessionId);
       jmsContext.createProducer().send(messageQueue, message);
-      jmsContext.createProducer().send(messageQueue, message);
     } catch (JMSException e) {
       e.printStackTrace();
     }
