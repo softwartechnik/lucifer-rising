@@ -17,7 +17,7 @@ public final class MessageContext {
   }
 
   public void respond(String message) {
-    Objects.requireNonNull(message);
+    chatSession.sendMessage(message);
   }
 
   public void resume(Node node) {

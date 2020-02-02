@@ -2,6 +2,7 @@ package de.softwartechnik.lucifer.tree;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -87,6 +88,12 @@ public final class QuestionNode implements Node {
     public Builder addChoice(Choice choice) {
       Objects.requireNonNull(choice);
       choices.add(choice);
+      return this;
+    }
+
+    public Builder withChoices(Collection<Choice> choices) {
+      Objects.requireNonNull(choices);
+      choices.forEach(this::addChoice);
       return this;
     }
 

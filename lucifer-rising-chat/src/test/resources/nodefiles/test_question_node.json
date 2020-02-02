@@ -1,0 +1,18 @@
+[
+  {
+    "type": "question",
+    "id": "2",
+    "question": "How much is the fish?",
+    "delay": 1000,
+    "choices": [
+      {
+        "nextNode": "3",
+        "pattern": "RegEx"
+      },
+      {
+        "nextNode": "4",
+        "pattern": "OtherRegEx"
+      }
+    ]
+  }
+]
