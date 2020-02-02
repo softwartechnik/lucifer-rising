@@ -1,0 +1,7 @@
+plugins {
+  id 'war'
+}
+
+dependencies {
+  implementation 'javax:javaee-api:8.0.1'
+}

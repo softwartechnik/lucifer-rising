@@ -1,7 +1,7 @@
 package de.softwartechnik.lucifer.tree;
 
 import de.softwartechnik.lucifer.tree.ChatSession.Status;
-import java.util.Objects;
+import de.softwartechnik.lucifer.tree.node.Node;
 
 public final class MessageContext {
   private final ChatSession chatSession;

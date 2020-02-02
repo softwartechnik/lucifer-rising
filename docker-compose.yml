@@ -19,6 +19,7 @@ services:
     container_name: lucifer-rising
     ports:
       - 8080:9990
+      - 8070:8080
     networks:
       - lucifer-rising
 

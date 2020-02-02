@@ -1,12 +1,19 @@
 package de.softwartechnik.lucifer.tree;
 
+import de.softwartechnik.lucifer.tree.node.Node;
+import de.softwartechnik.lucifer.tree.node.Tree;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
 public final class ChatSession {
+  private final String id;
+  private final AtomicReference<Status> status = new AtomicReference<>(Status.LATENT);
   private Node currentNode;
-  private final AtomicReference<Status> status = new AtomicReference<>(
-    Status.LATENT
-  );
+
+  public ChatSession(String id) {
+    this.id = id;
+  }
 
   public void begin(Node node, String message) {
     currentNode = node;
@@ -34,10 +41,19 @@ public final class ChatSession {
   public void sendMessage(String message) {
   }
 
-  public enum  Status {
+  public String id() {
+    return id;
+  }
+
+  public enum Status {
     LATENT,
     RUNNING,
     KILLED,
     END
+  }
+
+  public static ChatSession of(Tree tree) {
+    Objects.requireNonNull(tree);
+    return new ChatSession(UUID.randomUUID().toString());
   }
 }

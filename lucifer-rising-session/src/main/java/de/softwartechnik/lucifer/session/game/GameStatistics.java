@@ -1,30 +1,38 @@
-package de.softwartechnik.lucifer.statistics;
+package de.softwartechnik.lucifer.session.game;
 
 import de.softwartechnik.lucifer.user.User;
 import de.softwartechnik.lucifer.user.UserService;
-
 import javax.annotation.Resource;
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.Queue;
 
-@MessageDriven
-public class GameStatisticsBean implements MessageListener {
-
+@JMSDestinationDefinition(
+  name = "java:global/jms/StatisticsQueue",
+  interfaceName = "javax.jms.Queue",
+  destinationName = "StatisticsQueue"
+)
+@MessageDriven(
+  activationConfig = {
+    @ActivationConfigProperty(propertyName = "destinationLookup",
+      propertyValue = "java:global/jms/StatisticsQueue")
+  }
+)
+public class GameStatistics implements MessageListener {
   @Inject
   private UserService userService;
-
   @Inject
   private JMSContext jmsContext;
-
-  @Resource(lookup = "java:global/jms/StaticticsQueue")
+  @Resource(lookup = "java:global/jms/StatisticsQueue")
   private Queue statisticsQueue;
 
-  public GameStatisticsBean() {
+  public GameStatistics() {
   }
 
   @Override

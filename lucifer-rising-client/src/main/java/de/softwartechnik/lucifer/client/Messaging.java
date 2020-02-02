@@ -1,3 +1,5 @@
+package de.softwartechnik.lucifer.client;
+
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
@@ -57,7 +59,7 @@ public final class Messaging implements MessageListener {
       ConnectionFactory connectionFactory = (ConnectionFactory) context
         .lookup("java:comp/DefaultJMSConnectionFactory");
       jmsContext = connectionFactory.createContext();
-      messageQueue = (Queue) context.lookup("java:global/jms/MessageQueue");
+      messageQueue = (Queue) context.lookup("java:global/jms/ChatMessageQueue");
       jmsContext.createConsumer(messageQueue).setMessageListener(this);
     } catch (NamingException e) {
       e.printStackTrace();

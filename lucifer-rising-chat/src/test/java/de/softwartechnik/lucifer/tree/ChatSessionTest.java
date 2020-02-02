@@ -3,7 +3,12 @@ package de.softwartechnik.lucifer.tree;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import de.softwartechnik.lucifer.tree.ChatSession.Status;
-import de.softwartechnik.lucifer.tree.QuestionNode.Choice;
+import de.softwartechnik.lucifer.tree.node.DeathNode;
+import de.softwartechnik.lucifer.tree.node.EndNode;
+import de.softwartechnik.lucifer.tree.node.MessageNode;
+import de.softwartechnik.lucifer.tree.node.QuestionNode;
+import de.softwartechnik.lucifer.tree.node.QuestionNode.Choice;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +18,7 @@ final class ChatSessionTest {
 
   @BeforeEach
   void setUp() {
-    chatSession = new ChatSession();
+    chatSession = new ChatSession(UUID.randomUUID().toString());
   }
 
   @Test

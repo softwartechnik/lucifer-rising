@@ -10,6 +10,7 @@ include 'lucifer-rising-user'
 include 'lucifer-rising-gui'
 include 'lucifer-rising-session'
 include 'lucifer-rising-client'
+include 'lucifer-rising-game'
 
 rootProject.children.each { project ->
   project.buildFileName = "${project.name}.gradle"

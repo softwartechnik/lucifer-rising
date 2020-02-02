@@ -8,6 +8,7 @@ version '0.1.0-SNAPSHOT'
 dependencies {
   deploy project(':lucifer-rising-user')
   deploy project(':lucifer-rising-session')
+  deploy project(path: ':lucifer-rising-game', configuration:'archives')
 }
 
 ear {
@@ -16,25 +17,5 @@ ear {
 
   deploymentDescriptor {
     fileName = "application.xml"
-    initializeInOrder = true
-    description("Lucifer Rising all mighty parent composition")
   }
 }
-
-/**
- * <jms-destination>
- *     <name>java:global/jms/MessageQueue</name>
- *     <interface-name>javax.jms.Queue</interface-name>
- *   <destination-name>MessageQueue</destination-name>
- *    </jms-destination>
- *   <jms-destination>
- *   <name>java:global/jms/SponsorTopic</name>
- *     <interface-name>javax.jms.Topic</interface-name>
- *   <destination-name>SponsorTopic</destination-name>
- *   </jms-destination>
- *   <jms-destination>
- *   <name>java:global/jms/StatisticsQueue</name>
- *     <interface-name>javax.jms.Queue</interface-name>
- *   <destination-name>StatisticsQueue</destination-name>
- *   </jms-destination>
- */

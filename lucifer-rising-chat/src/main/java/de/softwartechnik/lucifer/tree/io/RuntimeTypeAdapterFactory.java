@@ -11,7 +11,6 @@ import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -70,7 +69,8 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
     }
 
     return new TypeAdapter<R>() {
-      @Override public R read(JsonReader in) throws IOException {
+      @Override
+      public R read(JsonReader in) throws IOException {
         JsonElement jsonElement = Streams.parse(in);
         JsonElement labelJsonElement = jsonElement.getAsJsonObject().remove(typeFieldName);
         if (labelJsonElement == null) {
@@ -87,7 +87,8 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
         return delegate.fromJsonTree(jsonElement);
       }
 
-      @Override public void write(JsonWriter out, R value) throws IOException {
+      @Override
+      public void write(JsonWriter out, R value) throws IOException {
         Class<?> srcType = value.getClass();
         String label = subtypeToLabel.get(srcType);
         @SuppressWarnings("unchecked") // registration requires that subtype extends T

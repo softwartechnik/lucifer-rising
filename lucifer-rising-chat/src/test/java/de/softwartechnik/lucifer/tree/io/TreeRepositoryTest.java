@@ -24,7 +24,7 @@ public class TreeRepositoryTest {
     var expectedNode = new QuestionNodeModel(
       "2",
       "How much is the fish?",
-      new ChoiceModel[] {
+      new ChoiceModel[]{
         new ChoiceModel("RegEx", "3", 0),
         new ChoiceModel("OtherRegEx", "4", 0)
       }, 1000);

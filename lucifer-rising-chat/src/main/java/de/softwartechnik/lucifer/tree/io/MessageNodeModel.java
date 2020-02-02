@@ -31,7 +31,7 @@ public final class MessageNodeModel implements NodeModel {
     if (!(o instanceof MessageNodeModel)) {
       return false;
     }
-    MessageNodeModel m = (MessageNodeModel)o;
+    MessageNodeModel m = (MessageNodeModel) o;
     return m.id.equals(id) && m.message.equals(message) && m.nextNode.equals(nextNode);
   }
 }

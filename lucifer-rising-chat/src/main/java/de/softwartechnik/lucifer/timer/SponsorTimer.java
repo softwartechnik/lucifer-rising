@@ -9,9 +9,15 @@ import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.Message;
 import javax.jms.Topic;
 
+@JMSDestinationDefinition(
+  name = "java:global/jms/ObserverTopic",
+  interfaceName = "javax.jms.Topic",
+  destinationName = "ObserverTopic"
+)
 @Singleton
 @Startup
 public class SponsorTimer {
@@ -22,7 +28,7 @@ public class SponsorTimer {
   @Inject
   private JMSContext jmsContext;
 
-  @Resource(lookup = "java:global/jms/OberverTopic")
+  @Resource(lookup = "java:global/jms/ObserverTopic")
   private Topic sponsorTopic;
 
   @Resource
