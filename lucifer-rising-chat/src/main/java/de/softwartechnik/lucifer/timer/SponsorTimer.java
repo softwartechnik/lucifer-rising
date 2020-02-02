@@ -14,7 +14,7 @@ import javax.jms.Topic;
 
 @Singleton
 @Startup
-public final class SponsorTimer {
+public class SponsorTimer {
   private static final int INITIAL_DURATION_MILLISECONDS = 30 * 1000;
   private static final int INTERVAL_DURATION_MILLISECONDS = 30 * 1000;
   private static final String TIMER_INFO = "Sponsor us on GitHub!";
