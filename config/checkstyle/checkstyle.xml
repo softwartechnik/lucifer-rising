@@ -14,16 +14,11 @@
 
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
-    <property name="max" value="80"/>
+    <property name="max" value="100"/>
     <property name="ignorePattern"
       value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
   </module>
   <module name="TreeWalker">
-    <module name="MethodLength">
-      <property name="tokens" value="METHOD_DEF"/>
-      <property name="max" value="15"/>
-      <property name="countEmpty" value="true"/>
-    </module>
     <module name="OuterTypeFilename"/>
     <module name="IllegalTokenText">
       <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
