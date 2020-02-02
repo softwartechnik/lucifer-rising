@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 public class TreeRepositoryTest {
-  private static final String TEST_RESOURCES = "/src/test/resources/nodefiles/";
+  private static final String TEST_RESOURCES = "src/test/resources/nodefiles/";
   private TreeRepository treeRepository;
 
   @BeforeEach
@@ -25,8 +25,8 @@ public class TreeRepositoryTest {
       "2",
       "How much is the fish?",
       new ChoiceModel[] {
-        new ChoiceModel("RegEx", "3"),
-        new ChoiceModel("OtherRegEx", "4")
+        new ChoiceModel("RegEx", "3", 0),
+        new ChoiceModel("OtherRegEx", "4", 0)
       }, 1000);
     var nodes = treeRepository.readFromFile(path);
     assertEquals(expectedNode, nodes.get(0));

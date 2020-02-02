@@ -4,6 +4,7 @@ import de.softwartechnik.lucifer.tree.io.NodeModel;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public final class Tree {
@@ -17,6 +18,10 @@ public final class Tree {
 
   public String name() {
     return name;
+  }
+
+  public Walker startSession() {
+    return new Walker(this, rootNode);
   }
 
   static Tree of(String name, Collection<NodeModel> nodeModels) {
@@ -38,5 +43,23 @@ public final class Tree {
   static Node parseTreeNode(NodeModel nodeModel, Map<String, NodeModel> nodes) {
     NodeType nodeType = NodeType.findByModelType(nodeModel.getClass()).orElseThrow();
     return nodeType.convert(nodeModel, nodes);
+  }
+
+  public static final class Walker {
+    private final Tree tree;
+    private final AtomicReference<Node> currentNode;
+
+    private Walker(Tree tree, Node node) {
+      this.tree = tree;
+      this.currentNode = new AtomicReference<>(node);
+    }
+
+    public Tree tree() {
+      return tree;
+    }
+
+    public Node currentNode() {
+      return currentNode.get();
+    }
   }
 }
