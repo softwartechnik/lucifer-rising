@@ -1,5 +1,6 @@
 package de.softwartechnik.lucifer.user;
 
+import java.util.List;
 import java.security.InvalidParameterException;
 import javax.ejb.Stateless;
 
@@ -35,5 +36,9 @@ public class UserService {
 
   public void setUserDao(UserDao userDao) {
     this.userDao = userDao;
+  }
+
+  public List<User> readAll() {
+    return userDao.readAll();
   }
 }
