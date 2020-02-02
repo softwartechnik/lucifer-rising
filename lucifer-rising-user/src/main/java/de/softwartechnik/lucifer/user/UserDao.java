@@ -1,5 +1,6 @@
 package de.softwartechnik.lucifer.user;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -37,5 +38,13 @@ final class UserDao {
       .where(criteriaBuilder.equal(root.get("user"), parameterExpression));
     return entityManager.createQuery(criteriaQuery)
       .setParameter(parameterExpression, name).getSingleResult();
+  }
+
+  List<User> readAll() {
+    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+    CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+    Root<User> root = criteriaQuery.from(User.class);
+    criteriaQuery.select(root);
+    return entityManager.createQuery(criteriaQuery).getResultList();
   }
 }
