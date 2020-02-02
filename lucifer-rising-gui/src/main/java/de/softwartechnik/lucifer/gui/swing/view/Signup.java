@@ -1,4 +1,4 @@
-package de.softwartechnik.lucifer.gui;
+package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,4 +1,4 @@
-package de.softwartechnik.lucifer.gui;
+package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;

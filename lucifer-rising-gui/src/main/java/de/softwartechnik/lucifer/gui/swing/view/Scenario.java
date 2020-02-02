@@ -1,4 +1,4 @@
-package de.softwartechnik.lucifer.gui;
+package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.ComponentOrientation;
 import java.awt.Font;
