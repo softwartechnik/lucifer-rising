@@ -66,7 +66,7 @@ public final class Messaging implements MessageListener {
     }
   }
 
-  public Messaging createMessagingWithJmsConnections() {
+  public static Messaging createMessagingWithJmsConnections() {
     var messaging = new Messaging();
     messaging.initializeJmsConnections();
     return messaging;

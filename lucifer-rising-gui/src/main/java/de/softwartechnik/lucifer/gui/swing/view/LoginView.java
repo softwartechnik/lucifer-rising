@@ -1,27 +1,25 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
-import de.softwartechnik.lucifer.gui.swing.view.login.LoginPanel;
-
-import javax.inject.Inject;
-import javax.swing.*;
 import java.awt.event.ActionListener;
+import javax.inject.Inject;
+import javax.swing.JComponent;
 
-public class LoginView implements LuciferGUIView {
+public final class LoginView implements View {
 
-  private LoginPanel login;
+  private final LoginPanel loginPanel;
 
   @Inject
-  public LoginView(LoginPanel login) {
-    this.login = login;
+  public LoginView(LoginPanel loginPanel) {
+    this.loginPanel = loginPanel;
   }
 
   @Override
   public JComponent getComponent() {
-    return login;
+    return loginPanel;
   }
 
-  public void setLoginButtonListener(ActionListener actionListener) {
-    JButton loginButton = login.getBtnLogin();
-    loginButton.addActionListener(actionListener);
+  public void setActionListener(ActionListener actionListener) {
+    loginPanel.getBtnLogin().addActionListener(actionListener);
+    loginPanel.getBtnCancel().addActionListener(actionListener);
   }
 }

@@ -1,15 +1,15 @@
 package de.softwartechnik.lucifer.gui.swing;
 
-import de.softwartechnik.lucifer.gui.swing.controller.LuciferGUIController;
+import de.softwartechnik.lucifer.gui.swing.controller.Controller;
 
 import javax.inject.Inject;
 
-public class LuciferSwingGUI {
+public final class SwingGui {
 
-  private final LuciferGUIController controller;
+  private final Controller controller;
 
   @Inject
-  public LuciferSwingGUI(LuciferGUIController controller) {
+  public SwingGui(Controller controller) {
     this.controller = controller;
   }
 

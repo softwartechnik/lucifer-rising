@@ -1,11 +1,17 @@
-package de.softwartechnik.lucifer.gui.swing.view.login;
+package de.softwartechnik.lucifer.gui.swing.view;
 
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.inject.Inject;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import java.awt.*;
 
-public class LoginPanel extends JPanel {
+public final class LoginPanel extends JPanel {
   private JTextField tfUsername;
   private JPasswordField pfPassword;
   private JLabel lbUsername;
@@ -50,6 +56,10 @@ public class LoginPanel extends JPanel {
     JPanel bp = new JPanel();
     bp.add(btnLogin);
     bp.add(btnCancel);
+    cs.gridx = 0;
+    cs.gridy = 2;
+    cs.gridwidth = 3;
+    add(bp, cs);
   }
 
   public String getUsername() {

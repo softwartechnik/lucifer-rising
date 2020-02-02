@@ -1,7 +1,7 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 
-public interface LuciferGUIView {
+public interface View {
   JComponent getComponent();
 }
