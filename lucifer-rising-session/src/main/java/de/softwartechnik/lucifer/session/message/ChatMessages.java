@@ -33,8 +33,6 @@ public class ChatMessages implements MessageListener {
   private JMSContext jmsContext;
   @Inject
   private SessionRegistry sessionRegistry;
-  @Resource(lookup = "java:global/jms/ChatMessageQueue")
-  private Queue messageQueue;
 
   public ChatMessages() {
   }
@@ -60,24 +58,5 @@ public class ChatMessages implements MessageListener {
     Optional<ChatSession> session = sessionRegistry.findSession(sessionId);
     ChatSession chatSession = session.orElseThrow();
     chatSession.onMessage(messageText);
-  }
-
-  public void sendMessage(
-    String userId,
-    String sessionId,
-    String messageText
-  ) {
-    try {
-      Message message = jmsContext.createTextMessage(messageText);
-      message.setStringProperty("userId", userId);
-      message.setStringProperty("sessionId", sessionId);
-      jmsContext.createProducer().send(messageQueue, message);
-    } catch (JMSException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public Queue queue() {
-    return messageQueue;
   }
 }
