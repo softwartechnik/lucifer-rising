@@ -78,7 +78,7 @@ public final class Controller {
       }
       mainFrame.setView(loginView);
     });
-
+    
     menuView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Zombie Outbreak spielen!":
@@ -89,6 +89,29 @@ public final class Controller {
           break;
       }
       mainFrame.setView(scenarioView);
+    });
+
+    scenarioView.setActionListener(click -> {
+      switch (click.getActionCommand()) {
+        case "Senden":
+          String text = ((ScenarioPanel)scenarioView.getComponent())
+              .getTextField()
+              .getText();
+          if(!text.isEmpty()) {
+            scenarioView.addTextToUserArea(text + '\n'
+            );
+            scenarioView.clearTextField();
+            // TODO: generate response
+            scenarioView.addTextToLuciferArea(
+              "Antwort von Lucifer"
+                + '\n'
+            );
+          }
+          break;
+        case "Speichern und verlassen":
+          // TODO safe game and return
+          break;
+      }
     });
   }
 }

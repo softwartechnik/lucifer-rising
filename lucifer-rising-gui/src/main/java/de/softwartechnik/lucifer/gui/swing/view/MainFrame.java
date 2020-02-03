@@ -1,6 +1,6 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -34,5 +34,17 @@ public final class MainFrame extends JFrame {
     contentPane.add(contentView);
     setVisible(true);
     repaint();
+  }
+
+  // TODO: integrate background image
+  public JPanel setBackgroundImage(String filename) {
+    Image img = Toolkit.getDefaultToolkit().getImage(filename);
+    return(new JPanel() {
+      @Override
+      public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(img, 0, 0, null);
+      }
+    });
   }
 }
