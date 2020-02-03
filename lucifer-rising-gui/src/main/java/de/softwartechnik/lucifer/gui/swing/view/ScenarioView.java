@@ -20,5 +20,6 @@ public final class ScenarioView implements View {
 
   public void setActionListener(ActionListener actionListener) {
     scenarioPanel.getSend().addActionListener(actionListener);
+    scenarioPanel.getExit().addActionListener(actionListener);
   }
 }

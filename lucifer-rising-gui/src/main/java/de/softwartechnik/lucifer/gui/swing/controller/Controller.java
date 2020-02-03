@@ -41,8 +41,11 @@ public final class Controller {
           loginPanel.getUsername();
           loginPanel.getPassword();
           // TODO show MainView
-          mainFrame.setView(menuView);
-          //mainFrame.setView(scenarioView);
+          //mainFrame.setView(menuView);
+
+          //Test scenario View separately
+          mainFrame.setView(scenarioView);
+
           menuPanel.setUserStatistics(42, 0);
           menuPanel.setGameStatistics(99, 16);
           break;
