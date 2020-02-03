@@ -5,10 +5,12 @@ import de.softwartechnik.lucifer.tree.ChatSession;
 import de.softwartechnik.lucifer.tree.io.TreeRepository;
 import de.softwartechnik.lucifer.tree.node.Tree;
 import java.net.URI;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import javax.annotation.Resource;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
@@ -22,6 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+@ApplicationScoped
 @Path("/game")
 public class Games {
   @Inject
@@ -35,8 +38,8 @@ public class Games {
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public Response findGames() {
-    return Response.ok(sessionRegistry.findSessions()).build();
+  public Collection<ChatSession> findGames() {
+    return sessionRegistry.findSessions();
   }
 
   @GET

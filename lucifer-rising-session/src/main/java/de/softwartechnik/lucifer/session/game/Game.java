@@ -10,8 +10,8 @@ import javax.jms.Queue;
 
 public class Game implements ChatSession {
   private final String id;
-  private final Queue chatMessages;
-  private final JMSContext jmsContext;
+  private final transient Queue chatMessages;
+  private final transient JMSContext jmsContext;
   private Node currentNode;
 
   public Game(String id, Queue chatMessages, JMSContext jmsContext) {
@@ -26,6 +26,7 @@ public class Game implements ChatSession {
       Message jmsMessage = jmsContext.createTextMessage(message);
       jmsMessage.setStringProperty("userId", "userId");
       jmsMessage.setStringProperty("sessionId", id);
+      jmsMessage.setStringProperty("type", "bot");
       jmsContext.createProducer().send(chatMessages, message);
     } catch (JMSException e) {
       e.printStackTrace();
@@ -60,5 +61,14 @@ public class Game implements ChatSession {
   @Override
   public String id() {
     return id;
+  }
+
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder("Game{");
+    sb.append("id='").append(id).append('\'');
+    sb.append(", currentNode=").append(currentNode);
+    sb.append('}');
+    return sb.toString();
   }
 }

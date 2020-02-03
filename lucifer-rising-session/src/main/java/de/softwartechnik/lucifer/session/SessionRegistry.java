@@ -18,7 +18,13 @@ public class SessionRegistry {
   }
 
   public void addSession(ChatSession chatSession) {
-    sessions.remove(chatSession.id());
+    System.out.println("New Session [" + (sessions.size() + 1) + "]: " + chatSession);
+    sessions.put(chatSession.id(), chatSession);
+  }
+
+  public Collection<ChatSession> findSessions() {
+    System.out.println("Fetching session: " + sessions);
+    return new ArrayList<>(sessions.values());
   }
 
   public Collection<ChatSession> findSessions() {
