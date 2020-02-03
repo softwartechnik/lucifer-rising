@@ -42,6 +42,7 @@ public final class Controller {
           loginPanel.getPassword();
           // TODO show MainView
           mainFrame.setView(menuView);
+          //mainFrame.setView(scenarioView);
           menuPanel.setUserStatistics(42, 0);
           menuPanel.setGameStatistics(99, 16);
           break;
@@ -55,6 +56,16 @@ public final class Controller {
     });
     signUpView.setActionListener(click -> {
       mainFrame.setView(loginView);
+    });
+    scenarioView.setActionListener(click -> {
+      switch (click.getActionCommand()) {
+        case "Senden":
+          // TODO send typed message in TextArea + generate response
+          break;
+        case "Speichern und verlassen":
+          // TODO safe game and return
+          break;
+      }
     });
   }
 }

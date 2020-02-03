@@ -19,6 +19,6 @@ public final class ScenarioView implements View {
   }
 
   public void setActionListener(ActionListener actionListener) {
-    // TODO
+    scenarioPanel.getSend().addActionListener(actionListener);
   }
 }
