@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import javax.ejb.Singleton;
 
 @Singleton
@@ -23,6 +24,10 @@ public class SessionRegistry {
 
   public Collection<ChatSession> findSessions() {
     System.out.println("Fetching session: " + sessions);
+    return new ArrayList<>(sessions.values());
+  }
+
+  public Collection<ChatSession> findSessions() {
     return new ArrayList<>(sessions.values());
   }
 }
