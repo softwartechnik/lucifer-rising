@@ -25,7 +25,7 @@ public final class Controller {
   private final GameClient gameClient;
   private final UserClient userClient;
 
-  private String userId;
+  private User user;
   private String sessionId;
 
   public Controller(
@@ -60,9 +60,7 @@ public final class Controller {
         case "Login":
           loginPanel.getUsername();
           loginPanel.getPassword();
-          User user = userClient.login(
-            loginPanel.getUsername(),
-            loginPanel.getPassword());
+          user = userClient.login(loginPanel.getUsername(), loginPanel.getPassword());
           if (user != null) {
             mainFrame.setView(menuView);
             menuPanel.setUserStatistics(user.getGamesPlayed(), user.getGamesWon());
@@ -93,7 +91,8 @@ public final class Controller {
     menuView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Zombie Outbreak spielen":
-          // TODO
+          gameClient.createGame(Integer.toString(user.getId()), "zombies");
+          // TODO set sessionId
           mainFrame.setView(scenarioView);
 
           if (sessionId == null) {
@@ -102,13 +101,12 @@ public final class Controller {
 
           break;
         case "Apokalypse spielen":
-          // TODO
+          gameClient.createGame(Integer.toString(user.getId()), "apocalypse");
           mainFrame.setView(scenarioView);
 
           if (sessionId == null) {
             sessionId = gameClient.createGame("1", "apocalypse");
           }
-
           break;
         case "Logout":
           mainFrame.setView(loginView);
