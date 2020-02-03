@@ -11,16 +11,10 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 public final class SignUpPanel extends JPanel {
-  private JTextField surname;
-  private JTextField name;
   private JTextField username;
-  private JTextField email;
   private JPasswordField pfPassword;
   private JPasswordField pfPasswordRepeat;
-  private JLabel lbSurname;
-  private JLabel lbName;
   private JLabel lbUsername;
-  private JLabel lbMail;
   private JLabel lbPwd;
   private JLabel lbPwdRepeat;
 
@@ -33,30 +27,6 @@ public final class SignUpPanel extends JPanel {
 
     cs.fill = GridBagConstraints.HORIZONTAL;
 
-    lbSurname = new JLabel("Vorname: ");
-    cs.gridx = 0;
-    cs.gridy = 0;
-    cs.gridwidth = 1;
-    add(lbSurname, cs);
-
-    surname = new JTextField(20);
-    cs.gridx = 1;
-    cs.gridy = 0;
-    cs.gridwidth = 2;
-    add(surname, cs);
-
-    lbName = new JLabel("Name: ");
-    cs.gridx = 0;
-    cs.gridy = 1;
-    cs.gridwidth = 1;
-    add(lbName, cs);
-
-    name = new JTextField(20);
-    cs.gridx = 1;
-    cs.gridy = 1;
-    cs.gridwidth = 2;
-    add(name, cs);
-
     lbUsername = new JLabel("Username: ");
     cs.gridx = 0;
     cs.gridy = 2;
@@ -68,18 +38,6 @@ public final class SignUpPanel extends JPanel {
     cs.gridy = 2;
     cs.gridwidth = 2;
     add(username, cs);
-
-    lbMail = new JLabel("EMail: ");
-    cs.gridx = 0;
-    cs.gridy = 3;
-    cs.gridwidth = 1;
-    add(lbMail, cs);
-
-    email = new JTextField(20);
-    cs.gridx = 1;
-    cs.gridy = 3;
-    cs.gridwidth = 2;
-    add(email, cs);
 
     lbPwd = new JLabel("Password: ");
     cs.gridx = 0;
@@ -118,20 +76,8 @@ public final class SignUpPanel extends JPanel {
     add(bp, cs);
   }
 
-  public String  getSurname() {
-    return surname.getText();
-  }
-
-  public String  getName() {
-    return name.getText();
-  }
-
-  public String  getUsername() {
+  public String getUsername() {
     return username.getText();
-  }
-
-  public String  getEmail() {
-    return email.getText();
   }
 
   public String getPassword() {

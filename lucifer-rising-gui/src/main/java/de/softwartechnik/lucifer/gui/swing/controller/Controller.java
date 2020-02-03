@@ -1,8 +1,8 @@
 package de.softwartechnik.lucifer.gui.swing.controller;
 
-import com.google.gson.JsonObject;
 import de.softwartechnik.lucifer.gui.swing.client.GameClient;
 import de.softwartechnik.lucifer.gui.swing.client.GameClient.Answer;
+import de.softwartechnik.lucifer.gui.swing.client.UserClient;
 import de.softwartechnik.lucifer.gui.swing.view.LoginPanel;
 import de.softwartechnik.lucifer.gui.swing.view.LoginView;
 import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
@@ -12,6 +12,7 @@ import de.softwartechnik.lucifer.gui.swing.view.ScenarioPanel;
 import de.softwartechnik.lucifer.gui.swing.view.ScenarioView;
 import de.softwartechnik.lucifer.gui.swing.view.SignUpPanel;
 import de.softwartechnik.lucifer.gui.swing.view.SignUpView;
+import de.softwartechnik.lucifer.user.User;
 
 public final class Controller {
 
@@ -21,7 +22,8 @@ public final class Controller {
   private final ScenarioView scenarioView;
   private final SignUpView signUpView;
 
-  private final GameClient gameClient = GameClient.create();
+  private final GameClient gameClient;
+  private final UserClient userClient;
 
   private String userId;
   private String sessionId;
@@ -31,13 +33,17 @@ public final class Controller {
     LoginView loginView,
     MenuView menuView,
     ScenarioView scenarioView,
-    SignUpView signUpView
+    SignUpView signUpView,
+    GameClient gameClient,
+    UserClient userClient
   ) {
     this.mainFrame = mainFrame;
     this.loginView = loginView;
     this.menuView = menuView;
     this.scenarioView = scenarioView;
     this.signUpView = signUpView;
+    this.gameClient = gameClient;
+    this.userClient = userClient;
   }
 
   public void showLogin() {
@@ -54,9 +60,13 @@ public final class Controller {
         case "Login":
           loginPanel.getUsername();
           loginPanel.getPassword();
-          if (true) { // TODO test credentials
+          User user = userClient.login(
+            loginPanel.getUsername(),
+            loginPanel.getPassword());
+          if (user != null) {
             mainFrame.setView(menuView);
-            menuPanel.setUserStatistics(42, 0);
+            menuPanel.setUserStatistics(user.getGamesPlayed(), user.getGamesWon());
+            // TODO getGameStatistics
             menuPanel.setGameStatistics(99, 16);
           }
           break;
@@ -72,12 +82,7 @@ public final class Controller {
     signUpView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Registrieren":
-          String surname = signUpPanel.getSurname();
-          String name = signUpPanel.getName();
-          String username = signUpPanel.getUsername();
-          String email = signUpPanel.getEmail();
-          String password = signUpPanel.getPassword();
-          // TODO register using data
+          userClient.register(signUpPanel.getUsername(), signUpPanel.getPassword());
           break;
         case "Cancel":
           break;
