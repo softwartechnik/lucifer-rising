@@ -1,14 +1,12 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.event.ActionListener;
-import javax.inject.Inject;
 import javax.swing.JComponent;
 
 public final class MenuView implements View {
 
   private final MenuPanel menuPanel;
 
-  @Inject
   public MenuView(MenuPanel menuPanel) {
     this.menuPanel = menuPanel;
   }

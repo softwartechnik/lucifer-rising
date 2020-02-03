@@ -4,8 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import javax.inject.Inject;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public final class MenuPanel extends JPanel {
 
@@ -17,7 +18,6 @@ public final class MenuPanel extends JPanel {
   private JButton apokalypseScenarioButton;
   private JButton logoutButton;
 
-  @Inject
   public MenuPanel() {
     setLayout(new GridBagLayout());
     GridBagConstraints constraints = new GridBagConstraints();
