@@ -15,11 +15,6 @@ import javax.jms.MessageListener;
 import javax.jms.Queue;
 import javax.jms.TextMessage;
 
-@JMSDestinationDefinition(
-  name = "java:global/jms/ChatMessageQueue",
-  interfaceName = "javax.jms.Queue",
-  destinationName = "ChatMessageQueue"
-)
 @MessageDriven(
   mappedName = "java:global/jms/ChatMessageQueue",
   activationConfig = {

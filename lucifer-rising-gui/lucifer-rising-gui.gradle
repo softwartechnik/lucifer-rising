@@ -1,12 +1,26 @@
 dependencies {
-  compile 'javax.inject:javax.inject:1'
-  testImplementation 'javax:javaee-api:8.0.1'
-  implementation 'javax:javaee-api:8.0.1'
-  implementation 'javax.enterprise:cdi-api:1.2'
+  api 'javax.inject:javax.inject:1'
+  api 'javax:javaee-api:8.0.1'
+  api 'javax.enterprise:cdi-api:1.2'
+  api 'com.google.code.gson:gson:2.8.6'
+
+  // https://mvnrepository.com/artifact/org.wildfly/wildfly-ejb-client-bom
+  compile group: 'org.wildfly', name: 'wildfly-ejb-client-bom', version: '18.0.1.Final'
+  compile group: 'org.wildfly', name: 'wildfly-jms-client-bom', version: '18.0.1.Final'
+  // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client
+  compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.30'
+// https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2
+  compile group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: '2.30'
+
 }
 
 jar {
   from {
     configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+  manifest {
+    attributes(
+      'Main-Class': "de.softwartechnik.lucifer.gui.swing.SwingGui"
+    )
   }
 }

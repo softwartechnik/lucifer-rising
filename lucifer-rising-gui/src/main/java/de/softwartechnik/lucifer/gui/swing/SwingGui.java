@@ -18,16 +18,14 @@ public final class SwingGui {
   }
 
   public static void main(String[] args) {
-    //TODO: fix this with Dependency injection
     SwingGui gui = new SwingGui(new Controller(
       new MainFrame(),
       new LoginView(new LoginPanel()),
       new MenuView(new MenuPanel()),
       new ScenarioView(new ScenarioPanel()),
       new SignUpView(new SignUpPanel()),
-      new Messaging()
+      Messaging.createMessagingWithJmsConnections()
     ));
-
     gui.initialize();
   }
 }

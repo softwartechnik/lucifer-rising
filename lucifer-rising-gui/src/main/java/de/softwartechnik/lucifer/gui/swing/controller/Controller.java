@@ -21,6 +21,9 @@ public final class Controller {
 
   private final Messaging messaging;
 
+  private String userId;
+  private String sessionId;
+
   public Controller(
     MainFrame mainFrame,
     LoginView loginView,
@@ -104,9 +107,10 @@ public final class Controller {
               .getTextField()
               .getText();
           if (!text.isEmpty()) {
+            messaging.sendMessage(userId, sessionId, text);
+
             scenarioView.addTextToUserArea(text + "\n");
             scenarioView.clearTextField();
-            // TODO: generate response
             scenarioView.addTextToLuciferArea(
               "Antwort von Lucifer"
                 + '\n'

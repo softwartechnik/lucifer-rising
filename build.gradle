@@ -20,6 +20,12 @@ allprojects {
     jcenter()
     google()
     mavenLocal()
+    maven {
+      url 'https://repository.jboss.org/nexus/content/repositories/releases/'
+    }
+    maven {
+      url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases'
+    }
     mavenCentral()
   }
 

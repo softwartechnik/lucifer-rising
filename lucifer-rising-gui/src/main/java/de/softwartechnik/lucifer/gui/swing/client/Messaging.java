@@ -1,38 +1,22 @@
 package de.softwartechnik.lucifer.gui.swing.client;
 
-import javax.annotation.Resource;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
-import javax.jms.Queue;
 import javax.jms.TextMessage;
 
 public final class Messaging implements MessageListener {
+  private final MessageClient messageClient;
 
-  @Resource(lookup = "java:comp/DefaultJMSConnectionFactory")
-  private ConnectionFactory connectionFactory;
-  //private Context context;
-  private JMSContext jmsContext;
-  @Resource(lookup = "java:global/jms/ChatMessageQueue")
-  private Queue messageQueue;
-
-  /*
-  private Messaging() {
-    try {
-      context = new InitialContext();
-    } catch (NamingException e) {
-      e.printStackTrace();
-    }
+  public Messaging(MessageClient messageClient) {
+    this.messageClient = messageClient;
   }
-  */
 
   // TODO: client needs to know his userId and sessionId
   @Override
   public void onMessage(Message message) {
     try {
-      if (message.getJMSDestination().equals(messageQueue)) {
+      if (message.getJMSDestination().equals(messageClient.destination())) {
         var textMessage = (TextMessage) message;
         String userId = textMessage.getStringProperty("userId");
         String sessionId = textMessage.getStringProperty("sessionId");
@@ -49,31 +33,17 @@ public final class Messaging implements MessageListener {
 
   public void sendMessage(String userId, String sessionId, String messageText) {
     try {
-      Message message = jmsContext.createTextMessage(messageText);
+      Message message = messageClient.jmsContext().createTextMessage(messageText);
       message.setStringProperty("userId", userId);
       message.setStringProperty("sessionId", sessionId);
       message.setStringProperty("type", "user");
-      jmsContext.createProducer().send(messageQueue, message);
+      messageClient.jmsContext().createProducer().send(messageClient.destination(), message);
     } catch (JMSException e) {
       e.printStackTrace();
     }
   }
 
-  private void initializeJmsConnections() {
-    //try {
-      //ConnectionFactory connectionFactory = (ConnectionFactory) context
-      //  .lookup("java:comp/DefaultJMSConnectionFactory");
-      jmsContext = connectionFactory.createContext();
-      //messageQueue = (Queue) context.lookup("java:global/jms/ChatMessageQueue");
-      jmsContext.createConsumer(messageQueue).setMessageListener(this);
-    //} catch (NamingException e) {
-    //  e.printStackTrace();
-    //}
-  }
-
   public static Messaging createMessagingWithJmsConnections() {
-    var messaging = new Messaging();
-    messaging.initializeJmsConnections();
-    return messaging;
+    return new Messaging(MessageClient.create());
   }
 }

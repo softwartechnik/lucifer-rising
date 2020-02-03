@@ -1,6 +1,7 @@
 FROM jboss/wildfly
 
 RUN /opt/jboss/wildfly/bin/add-user.sh admin vomBizepsSchrumpftDerSalat --silent
+RUN /opt/jboss/wildfly/bin/add-user.sh -a test 4Sr3sU*^ --silent
 
 ADD lucifer-rising-ear/build/libs/lucifer-rising-ear-0.1.0-SNAPSHOT.ear /opt/jboss/wildfly/standalone/deployments/lucifer-rising-ear.ear
 ADD scripts/scenario/apocalypse.json /opt/jboss/wildfly/standalone/configuration/apocalypse.json
