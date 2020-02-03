@@ -26,8 +26,4 @@ public class SessionRegistry {
     System.out.println("Fetching session: " + sessions);
     return new ArrayList<>(sessions.values());
   }
-
-  public Collection<ChatSession> findSessions() {
-    return new ArrayList<>(sessions.values());
-  }
 }
