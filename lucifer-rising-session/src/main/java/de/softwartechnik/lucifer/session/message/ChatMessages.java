@@ -41,6 +41,12 @@ public class ChatMessages implements MessageListener {
   public void onMessage(Message message) {
     try {
       var textMessage = (TextMessage) message;
+
+      String messageType = textMessage.getStringProperty("type");
+      if (messageType == null || messageType.equalsIgnoreCase("bot")) {
+        return;
+      }
+
       String userId = textMessage.getStringProperty("userId");
       String sessionId = textMessage.getStringProperty("sessionId");
       String messageText = textMessage.getText();
@@ -55,6 +61,7 @@ public class ChatMessages implements MessageListener {
     String sessionId,
     String messageText
   ) {
+    System.out.println("Processing message: " + sessionId + " with content: " + messageText);
     Optional<ChatSession> session = sessionRegistry.findSession(sessionId);
     ChatSession chatSession = session.orElseThrow();
     chatSession.onMessage(messageText);

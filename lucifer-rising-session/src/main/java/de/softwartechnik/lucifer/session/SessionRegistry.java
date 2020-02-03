@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import javax.ejb.Singleton;
+import javax.enterprise.context.ApplicationScoped;
 
 @Singleton
 public class SessionRegistry {
@@ -18,10 +18,12 @@ public class SessionRegistry {
   }
 
   public void addSession(ChatSession chatSession) {
+    System.out.println("New Session [" + (sessions.size() + 1) + "]: " + chatSession);
     sessions.remove(chatSession.id());
   }
 
   public Collection<ChatSession> findSessions() {
+    System.out.println("Fetching session: " + sessions);
     return new ArrayList<>(sessions.values());
   }
 }
