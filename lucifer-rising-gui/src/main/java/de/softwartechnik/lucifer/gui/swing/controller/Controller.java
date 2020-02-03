@@ -1,6 +1,12 @@
 package de.softwartechnik.lucifer.gui.swing.controller;
 
-import de.softwartechnik.lucifer.gui.swing.view.*;
+import de.softwartechnik.lucifer.gui.swing.view.LoginPanel;
+import de.softwartechnik.lucifer.gui.swing.view.LoginView;
+import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
+import de.softwartechnik.lucifer.gui.swing.view.MenuPanel;
+import de.softwartechnik.lucifer.gui.swing.view.MenuView;
+import de.softwartechnik.lucifer.gui.swing.view.ScenarioView;
+import de.softwartechnik.lucifer.gui.swing.view.SignUpView;
 
 public final class Controller {
 

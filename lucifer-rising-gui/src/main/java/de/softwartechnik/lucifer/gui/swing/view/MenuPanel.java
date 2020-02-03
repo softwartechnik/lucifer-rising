@@ -64,8 +64,9 @@ public final class MenuPanel extends JPanel {
     zombieScenarioHeadPanel.add(zombieScenarioHeadLabel);
     zombieScenarioPanel.add(zombieScenarioHeadPanel, BorderLayout.NORTH);
     JLabel zombieScenarioInfoPanel = new JLabel(
-      "<html><p style=\"width=400px\">Ein gew\u00f6hnlicher Tag an der FH oder doch ein ausgewachsenes Abenteuer mit heiklen Situationen," +
-        " schwierigen Entscheidungen und Nervenkitzel pur? Hier ist survival instinct gefragt.</p></html>"
+      "<html><p style=\"width=400px\">Ein gew\u00f6hnlicher Tag an der FH oder doch "
+        + "ein ausgewachsenes Abenteuer mit heiklen Situationen, schwierigen"
+        + " Entscheidungen und Nervenkitzel pur? Hier ist survival instinct gefragt.</p></html>"
     );
     zombieScenarioPanel.add(zombieScenarioInfoPanel, BorderLayout.CENTER);
     zombieScenarioButton = new JButton("Zombie Outbreak spielen");
@@ -82,8 +83,9 @@ public final class MenuPanel extends JPanel {
     apokalypseScenarioHeadPanel.add(apokalypseScenarioHeadLabel);
     apokalypseScenarioPanel.add(apokalypseScenarioHeadPanel, BorderLayout.NORTH);
     JLabel apokalypseScenarioInfoPanel = new JLabel(
-      "<html><p style=\"width=400px\">Wem nach d\u00fcsterer (Spiel-)Stimmung ist, der ist hier genau richtig." +
-        " Der Mann auf dem wei\u00dfen Pferd l\u00e4utet die Apokalypse ein! Wird die Welt in den Abgrund sinken?</p></html>"
+      "<html><p style=\"width=400px\">Wem nach d\u00fcsterer (Spiel-)Stimmung ist, der"
+        + " ist hier genau richtig. Der Mann auf dem wei\u00dfen Pferd l\u00e4utet die Apokalypse"
+        + " ein! Wird die Welt in den Abgrund sinken?</p></html>"
     );
     apokalypseScenarioPanel.add(apokalypseScenarioInfoPanel, BorderLayout.CENTER);
     apokalypseScenarioButton = new JButton("Apokalypse spielen");
