@@ -1,5 +1,6 @@
 package de.softwartechnik.lucifer.client;
 
+import javax.annotation.Resource;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
@@ -13,10 +14,14 @@ import javax.naming.NamingException;
 
 public final class Messaging implements MessageListener {
 
-  private Context context;
+  @Resource(lookup = "java:comp/DefaultJMSConnectionFactory")
+  private ConnectionFactory connectionFactory;
+  //private Context context;
   private JMSContext jmsContext;
+  @Resource(lookup = "java:global/jms/ChatMessageQueue")
   private Queue messageQueue;
 
+  /*
   private Messaging() {
     try {
       context = new InitialContext();
@@ -24,6 +29,7 @@ public final class Messaging implements MessageListener {
       e.printStackTrace();
     }
   }
+  */
 
   // TODO: client needs to know his userId and sessionId
   @Override
@@ -55,15 +61,15 @@ public final class Messaging implements MessageListener {
   }
 
   private void initializeJmsConnections() {
-    try {
-      ConnectionFactory connectionFactory = (ConnectionFactory) context
-        .lookup("java:comp/DefaultJMSConnectionFactory");
+    //try {
+      //ConnectionFactory connectionFactory = (ConnectionFactory) context
+      //  .lookup("java:comp/DefaultJMSConnectionFactory");
       jmsContext = connectionFactory.createContext();
-      messageQueue = (Queue) context.lookup("java:global/jms/ChatMessageQueue");
+      //messageQueue = (Queue) context.lookup("java:global/jms/ChatMessageQueue");
       jmsContext.createConsumer(messageQueue).setMessageListener(this);
-    } catch (NamingException e) {
-      e.printStackTrace();
-    }
+    //} catch (NamingException e) {
+    //  e.printStackTrace();
+    //}
   }
 
   public static Messaging createMessagingWithJmsConnections() {
