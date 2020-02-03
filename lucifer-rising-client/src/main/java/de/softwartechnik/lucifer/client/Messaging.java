@@ -39,6 +39,7 @@ public final class Messaging implements MessageListener {
         var textMessage = (TextMessage) message;
         String userId = textMessage.getStringProperty("userId");
         String sessionId = textMessage.getStringProperty("sessionId");
+        String type = textMessage.getStringProperty("type");
         if (userId.equals("") && sessionId.equals("")) {
           String messageText = textMessage.getText();
           // TODO: Add message to client UI
@@ -54,6 +55,7 @@ public final class Messaging implements MessageListener {
       Message message = jmsContext.createTextMessage(messageText);
       message.setStringProperty("userId", userId);
       message.setStringProperty("sessionId", sessionId);
+      message.setStringProperty("type", "user");
       jmsContext.createProducer().send(messageQueue, message);
     } catch (JMSException e) {
       e.printStackTrace();
