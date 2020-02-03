@@ -21,5 +21,6 @@ public final class LoginView implements View {
   public void setActionListener(ActionListener actionListener) {
     loginPanel.getBtnLogin().addActionListener(actionListener);
     loginPanel.getBtnCancel().addActionListener(actionListener);
+    loginPanel.getBtnRegister().addActionListener(actionListener);
   }
 }
