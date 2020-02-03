@@ -48,37 +48,53 @@ public final class MenuPanel extends JPanel {
   }
 
   private JPanel buildUserStatisticPanel() {
-    JPanel userStatisticPanel = new JPanel(new GridLayout(3, 1)); // TODO layout
+    JPanel innerUserStatisticPanel = new JPanel(new GridLayout(3, 1)); // TODO layout
 
+    JPanel userStatisticHeadPanel = new JPanel();
     JLabel userStatisticLabel = new JLabel("User-Statistiken");
-    userStatisticPanel.add(userStatisticLabel);
+    userStatisticHeadPanel.add(userStatisticLabel);
+    innerUserStatisticPanel.add(userStatisticHeadPanel);
+    JPanel userGamesPlayedPanel = new JPanel();
     JLabel userGamesPlayedLabel = new JLabel("Spiele gespielt:");
-    userStatisticPanel.add(userGamesPlayedLabel);
+    userGamesPlayedPanel.add(userGamesPlayedLabel);
     userGamesPlayedValueLabel = new JLabel();
-    userStatisticPanel.add(userGamesPlayedValueLabel);
+    userGamesPlayedPanel.add(userGamesPlayedValueLabel);
+    innerUserStatisticPanel.add(userGamesPlayedPanel);
+    JPanel userGamesWonPanel = new JPanel();
     JLabel userGamesWonLabel = new JLabel("Spiele gewonnen:");
-    userStatisticPanel.add(userGamesWonLabel);
+    userGamesWonPanel.add(userGamesWonLabel);
     userGamesWonValueLabel = new JLabel();
-    userStatisticPanel.add(userGamesWonValueLabel);
+    userGamesWonPanel.add(userGamesWonValueLabel);
+    innerUserStatisticPanel.add(userGamesWonPanel);
 
-    return userStatisticPanel;
+    JPanel outerUserStatisticPanel = new JPanel();
+    outerUserStatisticPanel.add(innerUserStatisticPanel);
+    return outerUserStatisticPanel;
   }
 
   private JPanel buildGameStatisticPanel() {
-    JPanel gameStatisticPanel = new JPanel(); // TODO layout
+    JPanel innerGameStatisticPanel = new JPanel(new GridLayout(3, 1)); // TODO layout
 
+    JPanel gameStatisticHeadPanel = new JPanel();
     JLabel gameStatisticLabel = new JLabel("Gesamt-Statistiken");
-    gameStatisticPanel.add(gameStatisticLabel);
+    gameStatisticHeadPanel.add(gameStatisticLabel);
+    innerGameStatisticPanel.add(gameStatisticHeadPanel);
+    JPanel gameGamesPlayedPanel = new JPanel();
     JLabel gameGamesPlayedLabel = new JLabel("Spiele gespielt:");
-    gameStatisticPanel.add(gameGamesPlayedLabel);
+    gameGamesPlayedPanel.add(gameGamesPlayedLabel);
     gameGamesPlayedValueLabel = new JLabel();
-    gameStatisticPanel.add(gameGamesPlayedValueLabel);
+    gameGamesPlayedPanel.add(gameGamesPlayedValueLabel);
+    innerGameStatisticPanel.add(gameGamesPlayedPanel);
+    JPanel gameGamesWonPanel = new JPanel();
     JLabel gameGamesWonLabel = new JLabel("Spiele gewonnen:");
-    gameStatisticPanel.add(gameGamesWonLabel);
+    gameGamesWonPanel.add(gameGamesWonLabel);
     gameGamesWonValueLabel = new JLabel();
-    gameStatisticPanel.add(gameGamesWonValueLabel);
+    gameGamesWonPanel.add(gameGamesWonValueLabel);
+    innerGameStatisticPanel.add(gameGamesWonPanel);
 
-    return gameStatisticPanel;
+    JPanel outerGameStatisticPanel = new JPanel();
+    outerGameStatisticPanel.add(innerGameStatisticPanel);
+    return outerGameStatisticPanel;
   }
 
   public void setUserStatistics(int gamesPlayed, int gamesWon) {
