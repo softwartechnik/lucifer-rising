@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapterFactory;
 import de.softwartechnik.lucifer.tree.node.Tree;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -52,9 +53,12 @@ public class TreeRepository {
       .registerSubtype(EndNodeModel.class, "end");
   }
 
+  private static final String CONFIG_DIR = System.getProperty("jboss.server.config.dir");
+
   public Optional<Tree> findTree(String scenario) {
+    System.out.println("Searching for scenario " + scenario + " in " + CONFIG_DIR);
     try (
-      var inputStream = getClass().getResourceAsStream(scenario + ".json");
+      var inputStream = new FileInputStream(CONFIG_DIR + "/" + scenario + ".json");
       var reader = new InputStreamReader(inputStream)
       ) {
       return Optional.of(tryReadNodes(scenario, reader));
