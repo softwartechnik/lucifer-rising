@@ -6,6 +6,7 @@ import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
 import de.softwartechnik.lucifer.gui.swing.view.MenuPanel;
 import de.softwartechnik.lucifer.gui.swing.view.MenuView;
 import de.softwartechnik.lucifer.gui.swing.view.ScenarioView;
+import de.softwartechnik.lucifer.gui.swing.view.SignUpPanel;
 import de.softwartechnik.lucifer.gui.swing.view.SignUpView;
 
 public final class Controller {
@@ -40,6 +41,8 @@ public final class Controller {
   public void setUpListener() {
     var loginPanel = (LoginPanel) loginView.getComponent();
     var menuPanel = (MenuPanel) menuView.getComponent();
+    var signUpPanel = (SignUpPanel) signUpView.getComponent();
+
     loginView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Login":
@@ -60,6 +63,22 @@ public final class Controller {
       }
     });
 
+    signUpView.setActionListener(click -> {
+      switch (click.getActionCommand()) {
+        case "Registrieren":
+          String surname= signUpPanel.getSurname();
+          String name = signUpPanel.getName();
+          String username = signUpPanel.getUsername();
+          String email = signUpPanel.getEmail();
+          String password = signUpPanel.getPassword();
+          // TODO register using data
+          break;
+        case "Cancel":
+          break;
+      }
+      mainFrame.setView(loginView);
+    });
+
     menuView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Zombie Outbreak spielen!":
@@ -70,10 +89,6 @@ public final class Controller {
           break;
       }
       mainFrame.setView(scenarioView);
-    });
-
-    signUpView.setActionListener(click -> {
-      mainFrame.setView(loginView);
     });
   }
 }

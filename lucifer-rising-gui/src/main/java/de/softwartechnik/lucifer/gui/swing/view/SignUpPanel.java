@@ -120,24 +120,24 @@ public final class SignUpPanel extends JPanel {
     add(bp, cs);
   }
 
-  public JTextField getSurname() {
-    return surname;
+  public String  getSurname() {
+    return surname.getText();
   }
 
-  public JTextField getTheName() {
-    return name;
+  public String  getName() {
+    return name.getText();
   }
 
-  public JTextField getUsername() {
-    return username;
+  public String  getUsername() {
+    return username.getText();
   }
 
-  public JTextField getEmail() {
-    return email;
+  public String  getEmail() {
+    return email.getText();
   }
 
-  public JPasswordField getPfPassword() {
-    return pfPassword;
+  public String getPassword() {
+    return pfPassword.getText();
   }
 
   public JPasswordField getPfPasswordRepeat() {
