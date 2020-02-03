@@ -1,4 +1,4 @@
-package de.softwartechnik.lucifer.client;
+package de.softwartechnik.lucifer.gui.swing.client;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSContext;

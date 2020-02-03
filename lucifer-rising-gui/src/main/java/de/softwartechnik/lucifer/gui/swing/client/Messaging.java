@@ -1,4 +1,4 @@
-package de.softwartechnik.lucifer.client;
+package de.softwartechnik.lucifer.gui.swing.client;
 
 import javax.annotation.Resource;
 import javax.jms.ConnectionFactory;
@@ -8,9 +8,6 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.Queue;
 import javax.jms.TextMessage;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 public final class Messaging implements MessageListener {
 

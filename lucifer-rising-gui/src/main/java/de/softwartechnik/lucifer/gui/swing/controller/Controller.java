@@ -1,5 +1,6 @@
 package de.softwartechnik.lucifer.gui.swing.controller;
 
+import de.softwartechnik.lucifer.gui.swing.client.Messaging;
 import de.softwartechnik.lucifer.gui.swing.view.LoginPanel;
 import de.softwartechnik.lucifer.gui.swing.view.LoginView;
 import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
@@ -18,21 +19,22 @@ public final class Controller {
   private final ScenarioView scenarioView;
   private final SignUpView signUpView;
 
-  // private final Messaging messaging;
+  private final Messaging messaging;
 
   public Controller(
     MainFrame mainFrame,
     LoginView loginView,
     MenuView menuView,
     ScenarioView scenarioView,
-    SignUpView signUpView) {
-    //, Messaging messaging) {
+    SignUpView signUpView,
+    Messaging messaging
+  ) {
     this.mainFrame = mainFrame;
     this.loginView = loginView;
     this.menuView = menuView;
     this.scenarioView = scenarioView;
     this.signUpView = signUpView;
-    //this.messaging = messaging;
+    this.messaging = messaging;
   }
 
   public void showLogin() {

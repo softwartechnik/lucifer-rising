@@ -1,7 +1,12 @@
 dependencies {
   compile 'javax.inject:javax.inject:1'
-  compile project(":lucifer-rising-client")
   testImplementation 'javax:javaee-api:8.0.1'
   implementation 'javax:javaee-api:8.0.1'
   implementation 'javax.enterprise:cdi-api:1.2'
+}
+
+jar {
+  from {
+    configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
 }
