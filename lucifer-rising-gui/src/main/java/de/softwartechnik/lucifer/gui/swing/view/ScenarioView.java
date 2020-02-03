@@ -22,4 +22,16 @@ public final class ScenarioView implements View {
     scenarioPanel.getSend().addActionListener(actionListener);
     scenarioPanel.getExit().addActionListener(actionListener);
   }
+
+  public void addTextToUserArea(String text) {
+    scenarioPanel.getTextAreaUser().append(text + '\n');
+  }
+
+  public void addTextToLuciferArea(String text) {
+    scenarioPanel.getTextAreaLucifer().append(text + '\n');
+  }
+
+  public void clearTextField() {
+    scenarioPanel.getTextField().setText("");
+  }
 }

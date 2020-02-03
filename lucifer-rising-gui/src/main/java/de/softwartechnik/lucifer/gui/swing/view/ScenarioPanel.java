@@ -4,8 +4,12 @@ import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+
 public final class ScenarioPanel extends JPanel {
-  private JTextArea textArea;
+  private JScrollPane scrollPane;
+  private JTextArea textAreaLucifer;
+  private JTextArea textAreaUser;
   private JTextField textField;
   private JButton send;
   private JButton exit;
@@ -17,12 +21,30 @@ public final class ScenarioPanel extends JPanel {
 
     cs.fill = GridBagConstraints.HORIZONTAL;
 
-    textArea = new JTextArea(20, 24);
-    textArea.setEditable(false);
+    scrollPane = new JScrollPane();
     cs.gridx = 0;
     cs.gridy = 0;
     cs.gridwidth = 2;
-    add(textArea, cs);
+    JPanel areaPanel = new JPanel(new GridBagLayout());
+    GridBagConstraints paneCs = new GridBagConstraints();
+
+    textAreaLucifer = new JTextArea(20, 12);
+    textAreaLucifer.setEditable(false);
+    paneCs.gridx = 0;
+    paneCs.gridy = 0;
+    paneCs.gridwidth = 1;
+    areaPanel.add(textAreaLucifer, paneCs);
+
+    textAreaUser = new JTextArea(20, 12);
+    textAreaUser.setEditable(false);
+    paneCs.gridx = 1;
+    paneCs.gridy = 0;
+    paneCs.gridwidth = 1;
+    areaPanel.add(textAreaUser, paneCs);
+
+    scrollPane.getViewport().add(areaPanel);
+    scrollPane.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+    add(scrollPane, cs);
 
     textField = new JTextField(15);
     textField.setBorder(BorderFactory.createEmptyBorder());
@@ -45,7 +67,13 @@ public final class ScenarioPanel extends JPanel {
     add(exit, cs);
   }
 
-  public JTextArea getTextArea() { return textArea; }
+  public JTextArea getTextAreaLucifer() {
+    return textAreaLucifer;
+  }
+
+  public JTextArea getTextAreaUser() {
+    return textAreaUser;
+  }
 
   public JTextField getTextField() { return textField; }
 

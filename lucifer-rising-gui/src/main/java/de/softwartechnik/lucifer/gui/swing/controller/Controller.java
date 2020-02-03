@@ -63,7 +63,19 @@ public final class Controller {
     scenarioView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Senden":
-          // TODO send typed message in TextArea + generate response
+          String text = ((ScenarioPanel)scenarioView.getComponent())
+              .getTextField()
+              .getText();
+          if(!text.isEmpty()) {
+            scenarioView.addTextToUserArea(text + '\n'
+            );
+            scenarioView.clearTextField();
+            // TODO: generate response
+            scenarioView.addTextToLuciferArea(
+              "Antwort von Lucifer"
+                + '\n'
+            );
+          }
           break;
         case "Speichern und verlassen":
           // TODO safe game and return
