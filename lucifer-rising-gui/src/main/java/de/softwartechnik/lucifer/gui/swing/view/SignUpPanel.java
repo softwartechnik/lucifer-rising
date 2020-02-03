@@ -1,11 +1,17 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.inject.Inject;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import java.awt.*;
 
-public class SignUpPanel extends JPanel {
+public final class SignUpPanel extends JPanel {
   private JTextField surname;
   private JTextField name;
   private JTextField username;
@@ -114,24 +120,24 @@ public class SignUpPanel extends JPanel {
     add(bp, cs);
   }
 
-  public JTextField getSurname() {
-    return surname;
+  public String  getSurname() {
+    return surname.getText();
   }
 
-  public JTextField getTheName() {
-    return name;
+  public String  getName() {
+    return name.getText();
   }
 
-  public JTextField getUsername() {
-    return username;
+  public String  getUsername() {
+    return username.getText();
   }
 
-  public JTextField getEmail() {
-    return email;
+  public String  getEmail() {
+    return email.getText();
   }
 
-  public JPasswordField getPfPassword() {
-    return pfPassword;
+  public String getPassword() {
+    return pfPassword.getText();
   }
 
   public JPasswordField getPfPasswordRepeat() {

@@ -1,6 +1,13 @@
 package de.softwartechnik.lucifer.gui.swing.controller;
 
-import de.softwartechnik.lucifer.gui.swing.view.*;
+import de.softwartechnik.lucifer.gui.swing.view.LoginPanel;
+import de.softwartechnik.lucifer.gui.swing.view.LoginView;
+import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
+import de.softwartechnik.lucifer.gui.swing.view.MenuPanel;
+import de.softwartechnik.lucifer.gui.swing.view.MenuView;
+import de.softwartechnik.lucifer.gui.swing.view.ScenarioView;
+import de.softwartechnik.lucifer.gui.swing.view.SignUpPanel;
+import de.softwartechnik.lucifer.gui.swing.view.SignUpView;
 
 public final class Controller {
 
@@ -34,16 +41,18 @@ public final class Controller {
   public void setUpListener() {
     var loginPanel = (LoginPanel) loginView.getComponent();
     var menuPanel = (MenuPanel) menuView.getComponent();
+    var signUpPanel = (SignUpPanel) signUpView.getComponent();
+
     loginView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Login":
-          // TODO: login or registrate if new user
           loginPanel.getUsername();
           loginPanel.getPassword();
-          // TODO show MainView
-          mainFrame.setView(menuView);
-          menuPanel.setUserStatistics(42, 0);
-          menuPanel.setGameStatistics(99, 16);
+          if (true) { // TODO test credentials
+            mainFrame.setView(menuView);
+            menuPanel.setUserStatistics(42, 0);
+            menuPanel.setGameStatistics(99, 16);
+          }
           break;
         case "Cancel":
           mainFrame.dispose();
@@ -53,8 +62,33 @@ public final class Controller {
           break;
       }
     });
+
     signUpView.setActionListener(click -> {
+      switch (click.getActionCommand()) {
+        case "Registrieren":
+          String surname= signUpPanel.getSurname();
+          String name = signUpPanel.getName();
+          String username = signUpPanel.getUsername();
+          String email = signUpPanel.getEmail();
+          String password = signUpPanel.getPassword();
+          // TODO register using data
+          break;
+        case "Cancel":
+          break;
+      }
       mainFrame.setView(loginView);
+    });
+
+    menuView.setActionListener(click -> {
+      switch (click.getActionCommand()) {
+        case "Zombie Outbreak spielen!":
+          // TODO
+          break;
+        case "Apokalyse spielen":
+          // TODO
+          break;
+      }
+      mainFrame.setView(scenarioView);
     });
   }
 }

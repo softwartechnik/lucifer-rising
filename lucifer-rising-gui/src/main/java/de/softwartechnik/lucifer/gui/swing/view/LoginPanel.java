@@ -87,5 +87,7 @@ public final class LoginPanel extends JPanel {
     return btnCancel;
   }
 
-  public JButton getBtnRegister() { return btnRegister; }
+  public JButton getBtnRegister() {
+    return btnRegister;
+  }
 }
