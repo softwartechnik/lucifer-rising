@@ -1,11 +1,6 @@
 package de.softwartechnik.lucifer.gui.swing.controller;
 
-import de.softwartechnik.lucifer.gui.swing.view.LoginPanel;
-import de.softwartechnik.lucifer.gui.swing.view.LoginView;
-import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
-import de.softwartechnik.lucifer.gui.swing.view.MenuPanel;
-import de.softwartechnik.lucifer.gui.swing.view.MenuView;
-import de.softwartechnik.lucifer.gui.swing.view.ScenarioView;
+import de.softwartechnik.lucifer.gui.swing.view.*;
 
 public final class Controller {
 
@@ -13,6 +8,7 @@ public final class Controller {
   private final LoginView loginView;
   private final MenuView menuView;
   private final ScenarioView scenarioView;
+  private final SignUpView signUpView;
 
   // private final Messaging messaging;
 
@@ -20,12 +16,14 @@ public final class Controller {
     MainFrame mainFrame,
     LoginView loginView,
     MenuView menuView,
-    ScenarioView scenarioView) {
+    ScenarioView scenarioView,
+    SignUpView signUpView) {
     //, Messaging messaging) {
     this.mainFrame = mainFrame;
     this.loginView = loginView;
     this.menuView = menuView;
     this.scenarioView = scenarioView;
+    this.signUpView = signUpView;
     //this.messaging = messaging;
   }
 
@@ -48,9 +46,15 @@ public final class Controller {
           menuPanel.setGameStatistics(99, 16);
           break;
         case "Cancel":
-          // TODO close application
+          mainFrame.dispose();
+          break;
+        case "Noch keinen Account?":
+          mainFrame.setView(signUpView);
           break;
       }
+    });
+    signUpView.setActionListener(click -> {
+      mainFrame.setView(loginView);
     });
   }
 }

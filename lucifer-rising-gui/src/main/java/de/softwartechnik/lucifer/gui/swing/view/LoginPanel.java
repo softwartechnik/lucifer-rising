@@ -18,6 +18,7 @@ public final class LoginPanel extends JPanel {
   private JLabel lbPassword;
   private JButton btnLogin;
   private JButton btnCancel;
+  private JButton btnRegister;
 
   @Inject
   public LoginPanel() {
@@ -60,6 +61,14 @@ public final class LoginPanel extends JPanel {
     cs.gridy = 2;
     cs.gridwidth = 3;
     add(bp, cs);
+
+    btnRegister = new JButton("Noch keinen Account?");
+    btnRegister.setBorderPainted(false);
+    btnRegister.setContentAreaFilled(false);
+    cs.gridx = 0;
+    cs.gridy = 3;
+    cs.gridwidth = 1;
+    add(btnRegister, cs);
   }
 
   public String getUsername() {
@@ -77,4 +86,6 @@ public final class LoginPanel extends JPanel {
   public JButton getBtnCancel() {
     return btnCancel;
   }
+
+  public JButton getBtnRegister() { return btnRegister; }
 }
