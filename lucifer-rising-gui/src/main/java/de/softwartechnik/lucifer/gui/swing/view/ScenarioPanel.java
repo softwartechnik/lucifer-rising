@@ -4,7 +4,6 @@ import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.inject.Inject;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,7 +19,6 @@ public final class ScenarioPanel extends JPanel {
   private JButton send;
   private JButton exit;
 
-  @Inject
   public ScenarioPanel() {
     setLayout(new GridBagLayout());
     GridBagConstraints cs = new GridBagConstraints();

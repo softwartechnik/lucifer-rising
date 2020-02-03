@@ -3,7 +3,6 @@ package de.softwartechnik.lucifer.gui.swing.view;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.inject.Inject;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +19,6 @@ public final class LoginPanel extends JPanel {
   private JButton btnCancel;
   private JButton btnRegister;
 
-  @Inject
   public LoginPanel() {
     setLayout(new GridBagLayout());
     GridBagConstraints cs = new GridBagConstraints();

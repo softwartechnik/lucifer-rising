@@ -1,14 +1,12 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.event.ActionListener;
-import javax.inject.Inject;
 import javax.swing.JComponent;
 
 public final class LoginView implements View {
 
   private final LoginPanel loginPanel;
 
-  @Inject
   public LoginView(LoginPanel loginPanel) {
     this.loginPanel = loginPanel;
   }
