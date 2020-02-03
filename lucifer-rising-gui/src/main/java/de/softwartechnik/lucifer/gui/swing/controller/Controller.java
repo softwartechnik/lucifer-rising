@@ -82,14 +82,17 @@ public final class Controller {
 
     menuView.setActionListener(click -> {
       switch (click.getActionCommand()) {
-        case "Zombie Outbreak spielen!":
+        case "Zombie Outbreak spielen":
           // TODO
+          mainFrame.setView(scenarioView);
           break;
-        case "Apokalyse spielen":
+        case "Apokalypse spielen":
           // TODO
+          mainFrame.setView(scenarioView);
           break;
+        case "Logout":
+          mainFrame.setView(loginView);
       }
-      mainFrame.setView(scenarioView);
     });
 
     scenarioView.setActionListener(click -> {
@@ -109,7 +112,10 @@ public final class Controller {
           }
           break;
         case "Speichern und verlassen":
-          // TODO safe game and return
+          // TODO save game
+          ((ScenarioPanel)scenarioView.getComponent()).getTextAreaLucifer().setText("");
+          ((ScenarioPanel)scenarioView.getComponent()).getTextAreaUser().setText("");
+          mainFrame.setView(menuView);
           break;
       }
     });

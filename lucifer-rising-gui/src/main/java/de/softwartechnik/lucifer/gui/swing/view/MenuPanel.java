@@ -5,9 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.inject.Inject;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public final class MenuPanel extends JPanel {
 
@@ -17,6 +15,7 @@ public final class MenuPanel extends JPanel {
   private JLabel gameGamesWonValueLabel;
   private JButton zombieScenarioButton;
   private JButton apokalypseScenarioButton;
+  private JButton logoutButton;
 
   @Inject
   public MenuPanel() {
@@ -39,6 +38,12 @@ public final class MenuPanel extends JPanel {
     constraints.gridy = 2;
     constraints.gridwidth = 1;
     add(buildGameStatisticPanel(), constraints);
+
+    logoutButton = new JButton("Logout");
+    constraints.gridx = 0;
+    constraints.gridy = 3;
+    constraints.gridwidth = 2;
+    add(logoutButton, constraints);
   }
 
   private JPanel buildScenarioPanel() {
@@ -161,5 +166,9 @@ public final class MenuPanel extends JPanel {
 
   public JButton getApokalypseScenarioButton() {
     return apokalypseScenarioButton;
+  }
+
+  public JButton getLogoutButton() {
+    return logoutButton;
   }
 }
