@@ -18,6 +18,6 @@ public class LuciferGUITest {
     ));
     // Messaging.createMessagingWithJmsConnections()));
     gui.initialize();
-    //while (true) { }
+    while (true) { }
   }
 }

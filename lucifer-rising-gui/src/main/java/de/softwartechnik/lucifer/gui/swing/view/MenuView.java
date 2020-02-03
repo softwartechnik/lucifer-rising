@@ -19,6 +19,7 @@ public final class MenuView implements View {
   }
 
   public void setActionListener(ActionListener actionListener) {
-    // TODO
+    menuPanel.getZombieScenarioButton().addActionListener(actionListener);
+    menuPanel.getApokalypseScenarioButton().addActionListener(actionListener);
   }
 }

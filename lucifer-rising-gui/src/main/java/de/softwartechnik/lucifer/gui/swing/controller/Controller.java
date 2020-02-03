@@ -37,13 +37,13 @@ public final class Controller {
     loginView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Login":
-          // TODO: login or registrate if new user
           loginPanel.getUsername();
           loginPanel.getPassword();
-          // TODO show MainView
-          mainFrame.setView(menuView);
-          menuPanel.setUserStatistics(42, 0);
-          menuPanel.setGameStatistics(99, 16);
+          if (true) { // TODO test credentials
+            mainFrame.setView(menuView);
+            menuPanel.setUserStatistics(42, 0);
+            menuPanel.setGameStatistics(99, 16);
+          }
           break;
         case "Cancel":
           mainFrame.dispose();
@@ -53,6 +53,19 @@ public final class Controller {
           break;
       }
     });
+
+    menuView.setActionListener(click -> {
+      switch (click.getActionCommand()) {
+        case "Zombie Outbreak spielen!":
+          // TODO
+          break;
+        case "Apokalyse spielen":
+          // TODO
+          break;
+      }
+      mainFrame.setView(scenarioView);
+    });
+
     signUpView.setActionListener(click -> {
       mainFrame.setView(loginView);
     });
