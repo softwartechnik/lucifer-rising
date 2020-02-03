@@ -10,8 +10,8 @@ import javax.jms.Queue;
 
 public class Game implements ChatSession {
   private final String id;
-  private final Queue chatMessages;
-  private final JMSContext jmsContext;
+  private final transient Queue chatMessages;
+  private final transient JMSContext jmsContext;
   private Node currentNode;
 
   public Game(String id, Queue chatMessages, JMSContext jmsContext) {

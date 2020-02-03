@@ -5,6 +5,7 @@ import de.softwartechnik.lucifer.tree.ChatSession;
 import de.softwartechnik.lucifer.tree.io.TreeRepository;
 import de.softwartechnik.lucifer.tree.node.Tree;
 import java.net.URI;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,8 +38,8 @@ public class Games {
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public Response findGames() {
-    return Response.ok(sessionRegistry.findSessions()).build();
+  public Collection<ChatSession> findGames() {
+    return sessionRegistry.findSessions();
   }
 
   @GET
