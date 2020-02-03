@@ -3,33 +3,24 @@ package de.softwartechnik.lucifer.session.game;
 import de.softwartechnik.lucifer.tree.ChatSession;
 import de.softwartechnik.lucifer.tree.MessageContext;
 import de.softwartechnik.lucifer.tree.node.Node;
-import javax.jms.JMSContext;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Queue;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Game implements ChatSession {
   private final String id;
-  private final transient Queue chatMessages;
-  private final transient JMSContext jmsContext;
+  private final Queue<String> responseBuffer = new ArrayBlockingQueue<>(100);
   private Node currentNode;
 
-  public Game(String id, Queue chatMessages, JMSContext jmsContext) {
+  public Game(String id) {
     this.id = id;
-    this.chatMessages = chatMessages;
-    this.jmsContext = jmsContext;
   }
 
   @Override
   public void sendMessage(String message) {
-    try {
-      Message jmsMessage = jmsContext.createTextMessage(message);
-      jmsMessage.setStringProperty("userId", "userId");
-      jmsMessage.setStringProperty("sessionId", id);
-      jmsMessage.setStringProperty("type", "bot");
-      jmsContext.createProducer().send(chatMessages, message);
-    } catch (JMSException e) {
-      e.printStackTrace();
+    synchronized (responseBuffer) {
+      responseBuffer.add(message);
     }
   }
 
@@ -61,6 +52,17 @@ public class Game implements ChatSession {
   @Override
   public String id() {
     return id;
+  }
+
+  @Override
+  public List<String> responses() {
+    List<String> responses = new ArrayList<>();
+    synchronized (responseBuffer) {
+      while (responseBuffer.peek() != null) {
+        responses.add(responseBuffer.poll());
+      }
+    }
+    return responses;
   }
 
   @Override

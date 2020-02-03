@@ -1,6 +1,5 @@
 package de.softwartechnik.lucifer.gui.swing.client;
 
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -19,85 +18,83 @@ import javax.ws.rs.ext.MessageBodyWriter;
 
 public class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
   MessageBodyReader<Object> {
-    private static final String UTF_8 = "UTF-8";
+  private static final String UTF_8 = "UTF-8";
 
-    private Gson gson;
+  private Gson gson;
 
-    //Customize the gson behavior here
-    private Gson getGson() {
-        if (gson == null) {
-            final GsonBuilder gsonBuilder = new GsonBuilder();
-            gson = gsonBuilder.disableHtmlEscaping()
-                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                    .setPrettyPrinting()
-                    .serializeNulls()
-                    .create();
-        }
-        return gson;
+  //Customize the gson behavior here
+  private Gson getGson() {
+    if (gson == null) {
+      final GsonBuilder gsonBuilder = new GsonBuilder();
+      gson = gsonBuilder.disableHtmlEscaping()
+        .setPrettyPrinting()
+        .create();
     }
+    return gson;
+  }
 
-    @Override
-    public boolean isReadable(Class<?> type, Type genericType,
-            java.lang.annotation.Annotation[] annotations, MediaType mediaType) {
-        return true;
-    }
+  @Override
+  public boolean isReadable(Class<?> type, Type genericType,
+    java.lang.annotation.Annotation[] annotations, MediaType mediaType) {
+    return true;
+  }
 
-    @Override
-    public Object readFrom(Class<Object> type, Type genericType,
-            Annotation[] annotations, MediaType mediaType,
-            MultivaluedMap<String, String> httpHeaders, InputStream entityStream) {
-        InputStreamReader streamReader = null;
-        try {
-            streamReader = new InputStreamReader(entityStream, UTF_8);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            Type jsonType;
-            if (type.equals(genericType)) {
-                jsonType = type;
-            } else {
-                jsonType = genericType;
-            }
-            return getGson().fromJson(streamReader, jsonType);
-        } finally {
-            try {
-                streamReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+  @Override
+  public Object readFrom(Class<Object> type, Type genericType,
+    Annotation[] annotations, MediaType mediaType,
+    MultivaluedMap<String, String> httpHeaders, InputStream entityStream) {
+    InputStreamReader streamReader = null;
+    try {
+      streamReader = new InputStreamReader(entityStream, UTF_8);
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
     }
+    try {
+      Type jsonType;
+      if (type.equals(genericType)) {
+        jsonType = type;
+      } else {
+        jsonType = genericType;
+      }
+      return getGson().fromJson(streamReader, jsonType);
+    } finally {
+      try {
+        streamReader.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
-    @Override
-    public boolean isWriteable(Class<?> type, Type genericType,
-            Annotation[] annotations, MediaType mediaType) {
-        return true;
-    }
+  @Override
+  public boolean isWriteable(Class<?> type, Type genericType,
+    Annotation[] annotations, MediaType mediaType) {
+    return true;
+  }
 
-    @Override
-    public long getSize(Object object, Class<?> type, Type genericType,
-            Annotation[] annotations, MediaType mediaType) {
-        return -1;
-    }
+  @Override
+  public long getSize(Object object, Class<?> type, Type genericType,
+    Annotation[] annotations, MediaType mediaType) {
+    return -1;
+  }
 
-    @Override
-    public void writeTo(Object object, Class<?> type, Type genericType,
-            Annotation[] annotations, MediaType mediaType,
-            MultivaluedMap<String, Object> httpHeaders,
-            OutputStream entityStream) throws IOException,
-      WebApplicationException {
-        OutputStreamWriter writer = new OutputStreamWriter(entityStream, UTF_8);
-        try {
-            Type jsonType;
-            if (type.equals(genericType)) {
-                jsonType = type;
-            } else {
-                jsonType = genericType;
-            }
-            getGson().toJson(object, jsonType, writer);
-        } finally {
-            writer.close();
-        }
+  @Override
+  public void writeTo(Object object, Class<?> type, Type genericType,
+    Annotation[] annotations, MediaType mediaType,
+    MultivaluedMap<String, Object> httpHeaders,
+    OutputStream entityStream) throws IOException,
+    WebApplicationException {
+    OutputStreamWriter writer = new OutputStreamWriter(entityStream, UTF_8);
+    try {
+      Type jsonType;
+      if (type.equals(genericType)) {
+        jsonType = type;
+      } else {
+        jsonType = genericType;
+      }
+      getGson().toJson(object, jsonType, writer);
+    } finally {
+      writer.close();
     }
+  }
 }

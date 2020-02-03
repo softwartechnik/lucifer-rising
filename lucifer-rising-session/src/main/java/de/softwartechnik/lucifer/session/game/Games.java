@@ -14,6 +14,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -29,11 +30,6 @@ import javax.ws.rs.core.Response.Status;
 public class Games {
   @Inject
   private SessionRegistry sessionRegistry;
-  @Resource(lookup = "java:global/jms/ChatMessageQueue")
-  private Queue messageQueue;
-  @Inject
-  private JMSContext jmsContext;
-
   private TreeRepository treeRepository = new TreeRepository();
 
   @GET
@@ -58,6 +54,38 @@ public class Games {
   private static final String INITIAL_MESSAGE = "";
 
   @POST
+  @Consumes(MediaType.TEXT_PLAIN)
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/message")
+  public Response onMessage(
+    @QueryParam("sessionId") String sessionId,
+    String message
+  ) {
+    System.out.println("Handling message " + message + " for session " + sessionId);
+    Optional<ChatSession> session = sessionRegistry.findSession(sessionId);
+    if (session.isEmpty()) {
+      return Response.status(Status.NOT_FOUND).build();
+    }
+    ChatSession chatSession = session.get();
+    chatSession.onMessage(message);
+    List<String> responses = chatSession.responses();
+    System.out.println(responses);
+    return Response.ok(new Answer(responses)).build();
+  }
+
+  public static final class Answer {
+    private final List<String> messages;
+
+    public Answer(List<String> messages) {
+      this.messages = messages;
+    }
+
+    public List<String> messages() {
+      return messages;
+    }
+  }
+
+  @POST
   public Response createGame(
     @QueryParam("userId") String userId,
     @QueryParam("scenario") String scenario
@@ -66,9 +94,12 @@ public class Games {
     if (tree.isEmpty()) {
       return Response.status(Status.NOT_FOUND).build();
     }
-    Game game = new Game(UUID.randomUUID().toString(), messageQueue, jmsContext);
+    Game game = new Game(UUID.randomUUID().toString());
     sessionRegistry.addSession(game);
     game.begin(tree.get().rootNode(), INITIAL_MESSAGE);
-    return Response.created(URI.create("/game/" + game.id())).build();
+    return Response
+      .created(URI.create("/game/" + game.id()))
+      .entity(game.id())
+      .build();
   }
 }

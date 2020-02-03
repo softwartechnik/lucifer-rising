@@ -1,5 +1,7 @@
 FROM jboss/wildfly
 
+EXPOSE 8080 9990
+
 RUN /opt/jboss/wildfly/bin/add-user.sh admin vomBizepsSchrumpftDerSalat --silent
 RUN /opt/jboss/wildfly/bin/add-user.sh -a test 4Sr3sU*^ --silent
 

@@ -1,6 +1,7 @@
 package de.softwartechnik.lucifer.gui.swing.client;
 
 import com.google.gson.JsonObject;
+import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -14,13 +15,23 @@ public final class GameClient {
     this.client = client;
   }
 
-  public JsonObject createGame(String userId, String scenario) {
+  public String createGame(String userId, String scenario) {
     return client.target(BASE_URL + "/game")
       .queryParam("userId", userId)
       .queryParam("scenario", scenario)
       .request()
       .post(Entity.text(""))
-      .readEntity(JsonObject.class);
+      .readEntity(String.class);
+  }
+
+  public Answer sendMessage(String sessionId, String message) {
+    Answer entity = client.target(BASE_URL + "/game/message")
+      .queryParam("sessionId", sessionId)
+      .request()
+      .post(Entity.text(message))
+      .readEntity(Answer.class);
+
+    return entity;
   }
 
   public static GameClient create() {
@@ -31,5 +42,29 @@ public final class GameClient {
   public static void main(String[] args) {
     GameClient gameClient = GameClient.create();
     System.out.println(gameClient.createGame("1", "apocalypse"));
+  }
+
+  public static final class Answer {
+    private List<String> messages;
+
+    public Answer(List<String> messages) {
+      this.messages = messages;
+    }
+
+    public List<String> messages() {
+      return messages;
+    }
+
+    public void setMessages(List<String> messages) {
+      this.messages = messages;
+    }
+
+    @Override
+    public String toString() {
+      final StringBuilder sb = new StringBuilder("Answer{");
+      sb.append("messages=").append(messages);
+      sb.append('}');
+      return sb.toString();
+    }
   }
 }

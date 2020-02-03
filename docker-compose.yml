@@ -17,6 +17,7 @@ services:
       context: .
     image: softwartechnik/lucifer-rising
     container_name: lucifer-rising
+    hostname: localhost
     ports:
       - 8080:9990
       - 8070:8080

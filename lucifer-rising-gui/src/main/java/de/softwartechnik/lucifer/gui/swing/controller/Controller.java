@@ -1,6 +1,8 @@
 package de.softwartechnik.lucifer.gui.swing.controller;
 
-import de.softwartechnik.lucifer.gui.swing.client.Messaging;
+import com.google.gson.JsonObject;
+import de.softwartechnik.lucifer.gui.swing.client.GameClient;
+import de.softwartechnik.lucifer.gui.swing.client.GameClient.Answer;
 import de.softwartechnik.lucifer.gui.swing.view.LoginPanel;
 import de.softwartechnik.lucifer.gui.swing.view.LoginView;
 import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
@@ -19,7 +21,7 @@ public final class Controller {
   private final ScenarioView scenarioView;
   private final SignUpView signUpView;
 
-  private final Messaging messaging;
+  private final GameClient gameClient = GameClient.create();
 
   private String userId;
   private String sessionId;
@@ -29,15 +31,13 @@ public final class Controller {
     LoginView loginView,
     MenuView menuView,
     ScenarioView scenarioView,
-    SignUpView signUpView,
-    Messaging messaging
+    SignUpView signUpView
   ) {
     this.mainFrame = mainFrame;
     this.loginView = loginView;
     this.menuView = menuView;
     this.scenarioView = scenarioView;
     this.signUpView = signUpView;
-    this.messaging = messaging;
   }
 
   public void showLogin() {
@@ -90,10 +90,20 @@ public final class Controller {
         case "Zombie Outbreak spielen":
           // TODO
           mainFrame.setView(scenarioView);
+
+          if (sessionId == null) {
+            sessionId = gameClient.createGame("1", "zombies");
+          }
+
           break;
         case "Apokalypse spielen":
           // TODO
           mainFrame.setView(scenarioView);
+
+          if (sessionId == null) {
+            sessionId = gameClient.createGame("1", "apocalypse");
+          }
+
           break;
         case "Logout":
           mainFrame.setView(loginView);
@@ -107,13 +117,12 @@ public final class Controller {
               .getTextField()
               .getText();
           if (!text.isEmpty()) {
-            messaging.sendMessage(userId, sessionId, text);
-
+            Answer answer = gameClient.sendMessage(sessionId, text);
             scenarioView.addTextToUserArea(text + "\n");
             scenarioView.clearTextField();
             scenarioView.addTextToLuciferArea(
               "Antwort von Lucifer"
-                + '\n'
+                + String.join("\n", answer.messages())
             );
           }
           break;
