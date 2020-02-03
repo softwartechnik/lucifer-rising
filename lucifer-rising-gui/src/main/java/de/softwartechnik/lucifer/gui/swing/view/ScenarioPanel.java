@@ -1,10 +1,16 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
-import javax.inject.Inject;
-import javax.swing.*;
-import java.awt.*;
-
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.inject.Inject;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public final class ScenarioPanel extends JPanel {
   private JScrollPane scrollPane;
@@ -75,9 +81,15 @@ public final class ScenarioPanel extends JPanel {
     return textAreaUser;
   }
 
-  public JTextField getTextField() { return textField; }
+  public JTextField getTextField() {
+    return textField;
+  }
 
-  public JButton getSend() { return send; }
+  public JButton getSend() {
+    return send;
+  }
 
-  public JButton getExit() { return exit;}
+  public JButton getExit() {
+    return exit;
+  }
 }

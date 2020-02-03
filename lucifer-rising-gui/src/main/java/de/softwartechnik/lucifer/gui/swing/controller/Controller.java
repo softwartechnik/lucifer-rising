@@ -5,6 +5,7 @@ import de.softwartechnik.lucifer.gui.swing.view.LoginView;
 import de.softwartechnik.lucifer.gui.swing.view.MainFrame;
 import de.softwartechnik.lucifer.gui.swing.view.MenuPanel;
 import de.softwartechnik.lucifer.gui.swing.view.MenuView;
+import de.softwartechnik.lucifer.gui.swing.view.ScenarioPanel;
 import de.softwartechnik.lucifer.gui.swing.view.ScenarioView;
 import de.softwartechnik.lucifer.gui.swing.view.SignUpPanel;
 import de.softwartechnik.lucifer.gui.swing.view.SignUpView;
@@ -66,7 +67,7 @@ public final class Controller {
     signUpView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Registrieren":
-          String surname= signUpPanel.getSurname();
+          String surname = signUpPanel.getSurname();
           String name = signUpPanel.getName();
           String username = signUpPanel.getUsername();
           String email = signUpPanel.getEmail();
@@ -78,7 +79,7 @@ public final class Controller {
       }
       mainFrame.setView(loginView);
     });
-    
+
     menuView.setActionListener(click -> {
       switch (click.getActionCommand()) {
         case "Zombie Outbreak spielen!":
@@ -97,9 +98,8 @@ public final class Controller {
           String text = ((ScenarioPanel)scenarioView.getComponent())
               .getTextField()
               .getText();
-          if(!text.isEmpty()) {
-            scenarioView.addTextToUserArea(text + '\n'
-            );
+          if (!text.isEmpty()) {
+            scenarioView.addTextToUserArea(text + "\n");
             scenarioView.clearTextField();
             // TODO: generate response
             scenarioView.addTextToLuciferArea(

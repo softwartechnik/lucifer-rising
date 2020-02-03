@@ -1,6 +1,9 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -39,7 +42,7 @@ public final class MainFrame extends JFrame {
   // TODO: integrate background image
   public JPanel setBackgroundImage(String filename) {
     Image img = Toolkit.getDefaultToolkit().getImage(filename);
-    return(new JPanel() {
+    return (new JPanel() {
       @Override
       public void paintComponent(Graphics g) {
         super.paintComponent(g);
