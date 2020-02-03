@@ -2,6 +2,7 @@ package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.inject.Inject;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,28 +20,35 @@ public final class MenuPanel extends JPanel {
     GridBagConstraints constraints = new GridBagConstraints();
     constraints.fill = GridBagConstraints.HORIZONTAL;
 
-    buildScenarioPanel(constraints);
+    constraints.gridx = 0;
+    constraints.gridy = 0;
+    constraints.gridwidth = 1;
+    add(buildScenarioPanel(), constraints);
 
-    buildUserStatisticPanel(constraints);
+    constraints.gridx = 0;
+    constraints.gridy = 1;
+    constraints.gridwidth = 1;
+    add(buildUserStatisticPanel(), constraints);
 
-    buildGameStatisticPanel(constraints);
+
+    constraints.gridx = 0;
+    constraints.gridy = 2;
+    constraints.gridwidth = 1;
+    add(buildGameStatisticPanel(), constraints);
   }
 
-  private void buildScenarioPanel(GridBagConstraints constraints) {
+  private JPanel buildScenarioPanel() {
     JPanel scenarioPanel = new JPanel();// TODO layout
 
     JLabel scenarioLabel = new JLabel("Szenarien");
     scenarioPanel.add(scenarioLabel);
     // TODO add scenario-selector and button
 
-    constraints.gridx = 0;
-    constraints.gridy = 0;
-    constraints.gridwidth = 1;
-    add(scenarioPanel, constraints);
+    return scenarioPanel;
   }
 
-  private void buildUserStatisticPanel(GridBagConstraints constraints) {
-    JPanel userStatisticPanel = new JPanel(); // TODO layout
+  private JPanel buildUserStatisticPanel() {
+    JPanel userStatisticPanel = new JPanel(new GridLayout(3, 1)); // TODO layout
 
     JLabel userStatisticLabel = new JLabel("User-Statistiken");
     userStatisticPanel.add(userStatisticLabel);
@@ -53,13 +61,10 @@ public final class MenuPanel extends JPanel {
     userGamesWonValueLabel = new JLabel();
     userStatisticPanel.add(userGamesWonValueLabel);
 
-    constraints.gridx = 0;
-    constraints.gridy = 1;
-    constraints.gridwidth = 1;
-    add(userStatisticPanel, constraints);
+    return userStatisticPanel;
   }
 
-  private void buildGameStatisticPanel(GridBagConstraints constraints) {
+  private JPanel buildGameStatisticPanel() {
     JPanel gameStatisticPanel = new JPanel(); // TODO layout
 
     JLabel gameStatisticLabel = new JLabel("Gesamt-Statistiken");
@@ -73,10 +78,7 @@ public final class MenuPanel extends JPanel {
     gameGamesWonValueLabel = new JLabel();
     gameStatisticPanel.add(gameGamesWonValueLabel);
 
-    constraints.gridx = 0;
-    constraints.gridy = 2;
-    constraints.gridwidth = 1;
-    add(gameStatisticPanel, constraints);
+    return gameStatisticPanel;
   }
 
   public void setUserStatistics(int gamesPlayed, int gamesWon) {
