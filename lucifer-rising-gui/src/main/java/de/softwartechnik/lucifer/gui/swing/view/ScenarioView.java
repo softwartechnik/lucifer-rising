@@ -22,11 +22,11 @@ public final class ScenarioView implements View {
   }
 
   public void addTextToUserArea(String text) {
-    scenarioPanel.getTextAreaUser().append(text + '\n');
+    scenarioPanel.addPlayerMessage(text);
   }
 
   public void addTextToLuciferArea(String text) {
-    scenarioPanel.getTextAreaLucifer().append(text + '\n');
+    scenarioPanel.addBotMessage(text);
   }
 
   public void clearTextField() {
