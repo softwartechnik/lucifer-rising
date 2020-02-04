@@ -29,38 +29,38 @@ public final class SignUpPanel extends JPanel {
 
     lbUsername = new JLabel("Username: ");
     cs.gridx = 0;
-    cs.gridy = 2;
+    cs.gridy = 0;
     cs.gridwidth = 1;
     add(lbUsername, cs);
 
     username = new JTextField(20);
     cs.gridx = 1;
-    cs.gridy = 2;
+    cs.gridy = 0;
     cs.gridwidth = 2;
     add(username, cs);
 
     lbPwd = new JLabel("Password: ");
     cs.gridx = 0;
-    cs.gridy = 4;
+    cs.gridy = 1;
     cs.gridwidth = 1;
     add(lbPwd, cs);
 
     pfPassword = new JPasswordField(20);
     cs.gridx = 1;
-    cs.gridy = 4;
+    cs.gridy = 1;
     cs.gridwidth = 2;
     add(pfPassword, cs);
     setBorder(new LineBorder(Color.GRAY));
 
     lbPwdRepeat = new JLabel("Passwort wiederholen: ");
     cs.gridx = 0;
-    cs.gridy = 5;
+    cs.gridy = 2;
     cs.gridwidth = 1;
     add(lbPwdRepeat, cs);
 
     pfPasswordRepeat = new JPasswordField(20);
     cs.gridx = 1;
-    cs.gridy = 5;
+    cs.gridy = 2;
     cs.gridwidth = 2;
     add(pfPasswordRepeat, cs);
     setBorder(new LineBorder(Color.GRAY));
@@ -70,9 +70,9 @@ public final class SignUpPanel extends JPanel {
     JPanel bp = new JPanel();
     bp.add(btnRegister);
     bp.add(btnCancel);
-    cs.gridx = 0;
-    cs.gridy = 6;
-    cs.gridwidth = 3;
+    cs.gridx = 1;
+    cs.gridy = 3;
+    cs.gridwidth = 2;
     add(bp, cs);
   }
 
