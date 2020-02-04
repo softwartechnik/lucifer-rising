@@ -27,6 +27,7 @@ public final class LoginPanel extends BackgroundPanel {
     cs.fill = GridBagConstraints.HORIZONTAL;
 
     lbUsername = new JLabel("Username: ");
+    lbUsername.setForeground(Color.WHITE);
     cs.gridx = 0;
     cs.gridy = 0;
     cs.gridwidth = 1;
@@ -39,6 +40,7 @@ public final class LoginPanel extends BackgroundPanel {
     add(tfUsername, cs);
 
     lbPassword = new JLabel("Password: ");
+    lbPassword.setForeground(Color.WHITE);
     cs.gridx = 0;
     cs.gridy = 1;
     cs.gridwidth = 1;
@@ -49,7 +51,6 @@ public final class LoginPanel extends BackgroundPanel {
     cs.gridy = 1;
     cs.gridwidth = 2;
     add(pfPassword, cs);
-    setBorder(new LineBorder(Color.GRAY));
 
     btnLogin = new JButton("Login");
     btnCancel = new JButton("Cancel");
@@ -62,6 +63,7 @@ public final class LoginPanel extends BackgroundPanel {
     add(bp, cs);
 
     btnRegister = new JButton("Noch kein Account?");
+    btnRegister.setForeground(Color.WHITE);
     btnRegister.setBorderPainted(false);
     btnRegister.setContentAreaFilled(false);
     cs.gridx = 1;

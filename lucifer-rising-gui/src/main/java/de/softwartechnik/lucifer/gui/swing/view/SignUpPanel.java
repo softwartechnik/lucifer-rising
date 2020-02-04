@@ -29,6 +29,7 @@ public final class SignUpPanel extends BackgroundPanel {
     cs.fill = GridBagConstraints.HORIZONTAL;
 
     lbUsername = new JLabel("Username: ");
+    lbUsername.setForeground(Color.WHITE);
     cs.gridx = 0;
     cs.gridy = 0;
     cs.gridwidth = 1;
@@ -41,6 +42,7 @@ public final class SignUpPanel extends BackgroundPanel {
     add(username, cs);
 
     lbPwd = new JLabel("Password: ");
+    lbPwd.setForeground(Color.WHITE);
     cs.gridx = 0;
     cs.gridy = 1;
     cs.gridwidth = 1;
@@ -51,9 +53,9 @@ public final class SignUpPanel extends BackgroundPanel {
     cs.gridy = 1;
     cs.gridwidth = 2;
     add(pfPassword, cs);
-    setBorder(new LineBorder(Color.GRAY));
 
     lbPwdRepeat = new JLabel("Passwort wiederholen: ");
+    lbPwdRepeat.setForeground(Color.WHITE);
     cs.gridx = 0;
     cs.gridy = 2;
     cs.gridwidth = 1;
@@ -64,7 +66,6 @@ public final class SignUpPanel extends BackgroundPanel {
     cs.gridy = 2;
     cs.gridwidth = 2;
     add(pfPasswordRepeat, cs);
-    setBorder(new LineBorder(Color.GRAY));
 
     btnRegister = new JButton("Registrieren");
     btnCancel = new JButton("Cancel");
