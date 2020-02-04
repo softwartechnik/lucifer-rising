@@ -34,17 +34,11 @@ public final class MenuPanel extends BackgroundPanel {
     constraints.gridx = 0;
     constraints.gridy = 1;
     constraints.gridwidth = 1;
-    add(buildUserStatisticPanel(), constraints);
-
-
-    constraints.gridx = 0;
-    constraints.gridy = 2;
-    constraints.gridwidth = 1;
-    add(buildGameStatisticPanel(), constraints);
+    add(buildStatisticsPanel(), constraints);
 
     logoutButton = new JButton("Logout");
     constraints.gridx = 0;
-    constraints.gridy = 3;
+    constraints.gridy = 2;
     constraints.gridwidth = 1;
     add(logoutButton, constraints);
   }
@@ -70,6 +64,27 @@ public final class MenuPanel extends BackgroundPanel {
     return innerScenarioPanel;
   }
 
+  private JPanel buildStatisticsPanel() {
+    JPanel statisticsPanel = new JPanel(new BorderLayout());
+    statisticsPanel.setOpaque(false);
+
+    JPanel statisticsHeadPanel = new JPanel();
+    statisticsHeadPanel.setBackground(new Color(255, 255, 255, 100));
+    
+    JLabel statisticsLabel = new JLabel("Statistiken");
+    statisticsLabel.setFont(statisticsLabel.getFont().deriveFont(Font.BOLD, 22));
+    statisticsHeadPanel.add(statisticsLabel);
+    statisticsPanel.add(statisticsHeadPanel, BorderLayout.NORTH);
+
+    JPanel bodyStatisticsPanel = new JPanel(new GridLayout(1,2));
+    bodyStatisticsPanel.setOpaque(false);
+    bodyStatisticsPanel.add(buildUserStatisticPanel());
+    bodyStatisticsPanel.add(buildGameStatisticPanel());
+    statisticsPanel.add(bodyStatisticsPanel, BorderLayout.CENTER);
+
+    return statisticsPanel;
+  }
+
   private JPanel buildZombieScenarioPanel() {
     JPanel zombieScenarioPanel = new BackgroundPanel("/zombie_hands.png");
     zombieScenarioPanel.setBackground(new Color(255, 255, 255, 100));
@@ -82,7 +97,7 @@ public final class MenuPanel extends BackgroundPanel {
     zombieScenarioHeadPanel.add(zombieScenarioHeadLabel);
     zombieScenarioPanel.add(zombieScenarioHeadPanel, BorderLayout.NORTH);
     JLabel zombieScenarioInfoPanel = new JLabel(
-      "<html><p style=\"width=500px\">Ein gew\u00f6hnlicher Tag an der FH oder doch "
+      "<html><p style=\"width=400px\">Ein gew\u00f6hnlicher Tag an der FH oder doch "
         + "ein ausgewachsenes Abenteuer mit heiklen Situationen, schwierigen"
         + " Entscheidungen und Nervenkitzel pur? Hier ist survival instinct gefragt.</p></html>"
     );
@@ -108,7 +123,7 @@ public final class MenuPanel extends BackgroundPanel {
     apokalypseScenarioHeadPanel.add(apokalypseScenarioHeadLabel);
     apokalypseScenarioPanel.add(apokalypseScenarioHeadPanel, BorderLayout.NORTH);
     JLabel apokalypseScenarioInfoPanel = new JLabel(
-      "<html><p style=\"width=500px\">Wem nach d\u00fcsterer (Spiel-)Stimmung ist, der"
+      "<html><p style=\"width=400px\">Wem nach d\u00fcsterer (Spiel-)Stimmung ist, der"
         + " ist hier genau richtig. Der Mann auf dem wei\u00dfen Pferd l\u00e4utet die Apokalypse"
         + " ein! Wird die Welt in den Abgrund sinken?</p></html>"
     );
@@ -123,53 +138,65 @@ public final class MenuPanel extends BackgroundPanel {
   }
 
   private JPanel buildUserStatisticPanel() {
-    JPanel innerUserStatisticPanel = new JPanel(new GridLayout(3, 1)); // TODO layout
+    JPanel innerUserStatisticPanel = new JPanel(new GridLayout(3, 2));
+    innerUserStatisticPanel.setBackground(new Color(255, 255, 255, 100));
 
     JPanel userStatisticHeadPanel = new JPanel();
-    JLabel userStatisticLabel = new JLabel("User-Statistiken");
+    JLabel userStatisticLabel = new JLabel("Benutzer-Statistiken");
+    userStatisticLabel.setFont(userStatisticLabel.getFont().deriveFont(Font.BOLD));
+    userStatisticLabel.setForeground(Color.WHITE);
+    userStatisticHeadPanel.setBackground(new Color(0, 0, 0, 150));
     userStatisticHeadPanel.add(userStatisticLabel);
     innerUserStatisticPanel.add(userStatisticHeadPanel);
-    JPanel userGamesPlayedPanel = new JPanel();
-    JLabel userGamesPlayedLabel = new JLabel("Spiele gespielt:");
+
+    JPanel userGamesPlayedPanel = new JPanel(new GridLayout(1, 2));
+    JLabel userGamesPlayedLabel = new JLabel("Spiele gespielt: ");
+    userGamesPlayedPanel.setOpaque(false);
     userGamesPlayedPanel.add(userGamesPlayedLabel);
     userGamesPlayedValueLabel = new JLabel();
     userGamesPlayedPanel.add(userGamesPlayedValueLabel);
     innerUserStatisticPanel.add(userGamesPlayedPanel);
-    JPanel userGamesWonPanel = new JPanel();
-    JLabel userGamesWonLabel = new JLabel("Spiele gewonnen:");
+
+    JPanel userGamesWonPanel = new JPanel(new GridLayout(1, 2));
+    JLabel userGamesWonLabel = new JLabel("Spiele gewonnen: ");
+    userGamesWonPanel.setOpaque(false);
     userGamesWonPanel.add(userGamesWonLabel);
     userGamesWonValueLabel = new JLabel();
     userGamesWonPanel.add(userGamesWonValueLabel);
     innerUserStatisticPanel.add(userGamesWonPanel);
 
-    JPanel outerUserStatisticPanel = new JPanel();
-    outerUserStatisticPanel.add(innerUserStatisticPanel);
-    return outerUserStatisticPanel;
+    return innerUserStatisticPanel;
   }
 
   private JPanel buildGameStatisticPanel() {
-    JPanel innerGameStatisticPanel = new JPanel(new GridLayout(3, 1)); // TODO layout
+    JPanel innerGameStatisticPanel = new JPanel(new GridLayout(3, 2));
+    innerGameStatisticPanel.setBackground(new Color(255, 255, 255, 100));
 
     JPanel gameStatisticHeadPanel = new JPanel();
     JLabel gameStatisticLabel = new JLabel("Gesamt-Statistiken");
+    gameStatisticLabel.setFont(gameStatisticLabel.getFont().deriveFont(Font.BOLD));
+    gameStatisticLabel.setForeground(Color.WHITE);
+    gameStatisticHeadPanel.setBackground(new Color(0, 0, 0, 150));
     gameStatisticHeadPanel.add(gameStatisticLabel);
     innerGameStatisticPanel.add(gameStatisticHeadPanel);
-    JPanel gameGamesPlayedPanel = new JPanel();
-    JLabel gameGamesPlayedLabel = new JLabel("Spiele gespielt:");
+
+    JPanel gameGamesPlayedPanel = new JPanel(new GridLayout(1, 2));
+    JLabel gameGamesPlayedLabel = new JLabel("Spiele gespielt: ");
+    gameGamesPlayedPanel.setOpaque(false);
     gameGamesPlayedPanel.add(gameGamesPlayedLabel);
     gameGamesPlayedValueLabel = new JLabel();
-    gameGamesPlayedPanel.add(gameGamesPlayedValueLabel);
+    gameGamesPlayedPanel.add(userGamesPlayedValueLabel);
     innerGameStatisticPanel.add(gameGamesPlayedPanel);
-    JPanel gameGamesWonPanel = new JPanel();
-    JLabel gameGamesWonLabel = new JLabel("Spiele gewonnen:");
+
+    JPanel gameGamesWonPanel = new JPanel(new GridLayout(1, 2));
+    JLabel gameGamesWonLabel = new JLabel("Spiele gewonnen: ");
+    gameGamesWonPanel.setOpaque(false);
     gameGamesWonPanel.add(gameGamesWonLabel);
     gameGamesWonValueLabel = new JLabel();
-    gameGamesWonPanel.add(gameGamesWonValueLabel);
+    gameGamesWonPanel.add(userGamesWonValueLabel);
     innerGameStatisticPanel.add(gameGamesWonPanel);
 
-    JPanel outerGameStatisticPanel = new JPanel();
-    outerGameStatisticPanel.add(innerGameStatisticPanel);
-    return outerGameStatisticPanel;
+    return innerGameStatisticPanel;
   }
 
   public void setUserStatistics(int gamesPlayed, int gamesWon) {
