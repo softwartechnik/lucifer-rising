@@ -71,7 +71,7 @@ public final class Controller {
         case "Cancel":
           mainFrame.dispose();
           break;
-        case "Noch keinen Account?":
+        case "Noch kein Account?":
           mainFrame.setView(signUpView);
           break;
       }
