@@ -55,17 +55,17 @@ public final class LoginPanel extends JPanel {
     JPanel bp = new JPanel();
     bp.add(btnLogin);
     bp.add(btnCancel);
-    cs.gridx = 0;
+    cs.gridx = 1;
     cs.gridy = 2;
-    cs.gridwidth = 3;
+    cs.gridwidth = 2;
     add(bp, cs);
 
-    btnRegister = new JButton("Noch keinen Account?");
+    btnRegister = new JButton("Noch kein Account?");
     btnRegister.setBorderPainted(false);
     btnRegister.setContentAreaFilled(false);
-    cs.gridx = 0;
+    cs.gridx = 1;
     cs.gridy = 3;
-    cs.gridwidth = 1;
+    cs.gridwidth = 2;
     add(btnRegister, cs);
   }
 
