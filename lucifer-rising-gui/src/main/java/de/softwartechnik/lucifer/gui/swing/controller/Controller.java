@@ -124,8 +124,7 @@ public final class Controller {
             scenarioView.addTextToUserArea(text + "\n");
             scenarioView.clearTextField();
             scenarioView.addTextToLuciferArea(
-              "Antwort von Lucifer"
-                + String.join("\n", answer.messages())
+              String.join("\n", answer.messages())
             );
           }
           break;

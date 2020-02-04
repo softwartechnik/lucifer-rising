@@ -28,18 +28,18 @@ public final class ScenarioPanel extends JPanel {
     scrollPane = new JScrollPane();
     cs.gridx = 0;
     cs.gridy = 0;
-    cs.gridwidth = 2;
+    cs.gridwidth = 8;
     JPanel areaPanel = new JPanel(new GridBagLayout());
     GridBagConstraints paneCs = new GridBagConstraints();
 
-    textAreaLucifer = new JTextArea(20, 12);
+    textAreaLucifer = new JTextArea(20, 48);
     textAreaLucifer.setEditable(false);
     paneCs.gridx = 0;
     paneCs.gridy = 0;
     paneCs.gridwidth = 1;
     areaPanel.add(textAreaLucifer, paneCs);
 
-    textAreaUser = new JTextArea(20, 12);
+    textAreaUser = new JTextArea(20, 48);
     textAreaUser.setEditable(false);
     paneCs.gridx = 1;
     paneCs.gridy = 0;
@@ -54,11 +54,11 @@ public final class ScenarioPanel extends JPanel {
     textField.setBorder(BorderFactory.createEmptyBorder());
     cs.gridx = 0;
     cs.gridy = 1;
-    cs.gridwidth = 3;
+    cs.gridwidth = 12;
     add(textField, cs);
 
     send = new JButton("Senden");
-    cs.gridx = 3;
+    cs.gridx = 12;
     cs.gridy = 1;
     cs.gridwidth = 2;
     add(send, cs);
