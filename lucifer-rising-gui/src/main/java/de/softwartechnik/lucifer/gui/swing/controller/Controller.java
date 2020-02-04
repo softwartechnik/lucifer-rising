@@ -60,13 +60,13 @@ public final class Controller {
         case "Login":
           loginPanel.getUsername();
           loginPanel.getPassword();
-          user = userClient.login(loginPanel.getUsername(), loginPanel.getPassword());
+          //user = userClient.login(loginPanel.getUsername(), loginPanel.getPassword());
           if (user != null) {
-            mainFrame.setView(menuView);
             menuPanel.setUserStatistics(user.getGamesPlayed(), user.getGamesWon());
             // TODO getGameStatistics
             menuPanel.setGameStatistics(99, 16);
           }
+          mainFrame.setView(menuView);
           break;
         case "Cancel":
           mainFrame.dispose();
@@ -97,15 +97,17 @@ public final class Controller {
 
           if (sessionId == null) {
             sessionId = gameClient.createGame("1", "zombies");
+            loadInitialText();
           }
 
           break;
         case "Apokalypse spielen":
-          gameClient.createGame(Integer.toString(user.getId()), "apocalypse");
+          gameClient.createGame("1", "apocalypse");
           mainFrame.setView(scenarioView);
 
           if (sessionId == null) {
             sessionId = gameClient.createGame("1", "apocalypse");
+            loadInitialText();
           }
           break;
         case "Logout":
@@ -136,5 +138,13 @@ public final class Controller {
           break;
       }
     });
+  }
+
+  private void loadInitialText() {
+    Answer answer = gameClient.fetchMessageBuffer(sessionId);
+    scenarioView.addTextToLuciferArea(
+      "Antwort von Lucifer"
+        + String.join("\n", answer.messages())
+    );
   }
 }

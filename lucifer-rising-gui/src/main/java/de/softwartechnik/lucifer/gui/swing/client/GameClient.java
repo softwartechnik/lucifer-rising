@@ -1,6 +1,5 @@
 package de.softwartechnik.lucifer.gui.swing.client;
 
-import com.google.gson.JsonObject;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -15,6 +14,13 @@ public final class GameClient {
     this.client = client;
   }
 
+  public Answer fetchMessageBuffer(String sessionId) {
+    return client.target(BASE_URL + "/game/" + sessionId + "/message")
+      .request()
+      .get()
+      .readEntity(Answer.class);
+  }
+
   public String createGame(String userId, String scenario) {
     return client.target(BASE_URL + "/game")
       .queryParam("userId", userId)
@@ -25,13 +31,10 @@ public final class GameClient {
   }
 
   public Answer sendMessage(String sessionId, String message) {
-    Answer entity = client.target(BASE_URL + "/game/message")
-      .queryParam("sessionId", sessionId)
+    return client.target(BASE_URL + "/game/" + sessionId + "/message")
       .request()
       .post(Entity.text(message))
       .readEntity(Answer.class);
-
-    return entity;
   }
 
   public static GameClient create() {

@@ -9,11 +9,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.jms.JMSContext;
-import javax.jms.Queue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -53,12 +50,26 @@ public class Games {
 
   private static final String INITIAL_MESSAGE = "";
 
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/{sessionId}/message")
+  public Response fetchMessageBuffer(
+    @PathParam("sessionId") String sessionId
+  ) {
+    Optional<ChatSession> session = sessionRegistry.findSession(sessionId);
+    if (session.isEmpty()) {
+      return Response.status(Status.NOT_FOUND).build();
+    }
+    List<String> responses = session.get().responses();
+    return Response.ok(new Answer(responses)).build();
+  }
+
   @POST
   @Consumes(MediaType.TEXT_PLAIN)
   @Produces(MediaType.APPLICATION_JSON)
-  @Path("/message")
+  @Path("/{sessionId}/message")
   public Response onMessage(
-    @QueryParam("sessionId") String sessionId,
+    @PathParam("sessionId") String sessionId,
     String message
   ) {
     System.out.println("Handling message " + message + " for session " + sessionId);
