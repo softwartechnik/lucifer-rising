@@ -55,6 +55,7 @@ public class BackgroundPanel extends JPanel
 	{
 		setStyle(style);
 		setLayout(new BorderLayout());
+		setBackground(new Color(0, 0, 0, 0));
 
         new Thread(() -> { try {
             setImage(ImageIO.read(
@@ -72,6 +73,7 @@ public class BackgroundPanel extends JPanel
 		setImage( image );
 		setStyle( style );
 		setLayout( new BorderLayout() );
+		setBackground(new Color(0, 0, 0, 0));
 	}
 
 	/*
@@ -84,6 +86,7 @@ public class BackgroundPanel extends JPanel
 		setImageAlignmentX( alignmentX );
 		setImageAlignmentY( alignmentY );
 		setLayout( new BorderLayout() );
+		setBackground(new Color(0, 0, 0, 0));
 	}
 
 	/*
