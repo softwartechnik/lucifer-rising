@@ -1,5 +1,8 @@
 package de.softwartechnik.lucifer.gui.swing;
 
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
 import de.softwartechnik.lucifer.gui.swing.client.GameClient;
 import de.softwartechnik.lucifer.gui.swing.client.UserClient;
 import de.softwartechnik.lucifer.gui.swing.controller.Controller;
@@ -27,6 +30,21 @@ public final class SwingGui {
   }
 
   public static void main(String[] args) {
+    try {
+      boolean nimbus = false;
+
+      for(LookAndFeelInfo lai : UIManager.getInstalledLookAndFeels()) {
+        if(lai.getClassName().toLowerCase().contains("nimbus")) {
+          UIManager.setLookAndFeel(lai.getClassName());
+          nimbus = true;
+          break;
+        }
+      }
+
+      if(!nimbus) UIManager.setLookAndFeel(
+        UIManager.getSystemLookAndFeelClassName());
+    } catch(Exception e) {/* ignored */}
+
     SwingGui gui = new SwingGui(new Controller(
       new MainFrame(),
       new LoginView(new LoginPanel()),
