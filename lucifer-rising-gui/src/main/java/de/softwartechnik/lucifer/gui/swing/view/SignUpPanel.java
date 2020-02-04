@@ -10,7 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public final class SignUpPanel extends JPanel {
+public final class SignUpPanel extends BackgroundPanel {
   private JTextField username;
   private JPasswordField pfPassword;
   private JPasswordField pfPasswordRepeat;
@@ -22,6 +22,7 @@ public final class SignUpPanel extends JPanel {
   private JButton btnRegister;
 
   public SignUpPanel() {
+    super("/scull_title_background.jpg");
     setLayout(new GridBagLayout());
     GridBagConstraints cs = new GridBagConstraints();
 

@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public final class MenuPanel extends JPanel {
+public final class MenuPanel extends BackgroundPanel {
 
   private JLabel userGamesPlayedValueLabel;
   private JLabel userGamesWonValueLabel;
@@ -19,6 +19,7 @@ public final class MenuPanel extends JPanel {
   private JButton logoutButton;
 
   public MenuPanel() {
+    super("/scull_background.jpg");
     setLayout(new GridBagLayout());
     GridBagConstraints constraints = new GridBagConstraints();
     constraints.fill = GridBagConstraints.HORIZONTAL;
