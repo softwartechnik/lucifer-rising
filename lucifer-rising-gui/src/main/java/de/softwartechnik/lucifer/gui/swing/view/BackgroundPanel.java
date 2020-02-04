@@ -53,7 +53,7 @@ public class BackgroundPanel extends JPanel
 	 */
 	public BackgroundPanel(String imagePath, int style)
 	{
-		setStyle(SCALED);
+		setStyle(style);
 		setLayout(new BorderLayout());
 
         new Thread(() -> { try {
