@@ -1,7 +1,8 @@
 package de.softwartechnik.lucifer.gui.swing.view;
 
 import java.awt.*;
-import java.awt.image.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /*
@@ -14,6 +15,7 @@ import javax.swing.*;
  *  non-opaque so that the custom painting can show through.
  * 
  *  By Rob Camick https://tips4java.wordpress.com/2008/10/12/background-panel/
+ *  Modified by HDainester
  */
 public class BackgroundPanel extends JPanel
 {
@@ -34,6 +36,32 @@ public class BackgroundPanel extends JPanel
 	public BackgroundPanel(Image image)
 	{
 		this(image, SCALED);
+    }
+    
+	/*
+	 *  Set image loaded from the given resource path
+     *  as the background with the SCALED style
+	 */
+	public BackgroundPanel(String imagePath)
+	{
+        this(imagePath, SCALED);
+    }
+
+	/*
+	 *  Set image loaded from the given resource path
+     *  as the background with the specified style
+	 */
+	public BackgroundPanel(String imagePath, int style)
+	{
+		setStyle(SCALED);
+		setLayout(new BorderLayout());
+
+        new Thread(() -> { try {
+            setImage(ImageIO.read(
+                getClass().getResourceAsStream(imagePath)));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }}) {{setDaemon(true);}}.start();
 	}
 
 	/*
