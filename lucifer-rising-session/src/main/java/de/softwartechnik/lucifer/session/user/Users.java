@@ -2,6 +2,7 @@ package de.softwartechnik.lucifer.session.user;
 
 import de.softwartechnik.lucifer.user.User;
 import de.softwartechnik.lucifer.user.UserService;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -10,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/user")
 public class Users {
-  @Inject
+  @EJB
   private UserService userService;
 
   @POST
