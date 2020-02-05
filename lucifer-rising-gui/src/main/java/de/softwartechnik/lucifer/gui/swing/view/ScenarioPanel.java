@@ -35,9 +35,8 @@ public final class ScenarioPanel extends BackgroundPanel {
     GridBagConstraints cs = new GridBagConstraints();
     cs.fill = GridBagConstraints.HORIZONTAL;
 
-    chatPanel = new JPanel();
+    chatPanel = new JPanel(new GridBagLayout());
     chatPanel.setOpaque(false);
-    chatPanel.setLayout(new BoxLayout(chatPanel, BoxLayout.Y_AXIS));
 
     scrollPane = new JScrollPane();
     scrollPane.getViewport().add(chatPanel, BorderLayout.CENTER);
@@ -78,15 +77,26 @@ public final class ScenarioPanel extends BackgroundPanel {
 
   public void addBotMessage(String message) {
     JPanel textPanel = createBotTextPanel(message);
-    textPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-    chatPanel.add(textPanel);
+
+    GridBagConstraints cs = new GridBagConstraints();
+    cs.anchor = GridBagConstraints.EAST;
+    cs.gridy = chatPanel.getComponentCount();
+    cs.gridx = 1;
+
+    chatPanel.add(textPanel, cs);
+    chatPanel.revalidate();
     scrollDown(scrollPane);
   }
 
   public void addPlayerMessage(String message) {
     JPanel textPanel = createPlayerTextPanel(message);
-    textPanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
-    chatPanel.add(textPanel);
+    GridBagConstraints cs = new GridBagConstraints();
+    cs.anchor = GridBagConstraints.WEST;
+    cs.gridy = chatPanel.getComponentCount();
+    cs.gridx = 0;
+
+    chatPanel.add(textPanel, cs);
+    chatPanel.revalidate();
     scrollDown(scrollPane);
   }
 
