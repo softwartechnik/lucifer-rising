@@ -10,7 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public final class SignUpPanel extends JPanel {
+public final class SignUpPanel extends BackgroundPanel {
   private JTextField username;
   private JPasswordField pfPassword;
   private JPasswordField pfPasswordRepeat;
@@ -22,57 +22,59 @@ public final class SignUpPanel extends JPanel {
   private JButton btnRegister;
 
   public SignUpPanel() {
+    super("/scull_title_background.jpg");
     setLayout(new GridBagLayout());
     GridBagConstraints cs = new GridBagConstraints();
 
     cs.fill = GridBagConstraints.HORIZONTAL;
 
     lbUsername = new JLabel("Username: ");
+    lbUsername.setForeground(Color.WHITE);
     cs.gridx = 0;
-    cs.gridy = 2;
+    cs.gridy = 0;
     cs.gridwidth = 1;
     add(lbUsername, cs);
 
     username = new JTextField(20);
     cs.gridx = 1;
-    cs.gridy = 2;
+    cs.gridy = 0;
     cs.gridwidth = 2;
     add(username, cs);
 
     lbPwd = new JLabel("Password: ");
+    lbPwd.setForeground(Color.WHITE);
     cs.gridx = 0;
-    cs.gridy = 4;
+    cs.gridy = 1;
     cs.gridwidth = 1;
     add(lbPwd, cs);
 
     pfPassword = new JPasswordField(20);
     cs.gridx = 1;
-    cs.gridy = 4;
+    cs.gridy = 1;
     cs.gridwidth = 2;
     add(pfPassword, cs);
-    setBorder(new LineBorder(Color.GRAY));
 
     lbPwdRepeat = new JLabel("Passwort wiederholen: ");
+    lbPwdRepeat.setForeground(Color.WHITE);
     cs.gridx = 0;
-    cs.gridy = 5;
+    cs.gridy = 2;
     cs.gridwidth = 1;
     add(lbPwdRepeat, cs);
 
     pfPasswordRepeat = new JPasswordField(20);
     cs.gridx = 1;
-    cs.gridy = 5;
+    cs.gridy = 2;
     cs.gridwidth = 2;
     add(pfPasswordRepeat, cs);
-    setBorder(new LineBorder(Color.GRAY));
 
     btnRegister = new JButton("Registrieren");
     btnCancel = new JButton("Cancel");
     JPanel bp = new JPanel();
     bp.add(btnRegister);
     bp.add(btnCancel);
-    cs.gridx = 0;
-    cs.gridy = 6;
-    cs.gridwidth = 3;
+    cs.gridx = 1;
+    cs.gridy = 3;
+    cs.gridwidth = 2;
     add(bp, cs);
   }
 

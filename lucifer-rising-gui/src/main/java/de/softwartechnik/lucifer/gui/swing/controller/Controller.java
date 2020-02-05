@@ -71,7 +71,7 @@ public final class Controller {
         case "Cancel":
           mainFrame.dispose();
           break;
-        case "Noch keinen Account?":
+        case "Noch kein Account?":
           mainFrame.setView(signUpView);
           break;
       }
@@ -132,8 +132,7 @@ public final class Controller {
           break;
         case "Speichern und verlassen":
           // TODO save game
-          ((ScenarioPanel)scenarioView.getComponent()).getTextAreaLucifer().setText("");
-          ((ScenarioPanel)scenarioView.getComponent()).getTextAreaUser().setText("");
+          ((ScenarioPanel)scenarioView.getComponent()).clearChat();
           mainFrame.setView(menuView);
           break;
       }
