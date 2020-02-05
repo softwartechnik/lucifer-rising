@@ -29,6 +29,7 @@ public final class ScenarioPanel extends BackgroundPanel {
 
   public ScenarioPanel() {
     super("/scull_background.jpg");
+    
     JPanel mainPanel = new JPanel(new GridBagLayout());
     add(mainPanel);
 
