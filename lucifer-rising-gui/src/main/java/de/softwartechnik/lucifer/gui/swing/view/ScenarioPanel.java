@@ -86,6 +86,7 @@ public final class ScenarioPanel extends BackgroundPanel {
     chatPanel.add(textPanel, cs);
     chatPanel.revalidate();
     scrollDown(scrollPane);
+    repaint();
   }
 
   public void addPlayerMessage(String message) {
@@ -98,6 +99,7 @@ public final class ScenarioPanel extends BackgroundPanel {
     chatPanel.add(textPanel, cs);
     chatPanel.revalidate();
     scrollDown(scrollPane);
+    repaint();
   }
 
   public JTextField getTextField() {
