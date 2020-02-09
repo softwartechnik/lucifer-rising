@@ -29,6 +29,7 @@ public final class ScenarioPanel extends BackgroundPanel {
 
   public ScenarioPanel() {
     super("/scull_background.jpg");
+    
     JPanel mainPanel = new JPanel(new GridBagLayout());
     add(mainPanel);
 
@@ -86,6 +87,7 @@ public final class ScenarioPanel extends BackgroundPanel {
     chatPanel.add(textPanel, cs);
     chatPanel.revalidate();
     scrollDown(scrollPane);
+    repaint();
   }
 
   public void addPlayerMessage(String message) {
@@ -98,6 +100,7 @@ public final class ScenarioPanel extends BackgroundPanel {
     chatPanel.add(textPanel, cs);
     chatPanel.revalidate();
     scrollDown(scrollPane);
+    repaint();
   }
 
   public JTextField getTextField() {
